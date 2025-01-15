@@ -4,6 +4,11 @@ export type GalleryItem = {
   title: string;
   description: string;
   image: string;
+  childImages?: {
+    id: number;
+    image: string;
+    description?: string;
+  }[];
 };
 
 export const categories = [
@@ -21,7 +26,19 @@ export const galleryItems: GalleryItem[] = [
     category: 'Windows & Doors',
     title: 'Modern Entrance Design',
     description: 'Contemporary door entrance with custom metalwork and brick detailing',
-    image: '/lovable-uploads/74fe97ab-a99d-4952-b804-b8dd7a0dbf06.png'
+    image: '/lovable-uploads/74fe97ab-a99d-4952-b804-b8dd7a0dbf06.png',
+    childImages: [
+      {
+        id: 101,
+        image: '/lovable-uploads/3567461c-c855-40ab-8361-bc89b0489c6b.png',
+        description: 'Detail view of the metal screen pattern'
+      },
+      {
+        id: 102,
+        image: '/lovable-uploads/fe9eba2e-74c4-4bca-9c1b-ab3393597b7b.png',
+        description: 'Full view showing architectural integration'
+      }
+    ]
   },
   {
     id: 2,
