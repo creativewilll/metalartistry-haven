@@ -15,6 +15,16 @@ const featuredItems = [
     title: "Architectural Elements",
     description: "Custom metalwork integrated with architecture",
     image: "/lovable-uploads/fe9eba2e-74c4-4bca-9c1b-ab3393597b7b.png"
+  },
+  {
+    title: "Industrial Railing System",
+    description: "Modern railing installation in progress",
+    image: "/lovable-uploads/2a6b9b35-41fc-4a8e-bb23-ec8613201563.png"
+  },
+  {
+    title: "Installation Process",
+    description: "Behind the scenes of our metalwork installation",
+    image: "/lovable-uploads/35a46b27-2830-45ff-9fc7-d6023162a84d.png"
   }
 ];
 
@@ -25,17 +35,17 @@ export const FeaturedWork = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-cream">
           Featured Creations
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="masonry-grid">
           {featuredItems.map((item, index) => (
             <div 
               key={index} 
-              className="group relative overflow-hidden rounded-lg hover-lift"
+              className="heated-metal-card overflow-hidden"
             >
-              <div className="aspect-w-4 aspect-h-3">
+              <div className="relative">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
