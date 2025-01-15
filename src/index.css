@@ -64,18 +64,17 @@
   transform: translateY(-5px);
 }
 
-/* Update masonry-specific styles */
+/* Add masonry-specific styles */
 @supports (grid-template-rows: masonry) {
   .masonry-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: masonry;
-    grid-gap: 1rem;
-    padding: 1rem;
+    grid-gap: 2rem;
   }
 }
 
-/* Add the heated-metal-card style */
+/* Add the new heated-metal-card style */
 .heated-metal-card {
   @apply bg-gradient-to-br from-[#2F3640] via-[#2A2D35] via-80% to-[#FF3B14] rounded-lg hover-lift;
 }
