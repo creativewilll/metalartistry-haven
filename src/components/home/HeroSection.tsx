@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const HeroSection = () => {
   return (
-    <div className="relative h-screen">
+    <div className="relative h-screen -mx-4">
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 to-charcoal/60 z-10" />
       <div 
         className="absolute inset-0 bg-[url('/lovable-uploads/698b82e9-706d-40f2-8425-823fc4f6b579.png')] 

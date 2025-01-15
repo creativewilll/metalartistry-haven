@@ -6,12 +6,14 @@ import MetalworkCarousel from '@/components/MetalworkCarousel';
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen px-4">
       <HeroSection />
-      <MetalworkCarousel />
-      <FeaturedWork />
-      <Testimonials />
-      <CTASection />
+      <div className="max-w-[1400px] mx-auto">
+        <MetalworkCarousel />
+        <FeaturedWork />
+        <Testimonials />
+        <CTASection />
+      </div>
     </div>
   );
 };

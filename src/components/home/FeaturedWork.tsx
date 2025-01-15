@@ -21,7 +21,7 @@ const featuredItems = [
 export const FeaturedWork = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-charcoal to-background">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-[1400px] mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-cream">
           Featured Creations
         </h2>
