@@ -85,7 +85,7 @@ export const GalleryGrid = ({ items }: GalleryGridProps) => {
               <ImageGallery 
                 images={[
                   { url: item.image, alt: item.title },
-                  ...(item.childImages?.map(url => ({ url, alt: item.title })) || [])
+                  ...(item.childImages?.map(child => ({ url: child.url, alt: child.alt })) || [])
                 ]} 
                 initialIndex={0}
                 title={item.title}
