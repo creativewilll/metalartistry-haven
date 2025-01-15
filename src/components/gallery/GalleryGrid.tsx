@@ -1,6 +1,6 @@
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { GalleryItem } from "@/data/gallery-items";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react";
 import { useState } from "react";
 
 interface ImageGalleryProps {
@@ -12,13 +12,20 @@ interface ImageGalleryProps {
 
 const ImageGallery = ({ images, initialIndex = 0, title, description }: ImageGalleryProps) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [isZoomed, setIsZoomed] = useState(false);
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
+    setIsZoomed(false);
   };
 
   const previousImage = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+    setIsZoomed(false);
+  };
+
+  const toggleZoom = () => {
+    setIsZoomed(!isZoomed);
   };
 
   return (
@@ -26,12 +33,19 @@ const ImageGallery = ({ images, initialIndex = 0, title, description }: ImageGal
       <DialogTitle className="text-xl font-semibold mb-2">{title}</DialogTitle>
       <DialogDescription className="text-muted-foreground mb-4">{description}</DialogDescription>
       <div className="relative aspect-video">
-        <img
-          src={images[currentIndex].url}
-          alt={images[currentIndex].alt}
-          className="object-cover w-full h-full rounded-lg"
-        />
-        {images.length > 1 && (
+        <div 
+          className={`cursor-zoom-in transition-transform duration-300 ${
+            isZoomed ? 'scale-150 cursor-zoom-out' : ''
+          }`}
+          onClick={toggleZoom}
+        >
+          <img
+            src={images[currentIndex].url}
+            alt={images[currentIndex].alt}
+            className="object-cover w-full h-full rounded-lg"
+          />
+        </div>
+        {images.length > 1 && !isZoomed && (
           <>
             <button
               onClick={previousImage}
@@ -49,6 +63,17 @@ const ImageGallery = ({ images, initialIndex = 0, title, description }: ImageGal
             </button>
           </>
         )}
+        <button
+          onClick={toggleZoom}
+          className="absolute top-2 right-2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
+          aria-label={isZoomed ? "Zoom out" : "Zoom in"}
+        >
+          {isZoomed ? (
+            <ZoomOut className="h-5 w-5 text-white" />
+          ) : (
+            <ZoomIn className="h-5 w-5 text-white" />
+          )}
+        </button>
       </div>
     </div>
   );
