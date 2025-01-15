@@ -2,6 +2,13 @@ import { GalleryItem } from '@/data/gallery-items';
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface GalleryGridProps {
   items: GalleryItem[];
@@ -15,6 +22,7 @@ interface ImageDimensions {
 export function GalleryGrid({ items }: GalleryGridProps) {
   const [imageDimensions, setImageDimensions] = useState<Record<number, ImageDimensions>>({});
   const [gridSize, setGridSize] = useState<'small' | 'medium' | 'large'>('medium');
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
   useEffect(() => {
     // Preload images to get their dimensions
@@ -91,7 +99,8 @@ export function GalleryGrid({ items }: GalleryGridProps) {
           return (
             <div
               key={item.id}
-              className={`relative mb-4 break-inside-avoid group hover-lift`}
+              className={`relative mb-4 break-inside-avoid group hover-lift cursor-pointer`}
+              onClick={() => setSelectedImage(item)}
             >
               <div className={`relative overflow-hidden rounded-lg ${
                 isVertical ? 'aspect-[3/4]' : 'aspect-[4/3]'
@@ -112,6 +121,24 @@ export function GalleryGrid({ items }: GalleryGridProps) {
           );
         })}
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-[90vw] max-h-[90vh] w-fit h-fit">
+          <DialogHeader>
+            <DialogTitle>{selectedImage?.title}</DialogTitle>
+            <DialogDescription>{selectedImage?.description}</DialogDescription>
+          </DialogHeader>
+          {selectedImage && (
+            <div className="relative overflow-hidden rounded-lg">
+              <img
+                src={selectedImage.image}
+                alt={selectedImage.title}
+                className="object-contain max-h-[70vh] w-auto mx-auto"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
