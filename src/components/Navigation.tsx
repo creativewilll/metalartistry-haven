@@ -8,14 +8,15 @@ const Navigation = () => {
   return (
     <nav className="fixed w-full z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center h-16">
-          <div className="flex items-center space-x-8">
-            <Link to="/" className="text-xl font-cinzel font-semibold text-cream">
-              Matt Coffey Design
-            </Link>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo on the left */}
+          <Link to="/" className="text-xl font-cinzel font-semibold text-cream">
+            Matt Coffey Design
+          </Link>
+          
+          {/* Centered Navigation */}
+          <div className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-8">
               <Link to="/" className="text-silver hover:text-cream transition-colors">
                 Home
               </Link>
@@ -26,16 +27,16 @@ const Navigation = () => {
                 Contact
               </Link>
             </div>
+          </div>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-silver hover:text-cream"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-silver hover:text-cream"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </div>
