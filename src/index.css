@@ -53,3 +53,13 @@
 .hover-lift:hover {
   transform: translateY(-5px);
 }
+
+/* Add masonry-specific styles */
+@supports (grid-template-rows: masonry) {
+  .masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: masonry;
+    grid-gap: 2rem;
+  }
+}
