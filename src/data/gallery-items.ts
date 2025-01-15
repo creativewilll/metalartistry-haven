@@ -98,48 +98,46 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Art',
     title: 'Architectural Fireplace',
     description: 'Floor-to-ceiling fireplace featuring metal and brick',
-    image: '/lovable-uploads/242a25c8-6306-408c-9f53-6405f69320cb.png'
+    image: '/lovable-uploads/242a25c8-6306-408c-9f53-6405f69320cb.png',
+    childImages: [
+      {
+        url: '/lovable-uploads/804dd1f4-1cb8-4754-ae20-10d357e4eb7a.png',
+        alt: 'Detail view of fireplace design'
+      }
+    ]
   },
   {
     id: 11,
-    category: 'Custom Art',
-    title: 'Fireplace Detail',
-    description: 'Custom metal fireplace surround with brick accents',
-    image: '/lovable-uploads/804dd1f4-1cb8-4754-ae20-10d357e4eb7a.png'
-  },
-  {
-    id: 12,
     category: 'Custom Art',
     title: 'Lakeside Dock System',
     description: 'Custom metal dock and boat lift structure with integrated lighting',
     image: '/lovable-uploads/45927de2-0f19-4b37-a08a-6f4c23da1e81.png'
   },
   {
-    id: 13,
+    id: 12,
     category: 'Windows & Doors',
     title: 'Modern Security Screens',
     description: 'Contemporary metal security screens with geometric patterns',
     image: '/lovable-uploads/50eda02b-4f26-45b2-9f05-b4189eca9ae9.png'
   },
   {
-    id: 14,
+    id: 13,
     category: 'Railings',
     title: 'Outdoor Stone Staircase',
     description: 'Custom metal railings integrated with natural stone steps',
     image: '/lovable-uploads/26b846a5-2400-44e6-88f7-ded906b20f03.png'
   },
   {
-    id: 15,
+    id: 14,
     category: 'Custom Art',
-    title: 'Fire Extinguisher Cabinet',
-    description: 'Custom designed metal fire safety cabinet with laser-cut details',
-    image: '/lovable-uploads/70dc08df-3255-4692-b169-2b019fe56b26.png'
-  },
-  {
-    id: 16,
-    category: 'Custom Art',
-    title: 'Vertical Fire Cabinet',
-    description: 'Sleek vertical fire extinguisher cabinet with ventilation pattern',
-    image: '/lovable-uploads/1e9f9be6-43d4-4ade-a435-df7f35469840.png'
+    title: 'Fire Safety Solutions',
+    description: 'Custom designed metal fire safety cabinets with laser-cut details',
+    image: '/lovable-uploads/70dc08df-3255-4692-b169-2b019fe56b26.png',
+    childImages: [
+      {
+        url: '/lovable-uploads/1e9f9be6-43d4-4ade-a435-df7f35469840.png',
+        alt: 'Vertical fire extinguisher cabinet design'
+      }
+    ]
   }
 ];
