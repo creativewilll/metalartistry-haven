@@ -27,7 +27,7 @@ export const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div 
               key={index} 
-              className="bg-gradient-to-br from-[#2F3640] via-[#403E43] to-[#8B3A2D] p-8 rounded-lg hover-lift"
+              className="bg-gradient-to-br from-[#2F3640] via-[#2A2D35] via-80% to-[#FF3B14] p-8 rounded-lg hover-lift"
             >
               <p className="text-silver mb-6 italic">"{testimonial.text}"</p>
               <div>
