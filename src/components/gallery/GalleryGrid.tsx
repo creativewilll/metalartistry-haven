@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { GalleryItem } from "@/data/gallery-items";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
@@ -6,9 +6,11 @@ import { useState } from "react";
 interface ImageGalleryProps {
   images: { url: string; alt: string; }[];
   initialIndex?: number;
+  title: string;
+  description: string;
 }
 
-const ImageGallery = ({ images, initialIndex = 0 }: ImageGalleryProps) => {
+const ImageGallery = ({ images, initialIndex = 0, title, description }: ImageGalleryProps) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
   const nextImage = () => {
@@ -21,6 +23,8 @@ const ImageGallery = ({ images, initialIndex = 0 }: ImageGalleryProps) => {
 
   return (
     <div className="relative">
+      <DialogTitle className="text-xl font-semibold mb-2">{title}</DialogTitle>
+      <DialogDescription className="text-muted-foreground mb-4">{description}</DialogDescription>
       <div className="aspect-w-16 aspect-h-9 relative">
         <img
           src={images[currentIndex].url}
@@ -33,12 +37,14 @@ const ImageGallery = ({ images, initialIndex = 0 }: ImageGalleryProps) => {
           <button
             onClick={previousImage}
             className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
+            aria-label="Previous image"
           >
             <ChevronLeft className="h-6 w-6 text-white" />
           </button>
           <button
             onClick={nextImage}
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
+            aria-label="Next image"
           >
             <ChevronRight className="h-6 w-6 text-white" />
           </button>
@@ -82,6 +88,8 @@ export const GalleryGrid = ({ items }: GalleryGridProps) => {
                   ...(item.childImages || [])
                 ]} 
                 initialIndex={0}
+                title={item.title}
+                description={item.description}
               />
             </DialogContent>
           </Dialog>
