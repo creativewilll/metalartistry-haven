@@ -73,3 +73,8 @@
     grid-gap: 2rem;
   }
 }
+
+/* Add the new heated-metal-card style */
+.heated-metal-card {
+  @apply bg-gradient-to-br from-[#2F3640] via-[#2A2D35] via-80% to-[#FF3B14] rounded-lg hover-lift;
+}
