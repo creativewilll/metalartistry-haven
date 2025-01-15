@@ -25,31 +25,31 @@ const ImageGallery = ({ images, initialIndex = 0, title, description }: ImageGal
     <div className="relative">
       <DialogTitle className="text-xl font-semibold mb-2">{title}</DialogTitle>
       <DialogDescription className="text-muted-foreground mb-4">{description}</DialogDescription>
-      <div className="aspect-w-16 aspect-h-9 relative">
+      <div className="relative aspect-video">
         <img
           src={images[currentIndex].url}
           alt={images[currentIndex].alt}
           className="object-cover w-full h-full rounded-lg"
         />
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={previousImage}
+              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-6 w-6 text-white" />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-6 w-6 text-white" />
+            </button>
+          </>
+        )}
       </div>
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={previousImage}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
-            aria-label="Previous image"
-          >
-            <ChevronLeft className="h-6 w-6 text-white" />
-          </button>
-          <button
-            onClick={nextImage}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
-            aria-label="Next image"
-          >
-            <ChevronRight className="h-6 w-6 text-white" />
-          </button>
-        </>
-      )}
     </div>
   );
 };
@@ -66,7 +66,7 @@ export const GalleryGrid = ({ items }: GalleryGridProps) => {
           <Dialog key={item.id}>
             <DialogTrigger asChild>
               <div className="group cursor-pointer relative overflow-hidden rounded-lg hover:shadow-xl transition-all duration-300">
-                <div className="aspect-w-4 aspect-h-3">
+                <div className="aspect-video">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -85,7 +85,7 @@ export const GalleryGrid = ({ items }: GalleryGridProps) => {
               <ImageGallery 
                 images={[
                   { url: item.image, alt: item.title },
-                  ...(item.childImages || [])
+                  ...(item.childImages || []).map(img => ({ url: img, alt: item.title }))
                 ]} 
                 initialIndex={0}
                 title={item.title}
