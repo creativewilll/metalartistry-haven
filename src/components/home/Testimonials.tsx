@@ -18,7 +18,7 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="py-24 bg-muted">
+    <section className="py-24 metallic-gradient">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-cream">
           Client Testimonials
