@@ -35,21 +35,23 @@ export const FeaturedWork = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-cream">
           Featured Creations
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="columns-1 md:columns-3 lg:columns-4 gap-0 space-y-0">
           {featuredItems.map((item, index) => (
             <div 
               key={index} 
-              className="group relative aspect-square overflow-hidden rounded-lg bg-muted"
+              className="group relative break-inside-avoid"
             >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-background/0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-cream text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-silver">{item.description}</p>
+              <div className="relative">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-background/0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-cream text-xl font-semibold mb-2">{item.title}</h3>
+                    <p className="text-silver">{item.description}</p>
+                  </div>
                 </div>
               </div>
             </div>
