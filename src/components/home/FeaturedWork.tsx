@@ -39,7 +39,7 @@ export const FeaturedWork = () => {
           {featuredItems.map((item, index) => (
             <div 
               key={index} 
-              className="heated-metal-card overflow-hidden"
+              className="heated-metal-card overflow-hidden mb-4"
             >
               <div className="relative">
                 <img
