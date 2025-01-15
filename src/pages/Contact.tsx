@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import MetalworkCarousel from '../components/MetalworkCarousel';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,7 +13,6 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log(formData);
   };
 
@@ -36,6 +36,9 @@ const Contact = () => {
           </p>
         </div>
       </div>
+
+      {/* Featured Work Carousel */}
+      <MetalworkCarousel />
 
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
