@@ -2,19 +2,19 @@ import { Link } from 'react-router-dom';
 
 const featuredItems = [
   {
-    title: "Custom Railing Design",
-    description: "Handcrafted metalwork featuring intricate patterns",
-    image: "https://images.unsplash.com/photo-1545086866-1d3cb3d0a400"
+    title: "Modern Railing Design",
+    description: "Contemporary metal railings with clean lines",
+    image: "/lovable-uploads/ad1b3a45-0faa-4742-8769-0d02c28c6a54.png"
   },
   {
-    title: "Artistic Door Frame",
-    description: "Bespoke entrance solutions with character",
-    image: "https://images.unsplash.com/photo-1545086866-1d3cb3d0a400"
+    title: "Custom Wall Display",
+    description: "Innovative metal shelving solutions",
+    image: "/lovable-uploads/d1102b5c-e6da-45d5-a885-f4b50db7dd56.png"
   },
   {
-    title: "Statement Furniture",
-    description: "Unique metal furniture pieces that stand out",
-    image: "https://images.unsplash.com/photo-1545086866-1d3cb3d0a400"
+    title: "Architectural Elements",
+    description: "Custom metalwork integrated with architecture",
+    image: "/lovable-uploads/242a25c8-6306-408c-9f53-6405f69320cb.png"
   }
 ];
 

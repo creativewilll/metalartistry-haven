@@ -8,19 +8,19 @@ import {
 
 const metalworkImages = [
   {
-    url: "https://images.unsplash.com/photo-1545086866-1d3cb3d0a400",
-    alt: "Custom Railing Design",
-    title: "Custom Railing Design"
+    url: "/lovable-uploads/ad1b3a45-0faa-4742-8769-0d02c28c6a54.png",
+    alt: "Modern Interior Railing Design",
+    title: "Contemporary Railing Systems"
   },
   {
-    url: "https://images.unsplash.com/photo-1545086866-1d3cb3d0a400",
-    alt: "Artistic Door Frame",
-    title: "Artistic Door Frame"
+    url: "/lovable-uploads/d1102b5c-e6da-45d5-a885-f4b50db7dd56.png",
+    alt: "Custom Wall Display Unit",
+    title: "Custom Metal Furniture"
   },
   {
-    url: "https://images.unsplash.com/photo-1545086866-1d3cb3d0a400",
-    alt: "Statement Furniture",
-    title: "Statement Furniture"
+    url: "/lovable-uploads/242a25c8-6306-408c-9f53-6405f69320cb.png",
+    alt: "Architectural Fireplace Design",
+    title: "Architectural Elements"
   }
 ];
 
