@@ -32,9 +32,9 @@ const ImageGallery = ({ images, initialIndex = 0, title, description }: ImageGal
     <div className="relative">
       <DialogTitle className="text-xl font-semibold mb-2">{title}</DialogTitle>
       <DialogDescription className="text-muted-foreground mb-4">{description}</DialogDescription>
-      <div className="relative aspect-video">
+      <div className="relative h-[80vh] max-h-[600px]">
         <div 
-          className={`cursor-zoom-in transition-transform duration-300 ${
+          className={`h-full cursor-zoom-in transition-transform duration-300 ${
             isZoomed ? 'scale-150 cursor-zoom-out' : ''
           }`}
           onClick={toggleZoom}
@@ -42,7 +42,7 @@ const ImageGallery = ({ images, initialIndex = 0, title, description }: ImageGal
           <img
             src={images[currentIndex].url}
             alt={images[currentIndex].alt}
-            className="object-cover w-full h-full rounded-lg"
+            className="object-contain w-full h-full rounded-lg"
           />
         </div>
         {images.length > 1 && !isZoomed && (
