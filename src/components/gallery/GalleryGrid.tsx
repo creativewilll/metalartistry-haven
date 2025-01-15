@@ -123,9 +123,9 @@ export function GalleryGrid({ items }: GalleryGridProps) {
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-[90vw] max-h-[90vh] w-fit h-fit border-2 border-silver bg-charcoal/95 backdrop-blur-sm">
-          <DialogHeader className="relative pb-4 border-b border-silver/20">
-            <DialogTitle className="text-3xl font-cinzel text-silver tracking-wide">
+        <DialogContent className="max-w-[90vw] max-h-[90vh] w-fit h-fit border-2 border-bronze/50 bg-charcoal/95 backdrop-blur-sm shadow-2xl">
+          <DialogHeader className="relative pb-4 border-b border-bronze/30">
+            <DialogTitle className="text-3xl font-cinzel text-silver tracking-wide bg-gradient-to-r from-bronze/80 to-silver/80 bg-clip-text text-transparent">
               {selectedImage?.title}
             </DialogTitle>
             <DialogDescription className="text-lg text-cream/80 mt-2 font-light">
@@ -134,7 +134,7 @@ export function GalleryGrid({ items }: GalleryGridProps) {
             <Button
               variant="ghost"
               size="icon"
-              className="absolute right-0 top-0 text-silver hover:text-white hover:bg-transparent"
+              className="absolute right-0 top-0 text-bronze hover:text-silver hover:bg-transparent transition-colors duration-300"
               onClick={() => setSelectedImage(null)}
             >
               <X className="h-6 w-6" />
@@ -143,7 +143,7 @@ export function GalleryGrid({ items }: GalleryGridProps) {
 
           {selectedImage && (
             <div className="relative mt-6 overflow-hidden rounded-lg">
-              <div className="metallic-gradient absolute inset-0 opacity-10" />
+              <div className="metallic-gradient absolute inset-0 opacity-90" />
               <img
                 src={selectedImage.image}
                 alt={selectedImage.title}
