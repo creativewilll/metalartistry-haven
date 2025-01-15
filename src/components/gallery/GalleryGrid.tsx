@@ -1,7 +1,7 @@
 import { GalleryItem } from '@/data/gallery-items';
 import { useEffect, useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -123,17 +123,31 @@ export function GalleryGrid({ items }: GalleryGridProps) {
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
-        <DialogContent className="max-w-[90vw] max-h-[90vh] w-fit h-fit">
-          <DialogHeader>
-            <DialogTitle>{selectedImage?.title}</DialogTitle>
-            <DialogDescription>{selectedImage?.description}</DialogDescription>
+        <DialogContent className="max-w-[90vw] max-h-[90vh] w-fit h-fit border-2 border-silver bg-charcoal/95 backdrop-blur-sm">
+          <DialogHeader className="relative pb-4 border-b border-silver/20">
+            <DialogTitle className="text-3xl font-cinzel text-silver tracking-wide">
+              {selectedImage?.title}
+            </DialogTitle>
+            <DialogDescription className="text-lg text-cream/80 mt-2 font-light">
+              {selectedImage?.description}
+            </DialogDescription>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="absolute right-0 top-0 text-silver hover:text-white hover:bg-transparent"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="h-6 w-6" />
+            </Button>
           </DialogHeader>
+
           {selectedImage && (
-            <div className="relative overflow-hidden rounded-lg">
+            <div className="relative mt-6 overflow-hidden rounded-lg">
+              <div className="metallic-gradient absolute inset-0 opacity-10" />
               <img
                 src={selectedImage.image}
                 alt={selectedImage.title}
-                className="object-contain max-h-[70vh] w-auto mx-auto"
+                className="object-contain max-h-[70vh] w-auto mx-auto relative z-10 animate-fadeIn"
               />
             </div>
           )}
