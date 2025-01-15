@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="min-h-screen px-4">
       <HeroSection />
-      <div className="max-w-[1400px] mx-auto">
+      <div className="max-w-[1400px] mx-auto space-y-24">
         <MetalworkCarousel />
         <FeaturedWork />
         <Testimonials />

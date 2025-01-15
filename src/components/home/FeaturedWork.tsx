@@ -20,9 +20,9 @@ const featuredItems = [
 
 export const FeaturedWork = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-charcoal to-background">
+    <section className="py-16">
       <div className="max-w-[1400px] mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-cream">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-cream">
           Featured Creations
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

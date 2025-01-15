@@ -18,9 +18,9 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="py-24 metallic-gradient">
+    <section className="py-16 metallic-gradient">
       <div className="max-w-[1400px] mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-cream">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-cream">
           Client Testimonials
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

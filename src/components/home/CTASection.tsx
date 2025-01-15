@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 export const CTASection = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-background to-charcoal">
+    <section className="py-16">
       <div className="max-w-[1400px] mx-auto">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-cream">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-cream">
             Ready to Transform Your Space?
           </h2>
-          <p className="text-xl text-silver mb-12">
+          <p className="text-xl text-silver mb-8">
             Let's collaborate to create something extraordinary. Contact us to discuss your project.
           </p>
           <Link
