@@ -4,27 +4,32 @@ const featuredItems = [
   {
     title: "Modern Entrance Design",
     description: "Contemporary metalwork and architectural elements",
-    image: "/lovable-uploads/74fe97ab-a99d-4952-b804-b8dd7a0dbf06.png"
+    image: "/lovable-uploads/74fe97ab-a99d-4952-b804-b8dd7a0dbf06.png",
+    aspectRatio: "aspect-[4/3]"
   },
   {
     title: "Custom Metal Screen",
     description: "Innovative architectural metalwork solutions",
-    image: "/lovable-uploads/3567461c-c855-40ab-8361-bc89b0489c6b.png"
+    image: "/lovable-uploads/3567461c-c855-40ab-8361-bc89b0489c6b.png",
+    aspectRatio: "aspect-[3/4]"
   },
   {
     title: "Architectural Elements",
     description: "Custom metalwork integrated with architecture",
-    image: "/lovable-uploads/fe9eba2e-74c4-4bca-9c1b-ab3393597b7b.png"
+    image: "/lovable-uploads/fe9eba2e-74c4-4bca-9c1b-ab3393597b7b.png",
+    aspectRatio: "aspect-[16/9]"
   },
   {
     title: "Industrial Railing System",
     description: "Modern railing installation in progress",
-    image: "/lovable-uploads/2a6b9b35-41fc-4a8e-bb23-ec8613201563.png"
+    image: "/lovable-uploads/2a6b9b35-41fc-4a8e-bb23-ec8613201563.png",
+    aspectRatio: "aspect-square"
   },
   {
     title: "Installation Process",
     description: "Behind the scenes of our metalwork installation",
-    image: "/lovable-uploads/35a46b27-2830-45ff-9fc7-d6023162a84d.png"
+    image: "/lovable-uploads/35a46b27-2830-45ff-9fc7-d6023162a84d.png",
+    aspectRatio: "aspect-[3/2]"
   }
 ];
 
@@ -41,11 +46,11 @@ export const FeaturedWork = () => {
               key={index} 
               className="group relative break-inside-avoid"
             >
-              <div className="relative">
+              <div className={`relative ${item.aspectRatio}`}>
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-background/0 opacity-0 group-hover:opacity-100 transition-all duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-6">
