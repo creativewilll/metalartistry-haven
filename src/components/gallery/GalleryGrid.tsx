@@ -1,92 +1,150 @@
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { GalleryItem } from "@/data/gallery-items";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
-
-interface ImageGalleryProps {
-  images: { url: string; alt: string; }[];
-  initialIndex?: number;
-}
-
-const ImageGallery = ({ images, initialIndex = 0 }: ImageGalleryProps) => {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
-
-  const nextImage = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const previousImage = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  return (
-    <div className="relative">
-      <div className="aspect-w-16 aspect-h-9 relative">
-        <img
-          src={images[currentIndex].url}
-          alt={images[currentIndex].alt}
-          className="object-cover w-full h-full rounded-lg"
-        />
-      </div>
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={previousImage}
-            className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
-          >
-            <ChevronLeft className="h-6 w-6 text-white" />
-          </button>
-          <button
-            onClick={nextImage}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
-          >
-            <ChevronRight className="h-6 w-6 text-white" />
-          </button>
-        </>
-      )}
-    </div>
-  );
-};
+import { GalleryItem } from '@/data/gallery-items';
+import { useEffect, useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Minus, Plus, X } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface GalleryGridProps {
   items: GalleryItem[];
 }
 
-export const GalleryGrid = ({ items }: GalleryGridProps) => {
+interface ImageDimensions {
+  width: number;
+  height: number;
+}
+
+export function GalleryGrid({ items }: GalleryGridProps) {
+  const [imageDimensions, setImageDimensions] = useState<Record<number, ImageDimensions>>({});
+  const [gridSize, setGridSize] = useState<'small' | 'medium' | 'large'>('medium');
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
+
+  useEffect(() => {
+    // Preload images to get their dimensions
+    items.forEach((item) => {
+      const img = new Image();
+      img.src = item.image;
+      img.onload = () => {
+        setImageDimensions(prev => ({
+          ...prev,
+          [item.id]: {
+            width: img.naturalWidth,
+            height: img.naturalHeight
+          }
+        }));
+      };
+    });
+  }, [items]);
+
+  const getColumnClass = () => {
+    switch (gridSize) {
+      case 'small':
+        return 'columns-2 md:columns-3 lg:columns-5';
+      case 'large':
+        return 'columns-1 md:columns-2 lg:columns-3';
+      default:
+        return 'columns-1 md:columns-3 lg:columns-4';
+    }
+  };
+
+  const handleSizeDecrease = () => {
+    setGridSize(current => {
+      if (current === 'large') return 'medium';
+      if (current === 'medium') return 'small';
+      return current;
+    });
+  };
+
+  const handleSizeIncrease = () => {
+    setGridSize(current => {
+      if (current === 'small') return 'medium';
+      if (current === 'medium') return 'large';
+      return current;
+    });
+  };
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {items.map((item) => (
-          <Dialog key={item.id}>
-            <DialogTrigger asChild>
-              <div className="group cursor-pointer relative overflow-hidden rounded-lg hover:shadow-xl transition-all duration-300">
-                <div className="aspect-w-4 aspect-h-3">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white text-xl font-semibold mb-2">{item.title}</h3>
-                      <p className="text-gray-200">{item.description}</p>
-                    </div>
+    <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="flex justify-end gap-2 mb-6">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={handleSizeDecrease}
+          disabled={gridSize === 'small'}
+          className="w-10 h-10"
+        >
+          <Minus className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={handleSizeIncrease}
+          disabled={gridSize === 'large'}
+          className="w-10 h-10"
+        >
+          <Plus className="h-4 w-4" />
+        </Button>
+      </div>
+
+      <div className={`${getColumnClass()} gap-4 [column-fill:_balance] box-border`}>
+        {items.map((item) => {
+          const dimensions = imageDimensions[item.id];
+          const isVertical = dimensions ? dimensions.height > dimensions.width : false;
+          
+          return (
+            <div
+              key={item.id}
+              className={`relative mb-4 break-inside-avoid group hover-lift cursor-pointer`}
+              onClick={() => setSelectedImage(item)}
+            >
+              <div className={`relative overflow-hidden rounded-lg ${
+                isVertical ? 'aspect-[3/4]' : 'aspect-[4/3]'
+              }`}>
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="object-cover w-full h-full"
+                />
+                <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <h3 className="text-foreground text-xl font-semibold mb-2">{item.title}</h3>
+                    <p className="text-muted-foreground">{item.description}</p>
                   </div>
                 </div>
               </div>
-            </DialogTrigger>
-            <DialogContent className="max-w-4xl">
-              <ImageGallery 
-                images={[
-                  { url: item.image, alt: item.title },
-                  ...(item.childImages || [])
-                ]} 
-                initialIndex={0}
-              />
-            </DialogContent>
-          </Dialog>
-        ))}
+            </div>
+          );
+        })}
       </div>
+
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-[90vw] max-h-[90vh] w-fit h-fit border-2 border-bronze/50 bg-charcoal/95 backdrop-blur-sm shadow-2xl">
+          <DialogHeader className="relative pb-4 border-b border-bronze/30">
+            <DialogTitle className="text-3xl font-cinzel text-silver tracking-wide bg-gradient-to-r from-bronze/80 to-silver/80 bg-clip-text text-transparent">
+              {selectedImage?.title}
+            </DialogTitle>
+            <DialogDescription className="text-lg text-cream/80 mt-2 font-light">
+              {selectedImage?.description}
+            </DialogDescription>
+          </DialogHeader>
+
+          {selectedImage && (
+            <div className="relative mt-6 overflow-hidden rounded-lg">
+              <div className="metallic-gradient absolute inset-0 opacity-90" />
+              <img
+                src={selectedImage.image}
+                alt={selectedImage.title}
+                className="object-contain max-h-[70vh] w-auto mx-auto relative z-10 animate-fadeIn"
+              />
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
-};
+}
