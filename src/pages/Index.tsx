@@ -8,7 +8,7 @@ const Index = () => {
       <div className="relative h-screen">
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 to-charcoal/60 z-10" />
         <div 
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1545086866-1d3cb3d0a400?ixlib=rb-4.0.3')] 
+          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1564227503787-ad0205f1d0a3?q=80')] 
           bg-cover bg-center bg-fixed"
         />
         <div className="relative z-20 h-full flex items-center justify-center">
