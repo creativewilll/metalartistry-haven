@@ -131,14 +131,6 @@ export function GalleryGrid({ items }: GalleryGridProps) {
             <DialogDescription className="text-lg text-cream/80 mt-2 font-light">
               {selectedImage?.description}
             </DialogDescription>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-0 top-0 text-bronze hover:text-silver hover:bg-transparent transition-colors duration-300"
-              onClick={() => setSelectedImage(null)}
-            >
-              <X className="h-6 w-6" />
-            </Button>
           </DialogHeader>
 
           {selectedImage && (
