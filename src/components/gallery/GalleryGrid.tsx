@@ -1,5 +1,7 @@
 import { GalleryItem } from '@/data/gallery-items';
 import { useEffect, useState } from 'react';
+import { Button } from "@/components/ui/button";
+import { Minus, Plus } from "lucide-react";
 
 interface GalleryGridProps {
   items: GalleryItem[];
@@ -12,6 +14,7 @@ interface ImageDimensions {
 
 export function GalleryGrid({ items }: GalleryGridProps) {
   const [imageDimensions, setImageDimensions] = useState<Record<number, ImageDimensions>>({});
+  const [gridSize, setGridSize] = useState<'small' | 'medium' | 'large'>('medium');
 
   useEffect(() => {
     // Preload images to get their dimensions
@@ -30,9 +33,57 @@ export function GalleryGrid({ items }: GalleryGridProps) {
     });
   }, [items]);
 
+  const getColumnClass = () => {
+    switch (gridSize) {
+      case 'small':
+        return 'columns-2 md:columns-3 lg:columns-5';
+      case 'large':
+        return 'columns-1 md:columns-2 lg:columns-3';
+      default:
+        return 'columns-1 md:columns-3 lg:columns-4';
+    }
+  };
+
+  const handleSizeDecrease = () => {
+    setGridSize(current => {
+      if (current === 'large') return 'medium';
+      if (current === 'medium') return 'small';
+      return current;
+    });
+  };
+
+  const handleSizeIncrease = () => {
+    setGridSize(current => {
+      if (current === 'small') return 'medium';
+      if (current === 'medium') return 'large';
+      return current;
+    });
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
-      <div className="columns-1 md:columns-2 lg:columns-3 gap-8 [column-fill:_balance] box-border">
+      <div className="flex justify-end gap-2 mb-6">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={handleSizeDecrease}
+          disabled={gridSize === 'small'}
+          className="w-10 h-10"
+        >
+          <Minus className="h-4 w-4" />
+        </Button>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={handleSizeIncrease}
+          disabled={gridSize === 'large'}
+          className="w-10 h-10"
+        >
+          <Plus className="h-4 w-4" />
+        </Button>
+      </div>
+
+      <div className={`${getColumnClass()} gap-4 [column-fill:_balance] box-border`}>
         {items.map((item) => {
           const dimensions = imageDimensions[item.id];
           const isVertical = dimensions ? dimensions.height > dimensions.width : false;
@@ -40,7 +91,7 @@ export function GalleryGrid({ items }: GalleryGridProps) {
           return (
             <div
               key={item.id}
-              className={`relative mb-8 break-inside-avoid group hover-lift`}
+              className={`relative mb-4 break-inside-avoid group hover-lift`}
             >
               <div className={`relative overflow-hidden rounded-lg ${
                 isVertical ? 'aspect-[3/4]' : 'aspect-[4/3]'
