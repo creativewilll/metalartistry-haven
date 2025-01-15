@@ -2,19 +2,19 @@ import { Link } from 'react-router-dom';
 
 const featuredItems = [
   {
-    title: "Modern Railing Design",
-    description: "Contemporary metal railings with clean lines",
-    image: "/lovable-uploads/ad1b3a45-0faa-4742-8769-0d02c28c6a54.png"
+    title: "Modern Entrance Design",
+    description: "Contemporary metalwork and architectural elements",
+    image: "/lovable-uploads/74fe97ab-a99d-4952-b804-b8dd7a0dbf06.png"
   },
   {
-    title: "Custom Wall Display",
-    description: "Innovative metal shelving solutions",
-    image: "/lovable-uploads/d1102b5c-e6da-45d5-a885-f4b50db7dd56.png"
+    title: "Custom Metal Screen",
+    description: "Innovative architectural metalwork solutions",
+    image: "/lovable-uploads/3567461c-c855-40ab-8361-bc89b0489c6b.png"
   },
   {
     title: "Architectural Elements",
     description: "Custom metalwork integrated with architecture",
-    image: "/lovable-uploads/242a25c8-6306-408c-9f53-6405f69320cb.png"
+    image: "/lovable-uploads/fe9eba2e-74c4-4bca-9c1b-ab3393597b7b.png"
   }
 ];
 
