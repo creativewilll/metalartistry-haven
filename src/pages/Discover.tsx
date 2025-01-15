@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { CategoryFilter } from '@/components/gallery/CategoryFilter';
 import { GalleryGrid } from '@/components/gallery/GalleryGrid';
 import { ProcessSection } from '@/components/gallery/ProcessSection';
 import { galleryItems } from '@/data/gallery-items';
 
 const Discover = () => {
+  const [searchParams] = useSearchParams();
+  const categoryParam = searchParams.get('category');
   const [activeCategory, setActiveCategory] = useState('All');
+
+  useEffect(() => {
+    if (categoryParam) {
+      setActiveCategory(categoryParam);
+    }
+  }, [categoryParam]);
 
   const filteredItems = activeCategory === 'All' 
     ? galleryItems 
