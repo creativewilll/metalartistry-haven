@@ -15,7 +15,7 @@ export const InstagramFeed = () => {
                 height="100%"
                 frameBorder="0"
                 scrolling="no"
-                allowtransparency={true}
+                allowTransparency={true}
               />
             </div>
           </div>
