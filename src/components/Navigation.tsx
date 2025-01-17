@@ -15,7 +15,7 @@ const Navigation = () => {
           </Link>
           
           {/* Centered Navigation */}
-          <div className="hidden md:flex items-center justify-center flex-1">
+          <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
             <div className="flex items-center space-x-8">
               <Link to="/" className="text-silver hover:text-cream transition-colors">
                 Home

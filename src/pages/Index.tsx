@@ -1,7 +1,8 @@
 import { HeroSection } from '@/components/home/HeroSection';
-import { FeaturedWork } from '@/components/home/FeaturedWork';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CTASection } from '@/components/home/CTASection';
+import { InstagramFeed } from '@/components/home/InstagramFeed';
+import { AboutSection } from '@/components/home/AboutSection';
 import MetalworkCarousel from '@/components/MetalworkCarousel';
 
 const Index = () => {
@@ -10,8 +11,9 @@ const Index = () => {
       <HeroSection />
       <div className="max-w-[1400px] mx-auto space-y-24">
         <MetalworkCarousel />
-        <FeaturedWork />
+        <AboutSection />
         <Testimonials />
+        <InstagramFeed />
         <CTASection />
       </div>
     </div>
