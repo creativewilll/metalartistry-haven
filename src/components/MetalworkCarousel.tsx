@@ -11,31 +11,31 @@ import { categories } from "@/data/gallery-items";
 const categoryShowcases = [
   {
     category: 'Railings',
-    url: "/lovable-uploads/CustomMetalRailing1.jpeg",
+    url: "/lovable-uploads/CustomIndoorRailing1.jpeg",
     alt: "Custom Railings Showcase",
     description: "Explore our custom railing designs"
   },
   {
     category: 'Windows & Doors',
-    url: "/lovable-uploads/CustomMetalDoor1.jpeg",
+    url: "/lovable-uploads/CustomMetalDoor1-1.jpeg",
     alt: "Windows and Doors Showcase",
     description: "Discover our door and window solutions"
   },
   {
     category: 'Furniture',
-    url: "/lovable-uploads/CustomSteelStool1.jpeg",
+    url: "/lovable-uploads/CustomStools1.jpg",
     alt: "Custom Furniture Showcase",
     description: "View our custom furniture pieces"
   },
   {
     category: 'Custom Art',
-    url: "/lovable-uploads/CustomMetalArtwork1.jpeg",
+    url: "/lovable-uploads/Custom-BearGate1.jpeg",
     alt: "Custom Art Showcase",
     description: "Browse our artistic metalwork"
   },
   {
     category: 'Process',
-    url: "/lovable-uploads/CustomMetalRails-PROCESS2.JPG",
+    url: "/lovable-uploads/CustomMasonaryGate-Process1.jpeg",
     alt: "Process Showcase",
     description: "See how we bring ideas to life"
   }
