@@ -11,31 +11,31 @@ import { categories } from "@/data/gallery-items";
 const categoryShowcases = [
   {
     category: 'Railings',
-    url: "/lovable-uploads/2a6b9b35-41fc-4a8e-bb23-ec8613201563.png",
+    url: "/lovable-uploads/CustomMetalRailing1.jpeg",
     alt: "Custom Railings Showcase",
     description: "Explore our custom railing designs"
   },
   {
     category: 'Windows & Doors',
-    url: "/lovable-uploads/74fe97ab-a99d-4952-b804-b8dd7a0dbf06.png",
+    url: "/lovable-uploads/CustomMetalDoor1.jpeg",
     alt: "Windows and Doors Showcase",
     description: "Discover our door and window solutions"
   },
   {
     category: 'Furniture',
-    url: "/lovable-uploads/db5c7ec4-d9a0-4719-862b-c61cfeb077e9.png",
+    url: "/lovable-uploads/CustomSteelStool1.jpeg",
     alt: "Custom Furniture Showcase",
     description: "View our custom furniture pieces"
   },
   {
     category: 'Custom Art',
-    url: "/lovable-uploads/3567461c-c855-40ab-8361-bc89b0489c6b.png",
+    url: "/lovable-uploads/CustomMetalArtwork1.jpeg",
     alt: "Custom Art Showcase",
     description: "Browse our artistic metalwork"
   },
   {
     category: 'Process',
-    url: "/lovable-uploads/35a46b27-2830-45ff-9fc7-d6023162a84d.png",
+    url: "/lovable-uploads/CustomMetalRails-PROCESS2.JPG",
     alt: "Process Showcase",
     description: "See how we bring ideas to life"
   }
