@@ -36,9 +36,14 @@ export const AboutSection = () => {
           >
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/lovable-uploads/MattCoffey.jpeg"
+                src="/lovable-uploads/70dc08df-3255-4692-b169-2b019fe56b26.png"
                 alt="Matt Coffey at work"
                 className="object-cover w-full h-full transform scale-[1.02] hover:scale-[1.05] transition-transform duration-500"
+                loading="eager"
+                onError={(e) => {
+                  console.error('Image failed to load:', e);
+                  e.currentTarget.style.display = 'none';
+                }}
               />
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-amber-500/20 rounded-full blur-2xl" />
