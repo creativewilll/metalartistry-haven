@@ -16,6 +16,7 @@ export const InstagramFeed = () => {
                 frameBorder="0"
                 scrolling="no"
                 allowTransparency={true}
+                title="Instagram Feed"
               />
             </div>
           </div>
@@ -31,7 +32,6 @@ export const InstagramFeed = () => {
           </a>
         </div>
       </div>
-      <script async src="//www.instagram.com/embed.js"></script>
     </section>
   )
 }
