@@ -36,7 +36,7 @@ export const AboutSection = () => {
           >
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/lovable-uploads/70dc08df-3255-4692-b169-2b019fe56b26.png"
+                src="/lovable-uploads/MattCoffey.jpg"
                 alt="Matt Coffey at work"
                 className="object-cover w-full h-full transform scale-[1.02] hover:scale-[1.05] transition-transform duration-500"
                 loading="eager"
@@ -97,13 +97,13 @@ export const AboutSection = () => {
                 className="flex items-center gap-4 pt-4"
               >
                 <div className="flex flex-col">
-              <span className="text-4xl font-bold text-gray-900">15+</span>
-              <span className="text-sm text-gray-500">Years Experience</span>
+                  <span className="text-4xl font-bold text-gray-900">15+</span>
+                  <span className="text-sm text-gray-500">Years Experience</span>
                 </div>
                 <div className="w-px h-12 bg-gray-200" />
                 <div className="flex flex-col">
-              <span className="text-4xl font-bold text-gray-900">1000+</span>
-              <span className="text-sm text-gray-500">Projects Completed</span>
+                  <span className="text-4xl font-bold text-gray-900">1000+</span>
+                  <span className="text-sm text-gray-500">Projects Completed</span>
                 </div>
               </motion.div>
             </div>
