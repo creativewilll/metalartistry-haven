@@ -1,5 +1,16 @@
 import { useEffect } from 'react';
 
+// Add type declaration for Instagram embed script
+declare global {
+  interface Window {
+    instgrm?: {
+      Embeds: {
+        process(): void;
+      };
+    };
+  }
+}
+
 export const InstagramFeed = () => {
   useEffect(() => {
     // Ensure Instagram embed script is loaded and initialized
