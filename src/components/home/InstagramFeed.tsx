@@ -31,6 +31,7 @@ export const InstagramFeed = () => {
           </a>
         </div>
       </div>
+      <script async src="//www.instagram.com/embed.js"></script>
     </section>
-  );
-};
+  )
+}
