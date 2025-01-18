@@ -36,7 +36,7 @@ export const AboutSection = () => {
           >
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/lovable-uploads/MattCoffey.jpg"
+                src="/gallery-images/MattCoffey.jpg"
                 alt="Matt Coffey at work"
                 className="object-cover w-full h-full transform scale-[1.02] hover:scale-[1.05] transition-transform duration-500"
                 loading="eager"

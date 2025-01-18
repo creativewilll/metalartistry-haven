@@ -6,7 +6,7 @@ export const HeroSection = () => {
     <div className="relative h-screen -mx-4">
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 to-charcoal/60 z-10" />
       <div 
-        className="absolute inset-0 bg-[url('/lovable-uploads/MattCoffeyHero.jpg')] 
+        className="absolute inset-0 bg-[url('/gallery-images/MattCoffeyHero.jpg')] 
         bg-cover bg-center bg-fixed"
       />
       <div className="relative z-20 h-full flex items-center justify-center">
