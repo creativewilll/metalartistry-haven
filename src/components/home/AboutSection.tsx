@@ -13,12 +13,12 @@ export const AboutSection = () => {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
   return (
-    <section ref={sectionRef} className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-50 to-white">
+    <section ref={sectionRef} className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -left-4 top-1/4 w-24 h-24 bg-gray-100 rounded-full opacity-50" />
-        <div className="absolute right-1/4 bottom-1/4 w-32 h-32 bg-gray-100 rounded-full opacity-50" />
-        <div className="absolute left-1/3 top-1/3 w-16 h-16 bg-gray-100 rounded-full opacity-30" />
+        <div className="absolute -left-4 top-1/4 w-24 h-24 bg-gray-700/30 rounded-full blur-xl" />
+        <div className="absolute right-1/4 bottom-1/4 w-32 h-32 bg-gray-700/30 rounded-full blur-xl" />
+        <div className="absolute left-1/3 top-1/3 w-16 h-16 bg-gray-700/30 rounded-full blur-xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative">
@@ -58,18 +58,19 @@ export const AboutSection = () => {
             className="space-y-8"
           >
             <div className="space-y-4">
-              <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">
                 About Me
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-amber-500" />
             </div>
             
-            <div className="space-y-6 text-lg text-gray-600">
+            <div className="space-y-6 text-lg">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.6 }}
+                className="text-gray-300 font-light leading-relaxed bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 bg-clip-text"
               >
                 With a passion for metalwork and an eye for detail, I specialize in creating 
                 custom metal designs that blend functionality with artistic excellence. Each 
@@ -82,6 +83,7 @@ export const AboutSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.8 }}
+                className="text-gray-300 font-light leading-relaxed bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 bg-clip-text"
               >
                 My approach combines traditional craftsmanship with modern techniques, 
                 ensuring every piece not only meets but exceeds expectations. Whether it's 
@@ -97,13 +99,13 @@ export const AboutSection = () => {
                 className="flex items-center gap-4 pt-4"
               >
                 <div className="flex flex-col">
-                  <span className="text-4xl font-bold text-gray-900">15+</span>
-                  <span className="text-sm text-gray-500">Years Experience</span>
+                  <span className="text-4xl font-bold bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">15+</span>
+                  <span className="text-sm text-gray-400">Years Experience</span>
                 </div>
-                <div className="w-px h-12 bg-gray-200" />
+                <div className="w-px h-12 bg-gray-700" />
                 <div className="flex flex-col">
-                  <span className="text-4xl font-bold text-gray-900">1000+</span>
-                  <span className="text-sm text-gray-500">Projects Completed</span>
+                  <span className="text-4xl font-bold bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">1000+</span>
+                  <span className="text-sm text-gray-400">Projects Completed</span>
                 </div>
               </motion.div>
             </div>
