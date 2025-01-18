@@ -144,13 +144,7 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Custom Floral Gate',
     description: 'Decorative gate with floral pattern',
-    image: '/lovable-uploads/CustomGate-Flowers1.jpeg',
-    childImages: [
-      {
-        url: '/lovable-uploads/CustomGate-Flowers2.jpeg',
-        alt: 'Detail view of floral gate'
-      }
-    ]
+    image: '/lovable-uploads/CustomFloralGate1.jpeg'
   },
   
   // Doors and Windows
@@ -574,7 +568,11 @@ export const galleryItems: GalleryItem[] = [
     childImages: [
       {
         url: '/lovable-uploads/CustomMetalRailing4-1.JPG',
-        alt: 'Close-up of railing details'
+        alt: 'Progress view of metal railing installation'
+      },
+      {
+        url: '/lovable-uploads/CustomMetalRailing4-2.jpg',
+        alt: 'Additional view of metal railing installation'
       }
     ]
   },
@@ -585,7 +583,7 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Signature Railing Design',
     description: 'Our flagship metal railing system showcasing premium craftsmanship',
-    image: '/lovable-uploads/CustomMetalRailing3.jpeg',
+    image: '/lovable-uploads/SignatureRailing1.jpeg',
     isCategoryImage: true // Add this flag to indicate it should be used as category cover
   },
   {
@@ -598,6 +596,19 @@ export const galleryItems: GalleryItem[] = [
       {
         url: '/lovable-uploads/CustomMetalRailing1-1.jpeg',
         alt: 'Detail view of metal railing'
+      }
+    ]
+  },
+  {
+    id: 42,
+    category: 'Railings, Fences, and Gates',
+    title: 'Custom Floral Gate',
+    description: 'Decorative gate with floral pattern',
+    image: '/lovable-uploads/CustomGate-Flowers1.jpeg',
+    childImages: [
+      {
+        url: '/lovable-uploads/CustomGate-Flowers2.jpeg',
+        alt: 'Detail view of floral gate'
       }
     ]
   }
