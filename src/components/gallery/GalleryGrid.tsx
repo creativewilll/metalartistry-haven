@@ -84,6 +84,7 @@ interface GalleryGridProps {
 }
 
 export const GalleryGrid = ({ items }: GalleryGridProps) => {
+  console.log('Rendering item:', items.map(item => item.title), 'with images:', items.map(item => item.image));
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="masonry-grid">

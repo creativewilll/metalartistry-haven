@@ -139,17 +139,10 @@ export const galleryItems: GalleryItem[] = [
     description: 'Elegant front entrance railing system',
     image: '/lovable-uploads/Custom-FrontEntranceRails.jpeg'
   },
-  {
-    id: 8,
-    category: 'Railings, Fences, and Gates',
-    title: 'Custom Floral Gate',
-    description: 'Decorative gate with floral pattern',
-    image: '/lovable-uploads/CustomFloralGate1.jpeg'
-  },
   
   // Doors and Windows
   {
-    id: 9,
+    id: 8,
     category: 'Doors and Windows',
     title: 'Custom Metal Door',
     description: 'Modern metal door with unique design',
@@ -168,7 +161,7 @@ export const galleryItems: GalleryItem[] = [
   
   // Custom Furniture
   {
-    id: 10,
+    id: 9,
     category: 'Custom Furniture',
     title: 'Custom Steel Stool Collection',
     description: 'Handcrafted steel stools with modern design',
@@ -181,14 +174,14 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 11,
+    id: 10,
     category: 'Custom Furniture',
     title: 'Custom Side Table',
     description: 'Modern metal side table with unique design',
     image: '/lovable-uploads/Custom-SideTable1.jpeg'
   },
   {
-    id: 12,
+    id: 11,
     category: 'Custom Furniture',
     title: 'Steel Accented Table',
     description: 'Table with custom steel accents',
@@ -197,7 +190,7 @@ export const galleryItems: GalleryItem[] = [
   
   // Art and Decor
   {
-    id: 13,
+    id: 12,
     category: 'Art and Decor',
     title: 'Custom Wine Rack',
     description: 'Artistic wine storage solution',
@@ -210,7 +203,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 14,
+    id: 13,
     category: 'Art and Decor',
     title: 'Metal Wall Art',
     description: 'Custom metal wall decoration',
@@ -223,7 +216,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 15,
+    id: 14,
     category: 'Art and Decor',
     title: 'Custom Fire Poker Set',
     description: 'Handcrafted fire poker set with stand',
@@ -238,14 +231,14 @@ export const galleryItems: GalleryItem[] = [
   
   // Behind the Scenes
   {
-    id: 16,
+    id: 15,
     category: 'Behind the Scenes',
     title: 'Workshop Process',
     description: 'Behind the scenes of our metalwork creation',
     image: '/lovable-uploads/workshop1.jpeg'
   },
   {
-    id: 17,
+    id: 16,
     category: 'Behind the Scenes',
     title: 'Metal Railing Installation Process',
     description: 'Step-by-step installation of custom metal railings',
@@ -258,7 +251,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 42,
+    id: 17,
     category: 'Behind the Scenes',
     title: 'Stove Hood Fabrication',
     description: 'Behind the scenes of custom stove hood creation',
@@ -271,7 +264,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 43,
+    id: 18,
     category: 'Behind the Scenes',
     title: 'Masonry Gate Construction',
     description: 'The process of building and installing a custom masonry gate',
@@ -288,7 +281,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 44,
+    id: 19,
     category: 'Behind the Scenes',
     title: 'Indoor Barn Door Installation',
     description: 'Step-by-step process of indoor barn door project',
@@ -303,7 +296,7 @@ export const galleryItems: GalleryItem[] = [
   
   // Additional Commercial Projects
   {
-    id: 18,
+    id: 20,
     category: 'Commercial',
     title: 'Wood Accent Stools',
     description: 'Custom metal and wood stools for commercial space',
@@ -316,7 +309,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 19,
+    id: 21,
     category: 'Commercial',
     title: 'Custom Machine Stands',
     description: 'Industrial yoga machine stands',
@@ -329,7 +322,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 20,
+    id: 22,
     category: 'Commercial',
     title: 'Bronze Bar Tops',
     description: 'Custom bronze bar tops for commercial space',
@@ -338,21 +331,21 @@ export const galleryItems: GalleryItem[] = [
 
   // Additional Railings, Fences, and Gates
   {
-    id: 21,
+    id: 23,
     category: 'Railings, Fences, and Gates',
     title: 'Custom Bronze Rails',
     description: 'Elegant bronze railing installation',
     image: '/lovable-uploads/CustomBronzeRails1.jpeg'
   },
   {
-    id: 22,
+    id: 24,
     category: 'Railings, Fences, and Gates',
     title: 'Custom Ranch Gate',
     description: 'Durable ranch entrance gate',
     image: '/lovable-uploads/CustomRanchGate1.jpeg'
   },
   {
-    id: 23,
+    id: 25,
     category: 'Railings, Fences, and Gates',
     title: 'Beach Property Railing',
     description: 'Corrosion-resistant steel railing for beach property',
@@ -365,7 +358,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 24,
+    id: 26,
     category: 'Railings, Fences, and Gates',
     title: 'Custom Fencing System',
     description: 'Modern metal fencing installation',
@@ -382,7 +375,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 25,
+    id: 27,
     category: 'Railings, Fences, and Gates',
     title: 'Indoor Railing Project',
     description: 'Custom interior railing system',
@@ -397,7 +390,7 @@ export const galleryItems: GalleryItem[] = [
 
   // Additional Custom Furniture
   {
-    id: 26,
+    id: 28,
     category: 'Custom Furniture',
     title: 'Custom Bench Design',
     description: 'Modern metal and wood bench',
@@ -410,14 +403,14 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 27,
+    id: 29,
     category: 'Custom Furniture',
     title: 'Steel Barn Storage',
     description: 'Custom steel storage solution for barn',
     image: '/lovable-uploads/CustomSteelBarnRack.jpeg'
   },
   {
-    id: 28,
+    id: 30,
     category: 'Custom Furniture',
     title: 'Indoor Counter Top',
     description: 'Custom metal counter top installation',
@@ -426,14 +419,14 @@ export const galleryItems: GalleryItem[] = [
 
   // Additional Art and Decor
   {
-    id: 29,
+    id: 31,
     category: 'Art and Decor',
     title: 'Custom Candle Holder',
     description: 'Artistic metal candle holder',
     image: '/lovable-uploads/Custom-CandleHolder.jpeg'
   },
   {
-    id: 30,
+    id: 32,
     category: 'Art and Decor',
     title: 'Decorative Metal Hook',
     description: 'Custom designed metal hook',
@@ -446,14 +439,14 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 31,
+    id: 33,
     category: 'Art and Decor',
     title: 'Custom Metal Bowl',
     description: 'Handcrafted metal dish bowl',
     image: '/lovable-uploads/Custom-MetalDishbowl.jpeg'
   },
   {
-    id: 32,
+    id: 34,
     category: 'Art and Decor',
     title: 'Metal Utensil Set',
     description: 'Custom designed metal utensils',
@@ -466,7 +459,7 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 33,
+    id: 35,
     category: 'Art and Decor',
     title: 'Custom Metal Artwork',
     description: 'Unique metal wall artwork',
@@ -474,7 +467,7 @@ export const galleryItems: GalleryItem[] = [
   },
 
   {
-    id: 34,
+    id: 36,
     category: 'Art and Decor',
     title: 'Custom Fire Safety Box',
     description: 'Decorative fire safety solution with custom metalwork',
@@ -488,7 +481,7 @@ export const galleryItems: GalleryItem[] = [
   },
 
   {
-    id: 35,
+    id: 37,
     category: 'Custom Indoor Projects',
     title: 'Indoor Barn Door Project',
     description: 'Complete indoor barn door installation with custom metalwork',
@@ -514,7 +507,7 @@ export const galleryItems: GalleryItem[] = [
   },
 
   {
-    id: 36,
+    id: 38,
     category: 'Custom Indoor Projects',
     title: 'Custom Stove Hood',
     description: 'Elegant custom stove hood installation',
@@ -528,7 +521,7 @@ export const galleryItems: GalleryItem[] = [
   },
 
   {
-    id: 37,
+    id: 39,
     category: 'Railings, Fences, and Gates',
     title: 'Custom Masonry Gate',
     description: 'Elegant masonry gate with integrated metalwork',
@@ -546,7 +539,7 @@ export const galleryItems: GalleryItem[] = [
   },
 
   {
-    id: 38,
+    id: 40,
     category: 'Railings, Fences, and Gates',
     title: 'Modern Metal Railing',
     description: 'Contemporary metal railing design',
@@ -560,7 +553,7 @@ export const galleryItems: GalleryItem[] = [
   },
 
   {
-    id: 39,
+    id: 41,
     category: 'Railings, Fences, and Gates',
     title: 'Exterior Metal Railing',
     description: 'Durable outdoor metal railing system',
@@ -576,18 +569,8 @@ export const galleryItems: GalleryItem[] = [
       }
     ]
   },
-
-  // This item serves as the category cover image for Railings, Fences, and Gates on the home page
   {
-    id: 40,
-    category: 'Railings, Fences, and Gates',
-    title: 'Signature Railing Design',
-    description: 'Our flagship metal railing system showcasing premium craftsmanship',
-    image: '/lovable-uploads/SignatureRailing1.jpeg',
-    isCategoryImage: true // Add this flag to indicate it should be used as category cover
-  },
-  {
-    id: 41,
+    id: 42,
     category: 'Railings, Fences, and Gates',
     title: 'Custom Metal Railing',
     description: 'Modern metal railing design',
@@ -600,15 +583,107 @@ export const galleryItems: GalleryItem[] = [
     ]
   },
   {
-    id: 42,
+    id: 43,
     category: 'Railings, Fences, and Gates',
-    title: 'Custom Floral Gate',
-    description: 'Decorative gate with floral pattern',
-    image: '/lovable-uploads/CustomGate-Flowers1.jpeg',
+    title: 'Custom Metal Railing Series 3',
+    description: 'Elegant custom metal railing installation with multiple views',
+    image: '/lovable-uploads/metalrailing3-1.jpg',
     childImages: [
       {
-        url: '/lovable-uploads/CustomGate-Flowers2.jpeg',
-        alt: 'Detail view of floral gate'
+        url: '/lovable-uploads/metalrailing3-2.jpg',
+        alt: 'Custom metal railing view 2'
+      },
+      {
+        url: '/lovable-uploads/metalrailing3-3.jpg',
+        alt: 'Custom metal railing view 3'
+      },
+      {
+        url: '/lovable-uploads/metalrailing3-4.jpg',
+        alt: 'Custom metal railing view 4'
+      },
+      {
+        url: '/lovable-uploads/metalrailing3-5.jpg',
+        alt: 'Custom metal railing view 5'
+      }
+    ]
+  },
+  {
+    id: 44,
+    category: 'Railings, Fences, and Gates',
+    title: 'Floral Metal Gate Design',
+    description: 'Custom floral-inspired metal gate with intricate details',
+    image: '/lovable-uploads/floralmetalgatecustom1.jpg',
+    childImages: [
+      {
+        url: '/lovable-uploads/floralmetalgatecustom2.jpg',
+        alt: 'Floral metal gate view 2'
+      },
+      {
+        url: '/lovable-uploads/floralmetalgatecustom3.jpg',
+        alt: 'Floral metal gate view 3'
+      },
+      {
+        url: '/lovable-uploads/floralmetalgatecustom5.jpg',
+        alt: 'Floral metal gate view 5'
+      },
+      {
+        url: '/lovable-uploads/floralmetalgatecustom6.jpg',
+        alt: 'Floral metal gate view 6'
+      }
+    ]
+  },
+  {
+    id: 45,
+    category: 'Railings, Fences, and Gates',
+    title: 'Floral Metal Guardrail',
+    description: 'Elegant outdoor metal guardrail with floral pattern details',
+    image: '/lovable-uploads/outdoormetalguardrailfloral1.jpg',
+    childImages: [
+      {
+        url: '/lovable-uploads/outdoormetalguardrailfloral1-1.jpg',
+        alt: 'Side view of floral guardrail'
+      },
+      {
+        url: '/lovable-uploads/outdoormetalguardrailfloral1-2.jpg',
+        alt: 'Detail view of floral pattern'
+      },
+      {
+        url: '/lovable-uploads/outdoormetalguardrailfloral1-3.jpg',
+        alt: 'Installation view of guardrail'
+      },
+      {
+        url: '/lovable-uploads/outdoormetalguardrailfloral1-4.jpg',
+        alt: 'Complete guardrail installation'
+      }
+    ]
+  },
+  {
+    id: 46,
+    category: 'Custom Furniture',
+    title: 'Custom Accented Table',
+    description: 'Elegant table design with custom metal accents',
+    image: '/lovable-uploads/customaccentedtable1.jpg',
+    childImages: [
+      {
+        url: '/lovable-uploads/customaccentedtable1-1.jpg',
+        alt: 'Detail view of table accents'
+      }
+    ]
+  },
+  {
+    id: 47,
+    category: 'Behind the Scenes',
+    title: 'Custom Sheet Pattern Process',
+    description: 'Behind the scenes of our custom sheet metal pattern creation process',
+    image: '/lovable-uploads/customsheetpatternprocess1.jpg',
+    childImages: [
+      {
+        url: '/lovable-uploads/customsheetpatternprocess1-1.jpg',
+        alt: 'Pattern design process'
+      },
+      {
+        url: '/lovable-uploads/customsheetpatternprocess1-2.jpg',
+        alt: 'Sheet metal fabrication'
       }
     ]
   }
