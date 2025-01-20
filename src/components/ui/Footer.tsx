@@ -9,10 +9,6 @@ const Footer = () => {
           <div className="space-y-6">
             <h2 className="text-xl font-semibold text-white">Legal</h2>
             <div className="flex flex-col space-y-3">
-              <p className="text-gray-400">
-                &copy; {new Date().getFullYear()} MattCoffeyDesign.
-              </p>
-              <p className="text-gray-400">All rights reserved.</p>
               <Link to="/privacy" className="hover:text-white transition-colors">
                 Privacy Policy
               </Link>
@@ -22,6 +18,9 @@ const Footer = () => {
               <button className="text-left hover:text-white transition-colors">
                 Cookie Settings
               </button>
+              <p className="text-gray-400">
+                &copy; {new Date().getFullYear()} MattCoffeyDesign. All Rights Reserved.
+              </p>
             </div>
           </div>
 

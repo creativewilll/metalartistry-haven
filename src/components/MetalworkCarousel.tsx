@@ -13,7 +13,7 @@ const MetalworkCarousel = () => {
 
   return (
     <div className="container mx-auto px-4 my-8">
-      <h2 className="text-2xl font-bold text-center mb-6">Explore Our Collections</h2>
+      <h2 className="text-2xl font-bold text-center mb-6">Visit my Gallery</h2>
       <div className="max-w-[900px] mx-auto">
         <Carousel>
           <CarouselContent>

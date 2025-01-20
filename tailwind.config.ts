@@ -18,6 +18,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Railway', 'sans-serif'],
+      },
       colors: {
         charcoal: "#1A1A1A",
         silver: "#C0C0C0",

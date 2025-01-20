@@ -118,37 +118,17 @@ const Contact = () => {
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
                   <Mail className="text-bronze" />
-                  <span>info@mattcoffeydesign.com</span>
+                  <span>mcdesignart@aol.com</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <Phone className="text-bronze" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+1 (231) 645-0611</span>
                 </div>
                 <div className="flex items-center space-x-4">
                   <MapPin className="text-bronze" />
-                  <span>123 Metalwork Lane, Portland, OR 97201</span>
+                  <span>Traverse City, MI</span>
                 </div>
               </div>
-            </div>
-
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Workshop Hours</h3>
-              <div className="flex items-start space-x-4">
-                <Clock className="text-bronze mt-1" />
-                <div>
-                  <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                  <p>Saturday: By appointment</p>
-                  <p>Sunday: Closed</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-muted p-6 rounded-lg">
-              <h3 className="text-xl font-semibold mb-4">Custom Projects</h3>
-              <p className="text-muted-foreground">
-                Each piece is uniquely crafted to your specifications. We work closely with our clients
-                throughout the entire process to ensure your vision becomes reality.
-              </p>
             </div>
           </div>
         </div>
