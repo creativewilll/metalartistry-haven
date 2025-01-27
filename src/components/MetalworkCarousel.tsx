@@ -13,7 +13,10 @@ const MetalworkCarousel = () => {
 
   return (
     <div className="container mx-auto px-4 my-8">
-      <h2 className="text-2xl font-bold text-center mb-6">Visit my Gallery</h2>
+      {/* Main heading with metallic effect */}
+      <h2 className="text-4xl font-bold text-center mb-8 font-cinzel bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">
+        Visit my Gallery
+      </h2>
       <div className="max-w-[900px] mx-auto">
         <Carousel>
           <CarouselContent>
@@ -30,10 +33,17 @@ const MetalworkCarousel = () => {
                         alt={showcase.alt}
                         className="w-full h-full object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent">
-                        <div className="absolute bottom-6 left-6 right-6">
-                          <h3 className="text-3xl font-semibold text-cream font-cinzel">{showcase.category}</h3>
-                          <p className="text-lg text-cream/90 mt-2">{showcase.description}</p>
+                      {/* Enhanced gradient overlay for better text visibility */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                        <div className="absolute bottom-8 left-8 right-8">
+                          {/* Category title with metallic gradient */}
+                          <h3 className="text-4xl font-bold font-cinzel mb-3 bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
+                            {showcase.category}
+                          </h3>
+                          {/* Description with enhanced visibility */}
+                          <p className="text-xl text-gray-100 mt-2 font-light leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                            {showcase.description}
+                          </p>
                         </div>
                       </div>
                     </div>

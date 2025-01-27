@@ -4,6 +4,16 @@ const Footer = () => {
   return (
     <footer className="bg-black text-gray-300 py-16">
       <div className="container mx-auto px-4">
+        {/* Logo Section */}
+        <div className="flex justify-center mb-12">
+          <Link to="/" className="h-16">
+            <img 
+              src="/MattCoffeyDesignLOGO.jpg" 
+              alt="Matt Coffey Design" 
+              className="h-full invert"
+            />
+          </Link>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Copyright Section */}
           <div className="space-y-6">

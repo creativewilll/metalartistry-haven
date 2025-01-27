@@ -13,7 +13,7 @@ export const AboutSection = () => {
   const y = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [100, 0, 0, -100]);
 
   return (
-    <section ref={sectionRef} className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
+    <section ref={sectionRef} className="py-24 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -left-4 top-1/4 w-24 h-24 bg-gray-700/30 rounded-full blur-xl" />
@@ -37,7 +37,7 @@ export const AboutSection = () => {
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
                 src="/gallery-images/MattCoffey.jpg"
-                alt="Matt Coffey at work"
+                alt="Hey, I'm Matt Coffey, working on some cool metalwork!"
                 className="object-cover w-full h-full transform scale-[1.02] hover:scale-[1.05] transition-transform duration-500"
                 loading="eager"
                 onError={(e) => {
@@ -55,8 +55,15 @@ export const AboutSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-8"
+            className="space-y-8 relative bg-black/40 p-8 rounded-xl border border-orange-400/20 shadow-2xl backdrop-blur-sm"
           >
+            {/* Decorative Bolts */}
+            <div className="absolute top-4 left-4 w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg" />
+            <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg" />
+            <div className="absolute bottom-4 left-4 w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg" />
+            <div className="absolute bottom-4 right-4 w-3 h-3 rounded-full bg-gradient-to-r from-orange-400 to-amber-500 shadow-lg" />
+            
+            {/* Content */}
             <div className="space-y-4">
               <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">
                 About Me
@@ -64,6 +71,10 @@ export const AboutSection = () => {
               <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-amber-500" />
             </div>
             
+            <p className="text-xl text-white/90 leading-relaxed">
+              Hi there! I'm Matt, and I love creating metalwork pieces that are not only beautiful but also tell a story. Let's make something special together.
+            </p>
+
             <div className="space-y-6 text-lg">
               <motion.p
                 initial={{ opacity: 0, y: 20 }}

@@ -20,40 +20,44 @@ export const InstagramFeed = () => {
   }, []);
 
   return (
-    <section className="w-full py-12 bg-black">
-      <div className="container">
-        <div className="flex flex-col items-center mb-12 text-center">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">Follow Our Journey</h2>
-          <p className="mt-4 text-gray-400">Stay updated with our latest creations on Instagram</p>
+    <section className="relative w-full pb-12 pt-24 bg-gradient-to-b from-charcoal to-zinc-900">
+      {/* Metallic overlay with reduced opacity */}
+      <div className="absolute inset-0 bg-[url('/textures/metal-texture.jpg')] mix-blend-overlay opacity-5 z-0" />
+      
+      <div className="container relative mx-auto px-4 z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16 relative z-20">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">
+            Explore My Instagram
+          </h2>
+          <p className="text-xl text-white/90 mt-4 font-medium">
+            Take a look at some projects I've built for people just like you!
+          </p>
         </div>
-        <div className="flex justify-center max-w-3xl mx-auto bg-zinc-900 rounded-lg p-4">
-          <blockquote 
-            className="instagram-media" 
-            data-instgrm-permalink="https://www.instagram.com/mattcoffeydesign/"
-            data-instgrm-version="14"
-            style={{ 
-              background: '#FFF',
-              border: 0,
-              borderRadius: '3px',
-              boxShadow: 'none',
-              margin: '1px',
-              maxWidth: '540px',
-              minWidth: '326px',
-              padding: 0,
-              width: 'calc(100% - 2px)'
-            }}
-          >
-          </blockquote>
-        </div>
-        <div className="mt-8 text-center">
-          <a 
-            href="https://www.instagram.com/mattcoffeydesign/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 rounded-md"
-          >
-            Follow Us on Instagram
-          </a>
+
+        <div className="flex justify-center relative z-10">
+          {/* Instagram Feed - Centered */}
+          <div className="flex justify-center w-full max-w-[540px] relative">
+            <div className="absolute -inset-4 bg-gradient-to-r from-bronze/20 via-silver/20 to-bronze/20 
+              rounded-xl blur-md opacity-50"></div>
+            <blockquote 
+              className="instagram-media relative" 
+              data-instgrm-permalink="https://www.instagram.com/mattcoffeydesign/"
+              data-instgrm-version="14"
+              style={{ 
+                background: 'transparent',
+                border: 0,
+                borderRadius: '3px',
+                boxShadow: 'none',
+                margin: '1px',
+                maxWidth: '540px',
+                minWidth: '326px',
+                padding: 0,
+                width: 'calc(100% - 2px)'
+              }}
+            >
+            </blockquote>
+          </div>
         </div>
       </div>
     </section>

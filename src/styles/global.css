@@ -1,0 +1,24 @@
+/* Global Styles for Metal Artistry Haven
+ * This file imports and sets up global styles for the application
+ */
+
+/* Import Typography System */
+@import './typography.css';
+
+/* Reset default margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Set base font size on html for rem units */
+html {
+  font-size: 16px; /* This makes 1rem = 16px */
+}
+
+/* Ensure body uses our defined body text size */
+body {
+  font-size: var(--font-size-body);
+  line-height: 1.5;
+}

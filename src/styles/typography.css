@@ -1,0 +1,43 @@
+/* Typography Scale
+ * This file defines the typography scale for the Metal Artistry Haven website.
+ * The scale follows a modular type system for consistent visual hierarchy.
+ */
+
+:root {
+  /* Heading Sizes */
+  --font-size-h1: 48px;  /* Primary headings, hero text */
+  --font-size-h2: 36px;  /* Section headings */
+  --font-size-h3: 28px;  /* Subsection headings */
+  --font-size-h4: 22px;  /* Card headings, smaller section titles */
+  
+  /* Body Text */
+  --font-size-body: 16px;  /* Main body text */
+  
+  /* Supporting Text */
+  --font-size-caption: 12px;  /* Captions, metadata, supplementary text */
+}
+
+/* Base Typography Classes */
+h1, .h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2, .h2 {
+  font-size: var(--font-size-h2);
+}
+
+h3, .h3 {
+  font-size: var(--font-size-h3);
+}
+
+h4, .h4 {
+  font-size: var(--font-size-h4);
+}
+
+body, .body-text {
+  font-size: var(--font-size-body);
+}
+
+.caption {
+  font-size: var(--font-size-caption);
+}
