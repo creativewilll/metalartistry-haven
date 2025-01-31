@@ -32,43 +32,43 @@ export const categories = [
 export const categoryShowcases: CategoryShowcase[] = [
   {
     category: 'Railings, Fences, and Gates',
-    url: "/gallery-images/CustomMetalRailing4-1.jpeg",
+    url: "/gallery-images/CustomSecurity_NaturesGate1.jpeg",
     alt: "Custom Railings and Gates Showcase",
     description: "Durable, long-lasting, and stylish"
   },
   {
     category: 'Custom Furniture',
-    url: "/gallery-images/CustomIndoorShelving.jpeg",
+    url: "/gallery-images/CustomIndoor-CounterTop 2.jpeg",
     alt: "Custom Furniture Showcase",
     description: "View hand-crafted custom metal furniture, from stools to lighting fixtures"
   },
   {
     category: 'Commercial',
-    url: "/gallery-images/BusinessBartop1.jpeg",
+    url: "/gallery-images/GypsyFarms_CustomBarBuild7 2.jpeg",
     alt: "Commercial Projects Showcase",
     description: "Experience the transformation of commercial spaces with my custom installations"
   },
   {
     category: 'Art and Decor',
-    url: "/gallery-images/CustomMetalWallDecor1-1.jpeg",
+    url: "/gallery-images/CustomMetalWallDecor1 2.jpeg",
     alt: "Art and Decor Showcase",
     description: "Browse through my hand-crafted metal wall art and decor"
   },
   {
     category: 'Doors and Windows',
-    url: "/gallery-images/CustomMetalDoor1-5.jpeg",
+    url: "/gallery-images/CustomDoor-SlidingPantryBarnDoors2.jpg",
     alt: "Doors and Windows Showcase",
     description: "Discover stylish, industrial door and window solutions"
   },
   {
     category: 'Behind the Scenes',
-    url: "/gallery-images/workshop1.jpeg",
+    url: "/gallery-images/workshop1 2.jpeg",
     alt: "Behind the Scenes Showcase",
     description: "Discover the detail-driven process of my projects, from idea to completion"
   },
   {
     category: 'Custom Projects',
-    url: "/gallery-images/CustomStovehood1.jpeg",
+    url: "/gallery-images/CustomStovehood1 2.jpeg",
     alt: "Custom Projects Showcase",
     description: "Browse my customized indoor solutions"
   }

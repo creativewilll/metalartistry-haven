@@ -7,7 +7,7 @@ export const HeroSection = () => {
     <div className="relative h-screen -mx-4">
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal/80 to-charcoal/60 z-10" />
       <div 
-        className="absolute inset-0 bg-[url('/gallery-images/MattCoffeyHero.jpg')] 
+        className="absolute inset-0 bg-[url('/gallery-images/MattCoffeyHero.jpeg')] 
         bg-cover bg-center bg-fixed"
       />
       <div className="relative z-20 h-full flex items-center justify-center">
@@ -19,7 +19,7 @@ export const HeroSection = () => {
           >
             <div className="relative">
               <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-orange-400 to-orange-600 animate-ember-pulse relative z-10 py-2">
-                Welcome to Matt Coffey Design!
+                Matt Coffey Design
               </h1>
               <div 
                 className="absolute inset-x-0 mx-auto w-full max-w-xs bg-red-600 opacity-50 blur-lg animate-pulse z-0"
@@ -35,7 +35,7 @@ export const HeroSection = () => {
               />
             </div>
             <p className="text-xl text-center text-white max-w-3xl mx-auto">
-              I'm all about crafting unique metalwork pieces that bring a touch of elegance to your space.
+              I'm all about crafting unique metalwork pieces that bring a touch of elegance and craft to your space.
             </p>
           </motion.div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
