@@ -69,8 +69,8 @@ const Discover = () => {
               <div aria-hidden="true" />
             </div>
             <p className="text-xl text-center text-text-body max-w-3xl mx-auto">
-              Explore our collection of handcrafted metalwork, from elegant railings to custom furniture pieces.
-              Each piece tells a unique story of craftsmanship and dedication.
+            From custom indoor furniture to commercial installations, explore my extensive collection of precision-crafted, highly-personalized metalworking projects.
+              
             </p>
           </motion.div>
         </div>
