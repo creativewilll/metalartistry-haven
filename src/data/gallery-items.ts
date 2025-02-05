@@ -218,11 +218,11 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 12,
     category: 'Art and Decor',
-    title: 'Olive Branch - Hand-Forged Metal Wall Decor',
-    description: 'A beautiful metallic, natural accent for any space',
-    image: '/gallery-images/CustomMetalWallDecor1 2.jpeg',
+    title: 'Custom Crafted Stovehood',
+    description: 'A beautiful metallic stovehood, an excellent accent to the matching custom countertop!',
+    image: '/gallery-images/CCustomStovehood1 2.jpeg',
     childImages: [
-      { url: '/gallery-images/CustomMetalWallDecor1-1 2.jpeg', alt: 'Up-close, detailed view of the finished piece' }
+      { url: '/gallery-images/CustomStovehood1-2 2jpeg', alt: 'Up-close, detailed view of the finished piece' }
     ],
     isCategoryImage: false
   },
@@ -324,50 +324,61 @@ export const galleryItems: GalleryItem[] = [
   {
     id: 22,
     category: 'Railings, Fences, and Gates',
-    title: 'Elegant Front Entrance Railing',
-    description: 'A set of beautifully crafted wrought iron entrance rails, adding an inviting touch to this grand front entryway.',
-    image: '/gallery-images/Custom-FrontEntranceRails 2.jpeg',
-    childImages: [],
+    title: 'Industrial Indoor Accenting Project',
+    description: 'A complete industrial solution including stylish steel supports and railings.',
+    image: '/gallery-images/IndustrialIndoor1.jpeg',
+    childImages: [
+      { url: '/gallery-images/IndustrialIndoor2.jpeg', alt: 'Secondary view of the project, showcasing the handforged steel rails' },
+      { url: '/gallery-images/IndustrialIndoor3.jpeg', alt: 'A third view of the project, highlighting the intricate details of the steel supports' },
+      { url: '/gallery-images/IndustrialIndoor4.jpeg', alt: 'A fourth view of the project, showing the finished look of the barn renovation' },
+    ],
     isCategoryImage: false
   },
   {
     id: 23,
-    category: 'Art and Decor',
-    title: 'Hand-Forged Metal Dish Bowl',
-    description: 'A rustic, hammered steel dish bowl with scroll feet, perfect for adding a handcrafted touch to any space.',
-    image: '/gallery-images/Custom-MetalDishbowl 2.jpeg',
+    category: 'Custom Projects',
+    title: 'Interior Barn Renovation',
+    description: 'A complete renovation including stylish steel supports and railings.',
+    image: '/gallery-images/IndoorBarnBuild-rail1.jpeg',
     childImages: [
-      { url: '/gallery-images/Custom-MetalDishbowl2 2.jpeg', alt: 'Detailed description of the image' }
+      { url: '/gallery-images/IndoorBarnBuild-rail2.jpeg', alt: 'Secondary view of the project, showcasing the handforged steel rails' },
+      { url: '/gallery-images/IndoorBarnBuild-rail3.jpeg', alt: 'A third view of the project, highlighting the intricate details of the steel supports' },
+      { url: '/gallery-images/IndoorBarnBuild-rail4.jpeg', alt: 'A fourth view of the project, showing the finished look of the barn renovation' },
+      { url: '/gallery-images/IndoorBarnBuild-rail5.jpeg', alt: 'A fifth view of the project, providing a closer look at the handforged rails' },
+      { url: '/gallery-images/IndoorBarnBuildPROCESS1.jpeg', alt: 'A behind-the-scenes look at the construction of the barn renovation' },
+      { url: '/gallery-images/IndoorBarnBuildPROCESS1-2.jpeg', alt: 'Another behind-the-scenes look at the construction of the barn renovation' },
     ],
     isCategoryImage: false
   },
   {
     id: 24,
-    category: 'Art and Decor',
-    title: 'Twisted Steel Hook',
-    description: 'A hand-forged metal hook featuring a twisted design, sturdy enough for heavy-duty use with a refined look.',
-    image: '/gallery-images/Custom-MetalHook 2.jpeg',
+    category: 'Custom Projects',
+    title: 'Custom Steel Fireplace',
+    description: 'A hand-crafted, masterful steel fireplace cover for an industrial touch of style in this Suttons Point home.',
+    image: '/gallery-images/CustomSteelFireplace1.jpeg',
     childImages: [
-      { url: '/gallery-images/Custom-MetalHook2 2.jpeg', alt: 'Detailed description of the image' }
+      { url: '/gallery-images/CustomSteelFireplace1-2.jpeg', alt: 'A closer look at the smooth metal finish and precision welds of the handrail design.' },
+      { url: '/gallery-images/CustomSteelFireplace1-3.jpeg', alt: 'A second-story view of the handcrafted steel fireplace, showcasing the intricate detailing and elegant curves.' },
+      { url: '/gallery-images/CustomSteelFireplace1-4.jpeg', alt: 'An alternate view' },
+      { url: '/gallery-images/CustomSteelFireplace1-5-PROCESS.jpeg', alt: 'Behind the scenes!' }
     ],
     isCategoryImage: false
   },
   {
     id: 25,
-    category: 'Art and Decor',
-    title: 'Hand-Forged Wine Rack',
-    description: 'A rugged, industrial-style wine rack crafted from raw steel, designed to hold bottles in a sturdy and artistic way.',
-    image: '/gallery-images/Custom-WineRack1.jpeg',
+    category: 'Railings, Fences, and Gates',
+    title: 'Wrought Iron Vineyard Gate',
+    description: 'A handcrafted vineyard-inspired metal gate, adorned with intricate grapevine details and elegant curves.',
+    image: '/gallery-images/CustomMetalGate1 2.jpeg',
     childImages: [
-      { url: '/gallery-images/Custom-WineRack2 2.jpeg', alt: 'Detailed description of the image' },
-      { url: '/gallery-images/Custom-WinRack3 2.jpeg', alt: 'Detailed description of the image' }
+      { url: '/gallery-images/CustomMetalGate1-1 2.jpeg', alt: 'Alternate view of the vineyard gate, highlighting detailed metalwork and scenic backdrop.' }
     ],
     isCategoryImage: false
   },
   {
     id: 26,
     category: 'Custom Furniture',
-    title: 'Live Edge Metal-Leg Bench',
+    title: 'Live Edge Bench',
     description: 'A handcrafted live-edge wood bench with custom-forged metal legs, combining rustic charm with industrial strength.',
     image: '/gallery-images/CustomBench1 2.jpeg',
     childImages: [
@@ -385,25 +396,37 @@ export const galleryItems: GalleryItem[] = [
     },
     {
       id: 28,
-      category: 'Custom Projects',
-      title: 'Custom Pergola Sun Screen',
-      description: 'An artistic metal pergola sun screen, casting intricate patterned shadows while providing stylish shade.',
-      image: '/gallery-images/CustomCrafted Pergola SunScreen1.jpeg',
+      category: 'Commercial',
+      title: 'High-Five Spirits Bar',
+      description: 'Complete interior bar redesign at High-Five Spirits in Traverse City, Michigan',
+      image: '/gallery-images/HighFiveSpirits7.jpeg',
       childImages: [
-        { url: '/gallery-images/CustomCrafted Pergola SunScreen1-2.jpeg', alt: 'Alternative pergola design with a different intricate pattern, creating a striking interplay of light and shadow.' }
+        { url: '/gallery-images/HighFiveSpirits3.jpeg', alt: 'Alternate view of the interior, showcasing the custom metal work and rustic wood tables.' },
+        { url: '/gallery-images/HighFiveSpirits4.jpeg', alt: 'Close-up of the custom metal chairs, adding both comfort and elegance to the space.' },
+        { url: '/gallery-images/HighFiveSpirits5.jpeg', alt: 'View of the kitchen, showcasing the custom cabinetry and wood countertops.' },
+        { url: '/gallery-images/HighFiveSpirits6.jpeg', alt: 'Close-up of the custom metal bar, adding both style and functionality to the space.' },
+        { url: '/gallery-images/HighFiveSpirits1.jpeg', alt: 'View of the living room, showcasing the custom textiles and wood flooring.' },
+        { url: '/gallery-images/HighFiveSpirits2.jpeg', alt: 'Team Photo at High-Five Spirits after renovation!' }
       ],
       isCategoryImage: false
-    }, 
+    },
     {
       id: 29,
-      category: 'Behind the Scenes',
-      title: 'Custom Steel Privacy Screen Process',
-      description: 'See how I crafted a custom steel privacy screen, from sketch to cutting',
-      image: '/gallery-images/customsheetpatternprocess1-1.jpeg',
+      category: 'Commercial',
+      title: 'Gypsy Farms Renovation',
+      description: 'Full Interior Design and Renovation at Gypsy Farms in Petoskey, Michigan',
+      image: '/gallery-images/GypsyFarms_CustomBarBuild7 2.jpeg',
       childImages: [
-        { url: '/gallery-images/customsheetpatternprocess1.jpeg', alt: 'Alternate angle of the steel privacy screen, showcasing the intricate pattern and design elements.' },
-        { url: '/gallery-images/customsheetpatternprocess1-2.jpeg', alt: 'Close-up of the steel privacy screen, showcasing the intricate pattern and design elements.' }
+        { url: '/gallery-images/GypsyFarms_CustomBarBuild3.jpeg', alt: 'Alternate view of the interior, showcasing the custom metal work and rustic wood tables.' },
+        { url: '/gallery-images/GypsyFarms_CustomBarBuild2.jpeg', alt: 'Close-up of the custom metal chairs, adding both comfort and elegance to the space.' },
+        { url: '/gallery-images/GypsyFarms_CustomLightFixtures1 2.jpeg', alt: 'View of the kitchen, showcasing the custom cabinetry and wood countertops.' },
+        { url: '/gallery-images/GypsyFarms_CustomLightFixtures1-1 2.jpeg', alt: 'Close-up of the custom metal bar, adding both style and functionality to the space.' },
+        { url: '/gallery-images/GypsyFarms_CustomLightFixtures1-2 2.jpeg', alt: 'View of the living room, showcasing the custom textiles and wood flooring.' },
+        { url: '/gallery-images/GypsyFarms_CustomVanity1 2.jpeg', alt: 'Close-up of the custom metal coffee table, adding both style and functionality to the space.' },
+        { url: '/gallery-images/GypsyFarms_CustomVanity1-1 2.jpeg', alt: 'View of the dining room, showcasing the custom wood and metal chairs.' },
+        { url: '/gallery-images/GypsyFarms_CustomVanity1-2.jpeg', alt: 'Close-up of the custom metal console table, adding both style and functionality to the space.' }
       ],
+      isCategoryImage: false
     },
     {
       id: 30,
@@ -444,133 +467,4 @@ export const galleryItems: GalleryItem[] = [
       image: '/gallery-images/CustomIndoorShelving 2.jpeg',
       isCategoryImage: false
     },
-    {
-      id: 34,
-      category: 'Art and Decor',
-      title: 'Hand-Forged Utensil Set',
-      description: 'A unique set of hand-forged metal utensils, blending artistry with functionality in an elegant rustic design.',
-      image: '/gallery-images/CustomMetal-Utensils1 2.jpeg',
-      childImages: [
-        { url: '/gallery-images/CustomMetal-Utensils2 2.jpeg', alt: 'Close-up of a custom-forged utensil with a twisted handle and textured blade.' }
-      ],
-      isCategoryImage: false
-    },
-    {
-      id: 35,
-      category: 'Art and Decor',
-      title: 'Steel Angel Silhouette Sculpture',
-      description: 'A striking handcrafted angel sculpture, featuring layered steel wings and a raw industrial finish.',
-      image: '/gallery-images/CustomMetalDecor1 2.jpeg',
-      isCategoryImage: false
-    },
-    {
-      id: 36,
-      category: 'Art and Decor',
-      title: 'Forged Metal Cross Stand',
-      description: 'A beautifully detailed hand-cut metal cross with an ornate design, mounted on a solid steel base.',
-      image: '/gallery-images/CustomMetalDecor2 2.jpeg',
-      isCategoryImage: false
-    },
-    {
-      id: 37,
-      category: 'Railings, Fences, and Gates',
-      title: 'Wrought Iron Vineyard Gate',
-      description: 'A handcrafted vineyard-inspired metal gate, adorned with intricate grapevine details and elegant curves.',
-      image: '/gallery-images/CustomMetalGate1 2.jpeg',
-      childImages: [
-        { url: '/gallery-images/CustomMetalGate1-1 2.jpeg', alt: 'Alternate view of the vineyard gate, highlighting detailed metalwork and scenic backdrop.' }
-      ],
-      isCategoryImage: false
-    },
-    {
-      id: 38,
-      category: 'Railings, Fences, and Gates',
-      title: 'Nature-Inspired Metal Stair Railing',
-      description: 'A custom metal stair railing featuring an organic tree-branch design, adding a natural aesthetic to the space.',
-      image: '/gallery-images/CustomMetalRailing1 2.jpeg',
-      childImages: [
-        { url: '/gallery-images/CustomMetalRailing1-2 2.jpeg', alt: 'Side angle of the branch-inspired railing, showing intricate craftsmanship and fluidity of design.' }
-      ],
-      isCategoryImage: false
-    },
-    {
-      id: 39,
-      category: 'Railings, Fences, and Gates',
-      title: 'Artistic Wavy Metal Railings',
-      description: 'A collection of wavy-patterned metal railings, adding a contemporary artistic touch to stairways and open spaces.',
-      image: '/gallery-images/CustomMetalRailing2 2.jpeg',
-      childImages: [
-        { url: '/gallery-images/CustomMetalRailing2-1 2.jpeg', alt: 'Alternate perspective of the wavy metal railing, showcasing its modern fluid lines.' }
-      ],
-      isCategoryImage: false
-    },
-    {
-      id: 40,
-      category: 'Railings, Fences, and Gates',
-      title: 'Striking Geometric Railing',
-      description: 'A custom-crafted geometric railing design',
-      image: '/gallery-images/CustomMetalRailing5.jpeg',
-      childImages: [],
-      isCategoryImage: false
-    },
-    {
-      id: 41,
-      category: 'Railings, Fences, and Gates',
-      title: 'Elegant Metal and Wood Stair Railing',
-      description: 'A striking metal railing with interwoven organic shapes, paired beautifully with warm wooden handrails for a timeless aesthetic.',
-      image: '/gallery-images/CustomMetalRailing4.jpeg',
-      childImages: [
-        { url: '/gallery-images/CustomMetalRailing4-1.jpeg', alt: 'Alternate view of the metal and wood stair railing, emphasizing its handcrafted details.' },
-        { url: '/gallery-images/CustomMetalRailing4-2.jpeg', alt: 'Close-up showcasing the precise metalwork and seamless wood integration.' }
-      ],
-      isCategoryImage: false
-    },
-    {
-      id: 42,
-      category: 'Commercial',
-      title: 'Gypsy Farms Renovation',
-      description: 'Full Interior Design and Renovation at Gypsy Farms in Petoskey, Michigan',
-      image: '/gallery-images/GypsyFarms_CustomBarBuild7 2.jpeg',
-      childImages: [
-        { url: '/gallery-images/GypsyFarms_CustomBarBuild3.jpeg', alt: 'Alternate view of the interior, showcasing the custom metal work and rustic wood tables.' },
-        { url: '/gallery-images/GypsyFarms_CustomBarBuild2.jpeg', alt: 'Close-up of the custom metal chairs, adding both comfort and elegance to the space.' },
-        { url: '/gallery-images/GypsyFarms_CustomLightFixtures1 2.jpeg', alt: 'View of the kitchen, showcasing the custom cabinetry and wood countertops.' },
-        { url: '/gallery-images/GypsyFarms_CustomLightFixtures1-1 2.jpeg', alt: 'Close-up of the custom metal bar, adding both style and functionality to the space.' },
-        { url: '/gallery-images/GypsyFarms_CustomLightFixtures1-2 2.jpeg', alt: 'View of the living room, showcasing the custom textiles and wood flooring.' },
-        { url: '/gallery-images/GypsyFarms_CustomVanity1 2.jpeg', alt: 'Close-up of the custom metal coffee table, adding both style and functionality to the space.' },
-        { url: '/gallery-images/GypsyFarms_CustomVanity1-1 2.jpeg', alt: 'View of the dining room, showcasing the custom wood and metal chairs.' },
-        { url: '/gallery-images/GypsyFarms_CustomVanity1-2.jpeg', alt: 'Close-up of the custom metal console table, adding both style and functionality to the space.' }
-      ],
-      isCategoryImage: false
-    },
-    {
-      id: 43,
-      category: 'Commercial',
-      title: 'High-Five Spirits Bar',
-      description: 'Complete interior bar redesign at High-Five Spirits in Traverse City, Michigan',
-      image: '/gallery-images/HighFiveSpirits7.jpeg',
-      childImages: [
-        { url: '/gallery-images/HighFiveSpirits3.jpeg', alt: 'Alternate view of the interior, showcasing the custom metal work and rustic wood tables.' },
-        { url: '/gallery-images/HighFiveSpirits4.jpeg', alt: 'Close-up of the custom metal chairs, adding both comfort and elegance to the space.' },
-        { url: '/gallery-images/HighFiveSpirits5.jpeg', alt: 'View of the kitchen, showcasing the custom cabinetry and wood countertops.' },
-        { url: '/gallery-images/HighFiveSpirits6.jpeg', alt: 'Close-up of the custom metal bar, adding both style and functionality to the space.' },
-        { url: '/gallery-images/HighFiveSpirits1.jpeg', alt: 'View of the living room, showcasing the custom textiles and wood flooring.' },
-        { url: '/gallery-images/HighFiveSpirits2.jpeg', alt: 'Team Photo at High-Five Spirits after renovation!' }
-      ],
-      isCategoryImage: false
-    },
-    {
-      id: 44,
-      category: 'Custom Furniture',
-      title: 'Live-Edge Side Table',
-      description: 'A side table featuring a live-edge wood surface, adding a unique and rustic feel to the space.',
-      image: '/gallery-images/Handcrafted-Decorative-Side-Table1.jpeg',
-    },
-    {
-      id: 45,
-      category: 'Custom Furniture',
-      title: 'Handcrafted Metal Stair Railing',
-      description: 'A decorative metal stair railing, featuring intricate details and a sturdy construction, adding a unique touch to a home setting.',
-      image: '/gallery-images/CustomIndoorRailing1 2.jpeg',
-    }
 ];
