@@ -217,10 +217,10 @@ export const galleryItems: GalleryItem[] = [
   },
   {
     id: 12,
-    category: 'Art and Decor',
+    category: 'Custom Projects',
     title: 'Custom Crafted Stovehood',
     description: 'A beautiful metallic stovehood, an excellent accent to the matching custom countertop!',
-    image: '/gallery-images/CCustomStovehood1 2.jpeg',
+    image: '/gallery-images/CustomStovehood1 2.jpeg',
     childImages: [
       { url: '/gallery-images/CustomStovehood1-2 2jpeg', alt: 'Up-close, detailed view of the finished piece' }
     ],
