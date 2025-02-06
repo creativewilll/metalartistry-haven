@@ -6,29 +6,34 @@ const testimonials = [
     role: "Homeowner"
   },
   {
-    text: "Working with Matt was such a joy. He took our vision and made it even better than we imagined.",
-    author: "Michael Chen",
-    role: "Interior Designer"
+    text: "I'm in love with my fireplace! Amazing custom craftsmanship. I had an idea of what I wanted our fireplace to look like and Matt helped us make it come to life! We would 100% order from him again, and we ALWAYS recommend him to friends of ours!",
+    author: "Emily Silverstein",
+    role: "Homeowner"
   },
   {
     text: "Matt's work is simply outstanding. His artistic touch has completely transformed our space.",
-    author: "Emily Rodriguez",
-    role: "Architect"
+    author: "Jeremy Rodriguez",
+    role: "Homeowner"
   },
   {
-    text: "The metalwork Matt did for our restaurant? It's a hit with our customers. Stunning craftsmanship!",
-    author: "David Thompson",
-    role: "Restaurant Owner"
+    text: "Matt supplied and install many very cool accessories to our home. Gates, pergola grills, vineyard, sign, bathroom, mirrors, cabinet handles, and accessories for my wine room.  Matt has a very good sense of design and his quality of fabrication is exceptional!",
+    author: "Jim Barnes",
+    role: "Architect and Home Builder"
   },
   {
-    text: "Matt's blend of form and function is just amazing. His pieces are both beautiful and practical.",
-    author: "Lisa Martinez",
-    role: "Gallery Curator"
+    text: "We reached out to Matt for a custom handrail at our cabin. After our initial meeting we were so impressed with his work that we ended up purchasing a gorgeous chandelier and a set of super stylish handcrafted bar stools as well!",
+    author: "Mike and Genie Styles",
+    role: "Homeowners"
   },
   {
-    text: "Matt's work is a perfect mix of traditional craftsmanship and modern design. The gates he made for us are simply masterpieces.",
+    text: "Matt's work is a perfect mix of traditional craftsmanship and modern design. The gates he made for us are simply masterpieces, and bring the entire front landscaping together!",
     author: "Robert Wilson",
-    role: "Estate Manager"
+    role: "Homeowner"
+  },
+  {
+    text: "I have done business with Matt for a long time, and will continue to! The quality and intricacy of his work is simply unmatched, and he continually enables us to sell the best custom furniture on the market!",
+    author: "Anonymous",
+    role: "High-end Furniture Retailer"
   }
 ];
 
@@ -61,10 +66,10 @@ export const Testimonials = () => {
                 className="testimonial-card group relative hover:z-10"
               >
                 <div className="testimonial-content">
-                  <p className="text-ash-grey mb-6 italic text-lg">"{testimonial.text}"</p>
+                  <p className="text-white mb-6 text-xl font-normal tracking-wide" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>"{testimonial.text}"</p>
                   <div>
-                    <p className="font-semibold text-molten-silver">{testimonial.author}</p>
-                    <p className="text-red-hot">{testimonial.role}</p>
+                    <p className="font-bold text-white text-lg tracking-wide" style={{ textShadow: '0 0 8px rgba(255,255,255,0.25)' }}>{testimonial.author}</p>
+                    <p className="text-red-hot font-semibold tracking-wide">{testimonial.role}</p>
                   </div>
                 </div>
                 
@@ -89,10 +94,10 @@ export const Testimonials = () => {
                 className="testimonial-card group relative hover:z-10"
               >
                 <div className="testimonial-content">
-                  <p className="text-ash-grey mb-6 italic text-lg">"{testimonial.text}"</p>
+                  <p className="text-white mb-6 italic text-xl font-normal tracking-wide" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>"{testimonial.text}"</p>
                   <div>
-                    <p className="font-semibold text-molten-silver">{testimonial.author}</p>
-                    <p className="text-red-hot">{testimonial.role}</p>
+                    <p className="font-bold text-white text-lg tracking-wide" style={{ textShadow: '0 0 8px rgba(255,255,255,0.25)' }}>{testimonial.author}</p>
+                    <p className="text-red-hot font-semibold tracking-wide">{testimonial.role}</p>
                   </div>
                 </div>
                 

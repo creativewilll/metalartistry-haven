@@ -5,7 +5,7 @@ export const CTASection = () => {
   return (
     <section className="relative py-24 overflow-hidden bg-gradient-to-b from-charcoal to-zinc-900">
       {/* Background texture */}
-      <div className="absolute inset-0 bg-[url('/textures/metal-texture.jpg')] mix-blend-overlay opacity-5 z-0" />
+      <div className="absolute inset-0 bg-[url('/metal-texture.jpg')] mix-blend-overlay opacity-5 z-0" />
       
       {/* Animated accent lines */}
       <div className="absolute inset-0 z-[1]">
@@ -24,7 +24,7 @@ export const CTASection = () => {
           {/* Subheading with improved typography */}
           <p className="text-xl md:text-2xl text-white/90 mb-12 leading-relaxed
             max-w-2xl mx-auto relative z-20">
-            I'm here to help turn your ideas into reality with expert metalwork craftsmanship.
+            I'm always available to discuss your next project and how I can help you take your idea and transform it into a masterfully-crafted addition to your home or business! 
           </p>
 
           {/* CTA button with enhanced effects */}
@@ -42,7 +42,7 @@ export const CTASection = () => {
                 border border-bronze/20 hover:border-amber-400
                 shadow-lg hover:shadow-2xl hover:shadow-amber-500/50
                 after:absolute after:inset-0 after:rounded-lg
-                after:transition-all after:duration-[2000ms] after:ease-in
+                after:transition-all after:ease-in
                 after:[background:theme(colors.amber.500/0)]
                 hover:after:animate-intensify-glow
                 overflow-hidden
@@ -58,33 +58,31 @@ export const CTASection = () => {
             </Link>
           </div>
 
-          {/* Additional social proof */}
-          <p className="mt-12 text-silver/80 text-sm md:text-base animate-fade-in delay-200">
-            Join the growing list of clients satisfied with Matt Coffey's exceptional craftsmanship
-          </p>
         </div>
       </div>
 
-      <style jsx>{`
-        @keyframes intensify-glow {
-          0% {
-            background: linear-gradient(135deg, rgb(245 158 11 / 0.1), rgb(245 158 11 / 0.2), rgb(251 191 36 / 0.3));
-            box-shadow: 0 0 20px rgb(245 158 11 / 0.2);
+      <style>
+        {`
+          @keyframes intensify-glow {
+            0% {
+              background: linear-gradient(135deg, rgb(245 158 11 / 0.1), rgb(245 158 11 / 0.2), rgb(251 191 36 / 0.3));
+              box-shadow: 0 0 20px rgb(245 158 11 / 0.2);
+            }
+            50% {
+              background: linear-gradient(135deg, rgb(245 158 11 / 0.2), rgb(245 158 11 / 0.3), rgb(251 191 36 / 0.4));
+              box-shadow: 0 0 30px rgb(245 158 11 / 0.3);
+            }
+            100% {
+              background: linear-gradient(135deg, rgb(245 158 11 / 0.3), rgb(245 158 11 / 0.4), rgb(251 191 36 / 0.5));
+              box-shadow: 0 0 40px rgb(245 158 11 / 0.4);
+            }
           }
-          50% {
-            background: linear-gradient(135deg, rgb(245 158 11 / 0.2), rgb(245 158 11 / 0.3), rgb(251 191 36 / 0.4));
-            box-shadow: 0 0 30px rgb(245 158 11 / 0.3);
+          @keyframes spark {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.2); }
           }
-          100% {
-            background: linear-gradient(135deg, rgb(245 158 11 / 0.3), rgb(245 158 11 / 0.4), rgb(251 191 36 / 0.5));
-            box-shadow: 0 0 40px rgb(245 158 11 / 0.4);
-          }
-        }
-        @keyframes spark {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.2); }
-        }
-      `}</style>
+        `}
+      </style>
     </section>
   );
 };

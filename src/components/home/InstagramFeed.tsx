@@ -22,7 +22,7 @@ export const InstagramFeed = () => {
   return (
     <section className="relative w-full pb-12 pt-24 bg-gradient-to-b from-charcoal to-zinc-900">
       {/* Metallic overlay with reduced opacity */}
-      <div className="absolute inset-0 bg-[url('/textures/metal-texture.jpg')] mix-blend-overlay opacity-5 z-0" />
+      <div className="absolute inset-0 bg-[url('/metal-texture.jpg')] mix-blend-overlay opacity-5 z-0" />
       
       <div className="container relative mx-auto px-4 z-10">
         {/* Section Header */}
