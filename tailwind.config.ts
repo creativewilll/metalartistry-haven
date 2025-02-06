@@ -72,6 +72,10 @@ export default {
         nod: {
           '0%, 100%': { transform: 'rotate(0deg)' },
           '50%': { transform: 'rotate(2deg)' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(400%)' }
         }
       },
       animation: {
@@ -82,11 +86,20 @@ export default {
         'pulse-subtle': 'pulse-subtle 3s ease-in-out infinite',
         'ember-pulse': 'ember-pulse 2s ease-in-out infinite',
         nod: 'nod 2s ease-in-out infinite',
+        shimmer: 'shimmer 2s linear infinite',
       },
       colors: {
         // Primary Colors
         'charcoal': '#121212',
         'graphite': '#2E2E2E',
+        'steel': {
+          900: '#1a1a1a',
+          800: '#2d2d2d',
+          700: '#404040',
+          600: '#525252',
+          500: '#666666',
+          400: '#808080'
+        },
         
         // Accent Colors
         'red-hot': '#FF4500',
@@ -143,5 +156,7 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate")
+  ],
 } satisfies Config;

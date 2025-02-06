@@ -3,7 +3,10 @@ export type GalleryItem = {
   category: 'Railings, Fences, and Gates' | 'Custom Furniture' | 'Commercial' | 'Art and Decor' | 'Doors and Windows' | 'Behind the Scenes' | 'Custom Projects';
   title: string;
   description: string;
-  image: string;
+  images: {
+    url: string;
+    alt: string;
+  }[];
   childImages?: {
     url: string;
     alt: string;
@@ -81,7 +84,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Projects',
     title: 'Hand-Forged Iron Privacy Screen',
     description: 'A beautiful custom metal privacy screen, suspended from reclaimed barnwood beams, overlooking the stunning West Grand Traverse Bay',
-    image: '/gallery-images/outdoormetalguardrailfloral1.jpeg',
+    images: [
+      { url: '/gallery-images/outdoormetalguardrailfloral1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/outdoormetalguardrailfloral1-1.jpeg', alt: 'Front view' },
       { url: '/gallery-images/outdoormetalguardrailfloral1-2.jpeg', alt: 'Up-close view' },
@@ -95,7 +100,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Commercial',
     title: 'Bonobo Winery Transformation!',
     description: 'Bonobo Winery in Traverse City, MI gets a full indoor transformation!',
-    image: '/gallery-images/BonoboWinery1.jpeg',
+    images: [
+      { url: '/gallery-images/BonoboWinery1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/BonoboWinery2.jpeg', alt: 'Front view' },
       { url: '/gallery-images/BonoboWinery3.jpeg', alt: 'Custom sliding interior barn doors' }
@@ -106,7 +113,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Commercial',
     title: 'Riverwalk Grill',
     description: 'Riverwalk Grill gets a full renovation to create a modern, industrial dining experience',
-    image: '/gallery-images/RiverwalkGrill4.jpeg',
+    images: [
+      { url: '/gallery-images/RiverwalkGrill4.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/RiverwalkGrill2.jpeg', alt: 'High-end, industrial bar design' },
       { url: '/gallery-images/RiverwalkGrill3.jpeg', alt: 'Hand-forged, custom metal wall decor' },
@@ -123,7 +132,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Commercial',
     title: 'Silver Spruce Brewing co. in Traverse City, MI',
     description: 'Silver Spruce Brewing co. in Traverse City, MI gets a full renovation to create a modern, industrial dining experience',
-    image: '/gallery-images/SilverSpruceBrewingco6.jpeg',
+    images: [
+      { url: '/gallery-images/SilverSpruceBrewingco6.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/SilverSpruceBrewingco2.jpeg', alt: 'Custom bar design, side-view' },
       { url: '/gallery-images/SilverSpruceBrewingco3.jpeg', alt: 'Custom-built railing, bar, and stools' },
@@ -140,7 +151,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Handcrafted Metal Railing',
     description: 'A custom railing solution for a Traverse City homeowner',
-    image: '/gallery-images/metalrailing3-1.jpeg',
+    images: [
+      { url: '/gallery-images/metalrailing3-1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/metalrailing3-2.jpeg', alt: 'Custom safety rails around staircase' },
       { url: '/gallery-images/metalrailing3-3.jpeg', alt: 'Looking up from the first floor' },
@@ -153,7 +166,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Doors and Windows',
     title: 'Hand-Forged, Solid Steel Door',
     description: 'Industrial-style steel door with custom hardware, made-to-fit',
-    image: '/gallery-images/CustomMetalDoor1 2.jpeg',
+    images: [
+      { url: '/gallery-images/CustomMetalDoor1 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/CustomMetalDoor1-1 2.jpeg', alt: 'Installation process' },
       { url: '/gallery-images/CustomMetalDoor1-2 2.jpeg', alt: 'Detail view' }
@@ -165,7 +180,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Furniture',
     title: 'Wood Block Table',
     description: 'A handcrafted, block-style table with custom metal legs and accents',
-    image: '/gallery-images/custom-table-woodblocks1.jpeg',
+    images: [
+      { url: '/gallery-images/custom-table-woodblocks1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/custom-table-woodblocks1-1.jpeg', alt: 'Hand-forged, solid steel legs and accents' }
     ]
@@ -175,7 +192,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Handforged Steel Gate',
     description: 'Custom-crafted masonary-style gate, hand-forged from steel',
-    image: '/gallery-images/CustomGate_MasonaryBricks1 2.jpeg',
+    images: [
+      { url: '/gallery-images/CustomGate_MasonaryBricks1 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/CustomGate_MasonaryBricks2 2.jpeg', alt: 'Custom-built to fit on custom steel brackets' },
       { url: '/gallery-images/CustomGate_MasonaryBricks3 2.jpeg', alt: 'Custom metal gate handle' }
@@ -186,7 +205,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Custom Nature-Themed Steel Gate',
     description: 'A beautiful, handcrafted steel gate built for a driveway',
-    image: '/gallery-images/CustomGate_FloralDesign1-2.jpeg',
+    images: [
+      { url: '/gallery-images/CustomGate_FloralDesign1-2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/CustomGate_FloralDesign1-3.jpeg', alt: 'Custom metal gate handle' },
       { url: '/gallery-images/CustomGate_FloralDesign1-4.jpeg', alt: 'Custom metal gate handle' },
@@ -198,7 +219,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Custom Bear Gate, Hand-Forged from Steel',
     description: 'Custom built driveway gate with an intricate bear design',
-    image: '/gallery-images/CustomGate_Bear1 2.jpeg',
+    images: [
+      { url: '/gallery-images/CustomGate_Bear1 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/CustomGate_Bear1-1 2.jpeg', alt: 'Complete installation build includes posts, gate, and custom hardware boxes' }
     ]
@@ -208,7 +231,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Custom Steel Security Gate and Fencing',
     description: 'Custom-built steel gate and fencing, nature-themed and expertly crafted',
-    image: '/gallery-images/CustomSecurity_NaturesGate1.jpeg',
+    images: [
+      { url: '/gallery-images/CustomSecurity_NaturesGate1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/CustomSecurity_NaturesFence1-3.jpeg', alt: 'Meticulous attention to detail' },
       { url: '/gallery-images/CustomSecurity_NaturesFence1-2.jpeg', alt: 'Secondary view of the fencing' },
@@ -220,7 +245,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Projects',
     title: 'Custom Crafted Stovehood',
     description: 'A beautiful metallic stovehood, an excellent accent to the matching custom countertop!',
-    image: '/gallery-images/CustomStovehood1 2.jpeg',
+    images: [
+      { url: '/gallery-images/CustomStovehood1 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/CustomStovehood1-2 2jpeg', alt: 'Up-close, detailed view of the finished piece' }
     ],
@@ -231,7 +258,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Commercial',
     title: 'Villa Mari Custom Wine Displays',
     description: 'A comprehensive and custom wine storage solution, featuring metal spiraling bottle displays and custom-fitted storage racks',
-    image: '/gallery-images/VillaMari1.jpeg',
+    images: [
+      { url: '/gallery-images/VillaMari1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/VillaMari2.jpeg', alt: 'Side view of the metal spiral wine rack, seamlessly integrated into a barrel display.' },
       { url: '/gallery-images/VillaMari3.jpeg', alt: 'A broader look at the custom-built wine storage, featuring multiple handcrafted racks.' },
@@ -248,7 +277,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Commercial',
     title: 'Union Cantina Metalwork Project 1',
     description: 'A completely hand-forged renovation of Union Cantina in Traverse City, Michigan',
-    image: '/gallery-images/UnionCantina1.jpeg',
+    images: [
+      { url: '/gallery-images/UnionCantina1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/UnionCantina2.jpeg', alt: 'Close-up of the sunburst metal light fixture, radiating warmth and ambiance.' },
       { url: '/gallery-images/UnionCantina3.jpeg', alt: 'A long view of the interior featuring handcrafted metal chairs and rustic wood tables.' },
@@ -264,7 +295,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Furniture',
     title: 'Industrial Steel & Wood Table',
     description: 'A handcrafted steel-reinforced wooden table with a riveted metal edge for a bold industrial touch.',
-    image: '/gallery-images/Custom-Steel-Table2 2.jpeg',
+    images: [
+      { url: '/gallery-images/Custom-Steel-Table2 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [],
     isCategoryImage: false
   },
@@ -273,7 +306,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Furniture',
     title: 'Steel & Wood Bar Stool',
     description: 'A stunning fusion of sleek black steel and beautifully grained wood, designed for both style and durability.',
-    image: '/gallery-images/Custom-SteelandWood-Stool2.jpeg',
+    images: [
+      { url: '/gallery-images/Custom-SteelandWood-Stool2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/Custom-SteelandWood-Stool2-1.jpeg', alt: 'Side view of the handcrafted steel and wood bar stool, highlighting the unique grain pattern.' }
     ],
@@ -284,7 +319,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Art and Decor',
     title: 'Hand-Forged Boat Anchor',
     description: 'A fully functional, hand-forged steel anchor with a rugged, weathered finish for an authentic maritime aesthetic.',
-    image: '/gallery-images/Custom-BoatAnchor.jpeg',
+    images: [
+      { url: '/gallery-images/Custom-BoatAnchor.jpeg', alt: 'Front view' }
+    ],
     childImages: [],
     isCategoryImage: false
   },
@@ -293,7 +330,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Art and Decor',
     title: 'Handcrafted Metal Candle Holder',
     description: 'An elegant wall-mounted candle holder with hand-formed scrolling metal leaves, blending rustic charm with fine craftsmanship.',
-    image: '/gallery-images/Custom-CandleHolder 2.jpeg',
+    images: [
+      { url: '/gallery-images/Custom-CandleHolder 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [],
     isCategoryImage: false
   },
@@ -302,7 +341,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Custom Handrails for Seniors',
     description: 'Expertly crafted metal handrails, blending form and function for enhanced safety without sacrificing aesthetics.',
-    image: '/gallery-images/Custom-Crafted Handrails for seniors1.jpeg',
+    images: [
+      { url: '/gallery-images/Custom-Crafted Handrails for seniors1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/Custom-Crafted Handrails for seniors2.jpeg', alt: 'A wide-angle view showcasing the sturdy, elegant metal handrails along a landscaped path.' },
       { url: '/gallery-images/Custom-Crafted Handrails for seniors2-1.jpeg', alt: 'A closer look at the smooth metal finish and precision welds of the handrail design.' },
@@ -315,7 +356,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Art and Decor',
     title: 'Custom Fire Safety Box',
     description: 'A sleek, modern fire extinguisher cabinet with a bold cutout flame design, adding both style and functionality to safety.',
-    image: '/gallery-images/Custom-FireSafetyBox1 2.jpeg',
+    images: [
+      { url: '/gallery-images/Custom-FireSafetyBox1 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/Custom-FireSafetyBox2 2.jpeg', alt: 'Detailed description of the image' }
     ],
@@ -326,7 +369,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Industrial Indoor Accenting Project',
     description: 'A complete industrial solution including stylish steel supports and railings.',
-    image: '/gallery-images/IndustrialIndoor1.jpeg',
+    images: [
+      { url: '/gallery-images/IndustrialIndoor1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/IndustrialIndoor2.jpeg', alt: 'Secondary view of the project, showcasing the handforged steel rails' },
       { url: '/gallery-images/IndustrialIndoor3.jpeg', alt: 'A third view of the project, highlighting the intricate details of the steel supports' },
@@ -339,7 +384,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Projects',
     title: 'Interior Barn Renovation',
     description: 'A complete renovation including stylish steel supports and railings.',
-    image: '/gallery-images/IndoorBarnBuild-rail1.jpeg',
+    images: [
+      { url: '/gallery-images/IndoorBarnBuild-rail1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/IndoorBarnBuild-rail2.jpeg', alt: 'Secondary view of the project, showcasing the handforged steel rails' },
       { url: '/gallery-images/IndoorBarnBuild-rail3.jpeg', alt: 'A third view of the project, highlighting the intricate details of the steel supports' },
@@ -355,7 +402,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Projects',
     title: 'Custom Steel Fireplace',
     description: 'A hand-crafted, masterful steel fireplace cover for an industrial touch of style in this Suttons Point home.',
-    image: '/gallery-images/CustomSteelFireplace1.jpeg',
+    images: [
+      { url: '/gallery-images/CustomSteelFireplace1.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/CustomSteelFireplace1-2.jpeg', alt: 'A closer look at the smooth metal finish and precision welds of the handrail design.' },
       { url: '/gallery-images/CustomSteelFireplace1-3.jpeg', alt: 'A second-story view of the handcrafted steel fireplace, showcasing the intricate detailing and elegant curves.' },
@@ -369,7 +418,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Railings, Fences, and Gates',
     title: 'Wrought Iron Vineyard Gate',
     description: 'A handcrafted vineyard-inspired metal gate, adorned with intricate grapevine details and elegant curves.',
-    image: '/gallery-images/CustomMetalGate1 2.jpeg',
+    images: [
+      { url: '/gallery-images/CustomMetalGate1 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
       { url: '/gallery-images/CustomMetalGate1-1 2.jpeg', alt: 'Alternate view of the vineyard gate, highlighting detailed metalwork and scenic backdrop.' }
     ],
@@ -380,7 +431,9 @@ export const galleryItems: GalleryItem[] = [
     category: 'Custom Furniture',
     title: 'Live Edge Bench',
     description: 'A handcrafted live-edge wood bench with custom-forged metal legs, combining rustic charm with industrial strength.',
-    image: '/gallery-images/CustomBench1 2.jpeg',
+    images: [
+      { url: '/gallery-images/CustomBench1 2.jpeg', alt: 'Front view' }
+    ],
     childImages: [
         { url: '/gallery-images/CustomBench1-1 2.jpeg', alt: 'Close-up of the custom metal legs, showcasing hand-forged details and polished mounting plates.' }
       ],
@@ -391,7 +444,9 @@ export const galleryItems: GalleryItem[] = [
       category: 'Custom Furniture',
       title: 'Polished Bronze Bar Tops',
       description: 'Luxurious handcrafted bronze bar tops, meticulously polished for a sleek and reflective finish.',
-      image: '/gallery-images/CustomBronzeBartops1 2.jpeg',
+      images: [
+        { url: '/gallery-images/CustomBronzeBartops1 2.jpeg', alt: 'Front view' }
+      ],
       isCategoryImage: false
     },
     {
@@ -399,7 +454,9 @@ export const galleryItems: GalleryItem[] = [
       category: 'Commercial',
       title: 'High-Five Spirits Bar',
       description: 'Complete interior bar redesign at High-Five Spirits in Traverse City, Michigan',
-      image: '/gallery-images/HighFiveSpirits7.jpeg',
+      images: [
+        { url: '/gallery-images/HighFiveSpirits7.jpeg', alt: 'Front view' }
+      ],
       childImages: [
         { url: '/gallery-images/HighFiveSpirits3.jpeg', alt: 'Alternate view of the interior, showcasing the custom metal work and rustic wood tables.' },
         { url: '/gallery-images/HighFiveSpirits4.jpeg', alt: 'Close-up of the custom metal chairs, adding both comfort and elegance to the space.' },
@@ -415,7 +472,9 @@ export const galleryItems: GalleryItem[] = [
       category: 'Commercial',
       title: 'Gypsy Farms Renovation',
       description: 'Full Interior Design and Renovation at Gypsy Farms in Petoskey, Michigan',
-      image: '/gallery-images/GypsyFarms_CustomBarBuild7 2.jpeg',
+      images: [
+        { url: '/gallery-images/GypsyFarms_CustomBarBuild7 2.jpeg', alt: 'Front view' }
+      ],
       childImages: [
         { url: '/gallery-images/GypsyFarms_CustomBarBuild3.jpeg', alt: 'Alternate view of the interior, showcasing the custom metal work and rustic wood tables.' },
         { url: '/gallery-images/GypsyFarms_CustomBarBuild2.jpeg', alt: 'Close-up of the custom metal chairs, adding both comfort and elegance to the space.' },
@@ -433,7 +492,9 @@ export const galleryItems: GalleryItem[] = [
       category: 'Custom Furniture',
       title: 'Industrial Steel Kitchen Countertop',
       description: 'A bold steel kitchen countertop with a rugged industrial edge, seamlessly integrated into a rustic-modern space.',
-      image: '/gallery-images/CustomIndoor-CounterTop 2.jpeg',
+      images: [
+        { url: '/gallery-images/CustomIndoor-CounterTop 2.jpeg', alt: 'Front view' }
+      ],
       isCategoryImage: false
     },
     {
@@ -441,7 +502,9 @@ export const galleryItems: GalleryItem[] = [
       category: 'Custom Projects',
       title: 'Modern Steel Fireplace Surround',
       description: 'A sleek steel fireplace surround, blending contemporary aesthetics with industrial strength in a modern home setting.',
-      image: '/gallery-images/CustomIndoor-SteelFireplace1 2.jpeg',
+      images: [
+        { url: '/gallery-images/CustomIndoor-SteelFireplace1 2.jpeg', alt: 'Front view' }
+      ],
       childImages: [
         { url: '/gallery-images/CustomIndoor-SteelFireplace2 2.jpeg', alt: 'Alternate angle of the steel fireplace surround, showcasing its towering structure and seamless finish.' }
       ],
@@ -452,7 +515,9 @@ export const galleryItems: GalleryItem[] = [
       category: 'Railings, Fences, and Gates',
       title: 'Handcrafted Metal Stair Railing',
       description: 'A meticulously crafted wrought iron stair railing featuring elegant scrollwork and twisted balusters.',
-      image: '/gallery-images/CustomIndoorRailing1 2.jpeg',
+      images: [
+        { url: '/gallery-images/CustomIndoorRailing1 2.jpeg', alt: 'Front view' }
+      ],
       childImages: [
         { url: '/gallery-images/CustomIndoorRailing1-2.jpeg', alt: 'Another angle of the decorative metal stair railing, emphasizing intricate details and craftsmanship.' },
         { url: '/gallery-images/CustomIndoorRailing1-3.jpeg', alt: 'Close-up of the custom metal handrail, highlighting smooth curves and secure mounting points.' }
@@ -464,7 +529,9 @@ export const galleryItems: GalleryItem[] = [
       category: 'Custom Furniture',
       title: 'Minimalist Floating Metal Shelves',
       description: 'Sleek and modern floating metal shelves with a rounded frame, seamlessly integrated into the wall for a contemporary aesthetic.',
-      image: '/gallery-images/CustomIndoorShelving 2.jpeg',
+      images: [
+        { url: '/gallery-images/CustomIndoorShelving 2.jpeg', alt: 'Front view' }
+      ],
       isCategoryImage: false
     },
 ];

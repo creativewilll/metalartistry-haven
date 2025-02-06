@@ -1,114 +1,61 @@
 // Import necessary dependencies and components
-import { useState, useEffect, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
-import { CategoryFilter } from '@/components/gallery/CategoryFilter';
+import { useMemo } from 'react';
 import { GalleryGrid } from '@/components/gallery/GalleryGrid';
-import { ProcessSection } from '@/components/gallery/ProcessSection';
-import { galleryItems, categories } from '@/data/gallery-items';
+import { galleryItems } from '@/data/gallery-items';
 import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Home } from "lucide-react";
 
 /**
  * Discover Page Component
  * 
- * Main gallery page that displays all metalwork items with category filtering
- * and smooth transitions. Features a responsive layout with a sticky category
- * filter and masonry grid display.
+ * Displays a full-screen gallery grid with infinite scrolling columns
+ * and a background logo with floating home button.
  */
 const Discover = () => {
-  // URL parameter handling for direct category access
-  const [searchParams] = useSearchParams();
-  const categoryParam = searchParams.get('category');
-  const [activeCategory, setActiveCategory] = useState(categoryParam || 'All');
-
-  // Update active category when URL parameter changes
-  useEffect(() => {
-    if (categoryParam) {
-      setActiveCategory(categoryParam);
-    }
-  }, [categoryParam]);
-
-  // Calculate and memoize item counts for each category
-  const itemCounts = useMemo(() => {
-    const counts: { [key: string]: number } = {
-      'All': galleryItems.length
-    };
-    
-    categories.forEach(category => {
-      if (category !== 'All') {
-        counts[category] = galleryItems.filter(item => item.category === category).length;
-      }
-    });
-    
-    return counts;
-  }, []);
-
-  // Filter items based on active category
-  const filteredItems = useMemo(() => 
-    activeCategory === 'All' 
-      ? galleryItems 
-      : galleryItems.filter(item => item.category === activeCategory),
-    [activeCategory]
-  );
+  // No filtering, show all items
+  const items = useMemo(() => galleryItems, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-charcoal/80 to-charcoal/60">
-      {/* Header Section with animated entrance */}
-      <div className="bg-surface/50">
-        <div className="max-w-7xl mx-auto px-4 py-16 md:py-20">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative">
-              <h1 className="text-4xl md:text-6xl font-bold text-center mb-6 bg-clip-text text-transparent bg-metal-gradient animate-ember-pulse relative z-10 py-2">
-                Discover Our Craft
-              </h1>
-              {/* Remove all background effects */}
-              <div aria-hidden="true" />
-              <div aria-hidden="true" />
-            </div>
-            <p className="text-xl text-center text-text-body max-w-3xl mx-auto">
-            From custom indoor furniture to commercial installations, explore my extensive collection of precision-crafted, highly-personalized metalworking projects.
-              
-            </p>
-          </motion.div>
-        </div>
+    <>
+      {/* Background Logo */}
+      <div className="fixed top-8 left-8 z-0">
+        <img 
+          src="/MattCoffeyDesignLOGO.jpg" 
+          alt="Matt Coffey Design" 
+          className="w-40 h-auto opacity-30 brightness-[2] contrast-[1.2]"
+        />
       </div>
 
-      {/* Category Filter Section with fade-in animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.2 }}
-        className="border-b border-accent-secondary/20"
+      {/* Floating Home Button */}
+      <motion.div 
+        className="fixed top-[140px] left-8 z-50"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <CategoryFilter 
-          activeCategory={activeCategory} 
-          onCategoryChange={setActiveCategory}
-          itemCount={itemCounts}
-        />
+        <motion.div
+          whileHover={{ scale: 1.02, x: -2 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          <Link to="/">
+            <Button 
+              variant="outline" 
+              className="bg-zinc-900/90 backdrop-blur-sm border-zinc-800 hover:bg-zinc-800/90 text-zinc-200 flex items-center gap-2 pl-3 pr-4 text-sm font-light"
+            >
+              <Home className="h-4 w-4" />
+              <span>Back to Home</span>
+            </Button>
+          </Link>
+        </motion.div>
       </motion.div>
-      
-      {/* Gallery Grid Section with fade-in animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.3 }}
-      >
-        <GalleryGrid items={filteredItems} />
-      </motion.div>
-      
-      {/* Process Section with fade-in animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.3, delay: 0.4 }}
-        className="bg-surface/50 border-t border-accent-secondary/20"
-      >
-        <ProcessSection />
-      </motion.div>
-    </div>
+
+      {/* Gallery Grid */}
+      <div className="h-screen w-screen overflow-hidden bg-charcoal">
+        <GalleryGrid items={items} />
+      </div>
+    </>
   );
 };
 
