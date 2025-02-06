@@ -129,8 +129,8 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
                 style={{
                   // Use the new downward animation for the middle column
                   animation: columnIndex === 1
-                    ? `infiniteScrollDown ${40 / scrollSpeed}s linear infinite`
-                    : `infiniteScroll ${40 / scrollSpeed}s linear infinite`,
+                  ? `infiniteScrollDown ${(40 / scrollSpeed) * 1.3}s linear infinite`
+                  : `infiniteScroll ${(40 / scrollSpeed) * 1.3}s linear infinite`,
                   animationPlayState: pausedColumns[columnIndex] ? 'paused' : 'running',
                   willChange: 'transform',
                   transform: 'translateZ(0)',
