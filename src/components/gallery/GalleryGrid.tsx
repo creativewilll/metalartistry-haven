@@ -3,30 +3,166 @@ import { motion } from "framer-motion";
 import { DetailView } from "./DetailView";
 import { GalleryItem } from "@/data/gallery-items";
 
-// -------------------------
-// Constants for spacing and card size
-// -------------------------
-// Spacing configuration (in pixels)
+/* =========================
+   SequentialLazyImage Component
+   ========================= */
+interface SequentialLazyImageProps {
+  src: string;
+  alt: string;
+  forceLoad: boolean;
+  onLoaded: () => void;
+  className?: string;
+  style?: React.CSSProperties;
+  onClick?: () => void;
+}
+
+const SequentialLazyImage = ({
+  src,
+  alt,
+  forceLoad,
+  onLoaded,
+  className,
+  style,
+  onClick,
+}: SequentialLazyImageProps) => {
+  const mergedStyle = { ...style, pointerEvents: "auto" };
+
+  return forceLoad ? (
+    <motion.img
+      src={src}
+      alt={alt}
+      className={className}
+      style={mergedStyle}
+      onLoad={onLoaded}
+      onClick={onClick}
+      loading="lazy"
+    />
+  ) : (
+    <div className={className} style={mergedStyle} onClick={onClick} />
+  );
+};
+
+/* =========================
+   SequentialColumn Component
+   ========================= */
+interface SequentialColumnProps {
+  items: GalleryItem[];
+  cardWidth: number;
+  onImageClick: (item: GalleryItem) => void;
+  deviceType: "mobile" | "tablet" | "desktop";
+  /** If true, iterate the items in reverse order so that images load from the top */
+  reverse?: boolean;
+  /** If true, force load every image in this column (bypassing lazy loading) */
+  forceLoadAll?: boolean;
+}
+
+const SequentialColumn = ({
+  items,
+  cardWidth,
+  onImageClick,
+  deviceType,
+  reverse = false,
+  forceLoadAll = false,
+}: SequentialColumnProps) => {
+  // If reverse is true, create a reversed copy of the items.
+  const orderedItems = reverse ? [...items].reverse() : items;
+
+  // For normal mode, track the highest loaded index (starting at 0).
+  // For reverse mode, track the lowest loaded index (starting at the last index).
+  const [maxLoadedIndex, setMaxLoadedIndex] = useState(0);
+  const [minLoadedIndex, setMinLoadedIndex] = useState(orderedItems.length - 1);
+
+  return (
+    <>
+      {orderedItems.map((item, index) => {
+        // When forceLoadAll is true, always load the image.
+        const forceLoad = forceLoadAll
+          ? true
+          : !reverse
+          ? index <= maxLoadedIndex + 2
+          : index >= minLoadedIndex - 2;
+
+        // Compute the alternating horizontal offset (desktop only).
+        const alternatingTransform =
+          deviceType === "desktop"
+            ? !reverse
+              ? index % 2 === 0
+                ? "translateX(-20px)"
+                : "translateX(20px)"
+              : index % 2 === 0
+              ? "translateX(20px)"
+              : "translateX(-20px)"
+            : "none";
+
+        return (
+          <motion.div
+            key={`${item.id}-${index}`}
+            className="w-full flex justify-center"
+            style={{ transform: alternatingTransform }}
+          >
+            <div
+              className="relative group cursor-pointer overflow-hidden rounded-lg"
+              style={{ width: `${cardWidth}px` }}
+            >
+              {/* 3:2 Aspect Ratio Container */}
+              <div style={{ position: "relative", width: "100%", paddingTop: "66.67%" }}>
+                <SequentialLazyImage
+                  src={item.images[0].url}
+                  alt={item.title}
+                  className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                  forceLoad={forceLoad}
+                  onLoaded={() => {
+                    if (!reverse) {
+                      setMaxLoadedIndex((current) => Math.max(current, index));
+                    } else {
+                      setMinLoadedIndex((current) => Math.min(current, index));
+                    }
+                  }}
+                  onClick={() => onImageClick(item)}
+                />
+              </div>
+              {/* Overlays with pointerEvents disabled so clicks pass through */}
+              <div
+                className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-lg"
+                style={{ pointerEvents: "none" }}
+              />
+              <div
+                className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-b-lg"
+                style={{ pointerEvents: "none" }}
+              >
+                <h3 className="text-white text-sm font-light leading-tight">{item.title}</h3>
+                {item.childImages && (
+                  <div className="text-white/70 text-xs mt-1">
+                    +{item.childImages.length} more images
+                  </div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        );
+      })}
+    </>
+  );
+};
+
+/* =========================
+   GalleryGrid Component
+   ========================= */
 const cardSpacing = {
   horizontal: 24, // spacing between columns
-  vertical: 80    // spacing between images in each column
+  vertical: 80,   // spacing between images in each column
 };
-const cardWidth = 400;  // fixed width for each card; height will be 2/3 of this (~267px)
+const cardWidth = 400; // fixed card width (3:2 aspect ratio implies ~267px height)
 
-// -------------------------
-// Animation Keyframes (only vertical animations are needed)
-// -------------------------
-const animations = `
+const animationsCSS = `
   @keyframes infiniteScroll {
     0% { transform: translate3d(0, 0, 0); }
     100% { transform: translate3d(0, calc(-50% + 1px), 0); }
   }
-
   @keyframes infiniteScrollDown {
     0% { transform: translate3d(0, calc(-50% + 1px), 0); }
     100% { transform: translate3d(0, 0, 0); }
   }
-  
   @keyframes gradientFlow {
     0% { background-position: 0% 0%; }
     25% { background-position: 100% 0%; }
@@ -37,13 +173,10 @@ const animations = `
 `;
 if (typeof document !== "undefined") {
   const style = document.createElement("style");
-  style.textContent = animations;
+  style.textContent = animationsCSS;
   document.head.appendChild(style);
 }
 
-// -------------------------
-// Helper functions for device detection and configuration
-// -------------------------
 const getDeviceType = (): "mobile" | "tablet" | "desktop" => {
   if (typeof window === "undefined") return "desktop";
   if (window.innerWidth < 768) return "mobile";
@@ -52,18 +185,14 @@ const getDeviceType = (): "mobile" | "tablet" | "desktop" => {
 };
 
 const getNumColumns = (device: "mobile" | "tablet" | "desktop") => {
-  // For mobile and tablet, we want 2 columns; for desktop, 3.
+  // Mobile and tablet use 2 columns; desktop uses 3.
   return device === "desktop" ? 3 : 2;
 };
 
 const getScrollSpeed = (device: "mobile" | "tablet" | "desktop") => {
-  // Slightly faster scrolling on mobile/tablet.
   return device === "desktop" ? 1.5 : 1;
 };
 
-/**
- * GalleryGrid Component
- */
 export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [deviceType, setDeviceType] = useState<"mobile" | "tablet" | "desktop">(getDeviceType());
@@ -72,7 +201,6 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   // Manage pause state per column
   const [pausedColumns, setPausedColumns] = useState<{ [key: number]: boolean }>({});
 
-  // Update device type and related values on resize.
   const handleResize = useCallback(() => {
     const newDevice = getDeviceType();
     setDeviceType(newDevice);
@@ -95,35 +223,38 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, [handleResize, numColumns]);
 
-  // Evenly distribute items into columns and duplicate them for seamless infinite scroll.
+  // Prepare duplicated columns for seamless infinite scroll.
   const columns = useMemo(() => {
-    const cols: GalleryItem[][] = Array(numColumns).fill(null).map(() => []);
+    const cols: GalleryItem[][] = Array(numColumns)
+      .fill(null)
+      .map(() => []);
     items.forEach((item, index) => {
       const colIndex = index % numColumns;
       cols[colIndex].push(item);
     });
+    // Duplicate each column for seamless scrolling.
     return cols.map((col) => [...col, ...col]);
   }, [items, numColumns]);
 
-  // Background style for the gallery.
   const backgroundStyle = {
     background: `
-      radial-gradient(circle at 30% 30%, rgba(176, 196, 222, 0.08), transparent 45%),
-      radial-gradient(circle at 70% 70%, rgba(205, 127, 50, 0.08), transparent 45%),
-      radial-gradient(circle at 50% 50%, rgba(144, 175, 144, 0.06), transparent 55%),
+      radial-gradient(circle at 30% 30%, rgba(176,196,222,0.08), transparent 45%),
+      radial-gradient(circle at 70% 70%, rgba(205,127,50,0.08), transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(144,175,144,0.06), transparent 55%),
       linear-gradient(135deg,
-        rgba(20, 20, 20, 0.99),
-        rgba(176, 196, 222, 0.25),
-        rgba(119, 136, 153, 0.2),
-        rgba(205, 127, 50, 0.25),
-        rgba(144, 175, 144, 0.25),
-        rgba(119, 136, 153, 0.2)
+        rgba(20,20,20,0.99),
+        rgba(176,196,222,0.25),
+        rgba(119,136,153,0.2),
+        rgba(205,127,50,0.25),
+        rgba(144,175,144,0.25),
+        rgba(119,136,153,0.2)
       )
     `,
     backgroundSize: "500% 500%",
     animation: "gradientFlow 40s cubic-bezier(0.4, 0, 0.2, 1) infinite",
   };
 
+  // All devices now use vertical scrolling columns.
   return (
     <>
       <div className="w-full h-screen overflow-hidden" style={backgroundStyle}>
@@ -135,89 +266,53 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
             padding: "16px",
           }}
         >
-          {columns.map((column, colIndex) => (
-            <div
-              key={colIndex}
-              className="relative overflow-hidden h-full"
-              onMouseEnter={() =>
-                setPausedColumns((prev) => ({ ...prev, [colIndex]: true }))
-              }
-              onMouseLeave={() =>
-                setPausedColumns((prev) => ({ ...prev, [colIndex]: false }))
-              }
-            >
+          {columns.map((column, colIndex) => {
+            // On desktop, force load and reverse the middle column (index 1)
+            const reverse = deviceType === "desktop" && colIndex === 1;
+            return (
               <div
-                className="flex flex-col items-center absolute top-0 left-0 right-0"
-                style={{
-                  minHeight: "100vh",
-                  transformOrigin: "50% 0%",
-                  gap: `${cardSpacing.vertical}px`,
-                  // On desktop, alternate the scroll direction on the middle column.
-                  animation:
-                    deviceType === "desktop" && colIndex === 1
-                      ? `infiniteScrollDown ${60 / scrollSpeed}s linear infinite`
-                      : `infiniteScroll ${60 / scrollSpeed}s linear infinite`,
-                  animationPlayState: pausedColumns[colIndex] ? "paused" : "running",
-                  willChange: "transform",
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                }}
+                key={colIndex}
+                className="relative overflow-hidden h-full"
+                onMouseEnter={() =>
+                  setPausedColumns((prev) => ({ ...prev, [colIndex]: true }))
+                }
+                onMouseLeave={() =>
+                  setPausedColumns((prev) => ({ ...prev, [colIndex]: false }))
+                }
               >
-                {column.map((item, itemIndex) => (
-                  <motion.div
-                    key={`${item.id}-${itemIndex}`}
-                    className="w-full flex justify-center"
-                    onClick={() => setSelectedItem(item)}
-                    whileHover={{ scale: 1.2, zIndex: 10 }}
-                    style={{
-                      transform:
-                        deviceType === "desktop" && colIndex === 1
-                          ? `translateX(${itemIndex % 2 === 0 ? "-20px" : "20px"})`
-                          : "none",
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 300,
-                      damping: 20,
-                    }}
-                  >
-                    <div
-                      className="relative group cursor-pointer overflow-hidden rounded-lg"
-                      style={{ width: `${cardWidth}px` }}
-                    >
-                      <div
-                        style={{
-                          position: "relative",
-                          width: "100%",
-                          paddingTop: "66.67%",
-                        }}
-                      >
-                        <motion.img
-                          src={item.images[0].url}
-                          alt={item.title}
-                          className="absolute inset-0 w-full h-full object-cover rounded-lg"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-lg" />
-                      <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-b-lg">
-                        <h3 className="text-white text-sm font-light leading-tight">
-                          {item.title}
-                        </h3>
-                        {item.childImages && (
-                          <div className="text-white/70 text-xs mt-1">
-                            +{item.childImages.length} more images
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
+                <div
+                  className="flex flex-col items-center absolute top-0 left-0 right-0"
+                  style={{
+                    minHeight: "100vh",
+                    transformOrigin: "50% 0%",
+                    gap: `${cardSpacing.vertical}px`,
+                    animation:
+                      deviceType === "desktop" && colIndex === 1
+                        ? `infiniteScrollDown ${60 / scrollSpeed}s linear infinite`
+                        : `infiniteScroll ${60 / scrollSpeed}s linear infinite`,
+                    animationPlayState: pausedColumns[colIndex] ? "paused" : "running",
+                    willChange: "transform",
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
+                    transform: "translate3d(0, 0, 0)",
+                  }}
+                >
+                  <SequentialColumn
+                    items={column}
+                    cardWidth={cardWidth}
+                    onImageClick={setSelectedItem}
+                    deviceType={deviceType}
+                    reverse={reverse}
+                    // Only force load the middle column on desktop
+                    forceLoadAll={deviceType === "desktop" && colIndex === 1}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
+
       {selectedItem && (
         <DetailView item={selectedItem} onClose={() => setSelectedItem(null)} />
       )}
