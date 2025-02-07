@@ -9,31 +9,21 @@ import { DetailView } from './DetailView';
 // Add keyframe animations
 const animations = `
   @keyframes infiniteScroll {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(0, calc(-50% + 1px), 0); }
   }
 
   @keyframes infiniteScrollDown {
-    0% { transform: translateY(-50%); }
-    100% { transform: translateY(0); }
+    0% { transform: translate3d(0, calc(-50% + 1px), 0); }
+    100% { transform: translate3d(0, 0, 0); }
   }
 
   @keyframes gradientFlow {
-    0% {
-      background-position: 0% 0%;
-    }
-    25% {
-      background-position: 100% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    75% {
-      background-position: 0% 100%;
-    }
-    100% {
-      background-position: 0% 0%;
-    }
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
   }
 `;
 
@@ -60,14 +50,14 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   const [pausedColumns, setPausedColumns] = useState<{ [key: number]: boolean }>({});
   // Dynamic scroll speed based on viewport
   const [scrollSpeed, setScrollSpeed] = useState(() => 
-    typeof window !== 'undefined' && window.innerWidth < 768 ? 0.75 : 1
+    typeof window !== 'undefined' && window.innerWidth < 768 ? 1.5 : 1
   );
 
   // Update scroll speed and columns on resize
   const handleResize = useCallback(() => {
     const newNumColumns = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
     setNumColumns(newNumColumns);
-    setScrollSpeed(window.innerWidth < 768 ? 0.75 : 0.5);
+    setScrollSpeed(window.innerWidth < 768 ? 1.5 : 1);
     
     // Reset paused columns state with the new number of columns
     const newPausedColumns: { [key: number]: boolean } = {};
@@ -188,15 +178,19 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
               onMouseLeave={() => setPausedColumns(prev => ({ ...prev, [columnIndex]: false }))}
             >
               <div
-                className="flex flex-col items-center space-y-6 md:space-y-[100px]"
+                className="flex flex-col items-center space-y-6 md:space-y-[100px] absolute top-0 left-0 right-0"
                 style={{
-                  // Use the new downward animation for the middle column
+                  minHeight: '200%',
+                  transformOrigin: '50% 0%',
                   animation: columnIndex === 1
-                  ? `infiniteScrollDown ${(40 / scrollSpeed) * 1.3}s linear infinite`
-                  : `infiniteScroll ${(40 / scrollSpeed) * 1.3}s linear infinite`,
+                    ? `infiniteScrollDown ${60 / scrollSpeed}s linear infinite`
+                    : `infiniteScroll ${60 / scrollSpeed}s linear infinite`,
                   animationPlayState: pausedColumns[columnIndex] ? 'paused' : 'running',
                   willChange: 'transform',
-                  transform: 'translateZ(0)',
+                  backfaceVisibility: 'hidden',
+                  WebkitBackfaceVisibility: 'hidden',
+                  transform: 'translate3d(0, 0, 0)',
+                  WebkitTransform: 'translate3d(0, 0, 0)',
                 }}
               >
                 {column.map((item, itemIndex) => (
@@ -206,7 +200,9 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
                     onClick={() => setSelectedItem(item)}
                     whileHover={{ scale: 1.2, zIndex: 10 }}
                     style={{
-                      transform: `translateX(${itemIndex % 2 === 0 ? '-20px' : '20px'})`
+                      transform: typeof window !== 'undefined' && window.innerWidth >= 768 
+                        ? `translateX(${itemIndex % 2 === 0 ? '-20px' : '20px'})` 
+                        : 'none'
                     }}
                     transition={{ 
                       type: "spring",
