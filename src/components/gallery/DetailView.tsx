@@ -60,7 +60,7 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
           {/* Left side - Image display */}
           <div className={cn(
             "w-full flex flex-col lg:border-r border-white/10",
-            isMobile ? "h-[75vh] p-0" : "lg:w-2/3 h-[50vh] lg:h-full p-3 lg:p-4"
+            isMobile ? "h-[60vh] p-0" : "lg:w-2/3 h-[50vh] lg:h-full p-3 lg:p-4"
           )}>
             {/* Main image container */}
             <div 
@@ -162,7 +162,7 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
           {/* Right side - Details display */}
           <div className={cn(
             "w-full overflow-y-auto",
-            isMobile ? "h-[25vh] p-4" : "lg:w-1/3 h-[40vh] lg:h-full p-4 lg:p-6"
+            isMobile ? "h-[40vh] p-4" : "lg:w-1/3 h-[40vh] lg:h-full p-4 lg:p-6"
           )}>
             {/* Close button */}
             <button
