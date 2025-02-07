@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { GalleryItem } from '@/data/gallery-items';
@@ -25,8 +25,22 @@ interface DetailViewProps {
 export const DetailView = ({ item, onClose }: DetailViewProps) => {
   // Track the currently selected image index
   const [selectedIndex, setSelectedIndex] = useState(0);
-  // Track fullscreen state
+  // Track fullscreen state and device type
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  // Touch gesture handling
+  const touchStart = useRef<number | null>(null);
+  
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   // Combine main images and child images for the gallery
   const allImages = [...item.images, ...(item.childImages || [])];
@@ -38,12 +52,43 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
       {/* Main container with metallic theme */}
-      <div className="w-[95vw] h-[90vh] bg-gradient-to-br from-slate-700 via-zinc-700 to-stone-700 rounded-lg overflow-hidden border border-white/10">
+      <div className={cn(
+        "bg-gradient-to-br from-slate-700 via-zinc-700 to-stone-700 overflow-hidden border border-white/10",
+        isMobile ? "w-full h-full" : "w-[95vw] h-[90vh] rounded-lg"
+      )}>
         <div className="flex flex-col lg:flex-row h-full">
           {/* Left side - Image display */}
-          <div className="w-full lg:w-2/3 h-[50vh] lg:h-full flex flex-col p-3 lg:p-4 lg:border-r border-white/10">
+          <div className={cn(
+            "w-full flex flex-col lg:border-r border-white/10",
+            isMobile ? "h-[75vh] p-0" : "lg:w-2/3 h-[50vh] lg:h-full p-3 lg:p-4"
+          )}>
             {/* Main image container */}
-            <div className="relative flex-grow bg-black/20 rounded-lg overflow-hidden">
+            <div 
+              className={cn(
+                "relative flex-grow bg-black/20 overflow-hidden",
+                !isMobile && "rounded-lg"
+              )}
+              onTouchStart={(e) => {
+                const touch = e.touches[0];
+                touchStart.current = touch.clientX;
+              }}
+              onTouchMove={(e) => {
+                if (!touchStart.current) return;
+                const touch = e.touches[0];
+                const diff = touchStart.current - touch.clientX;
+                if (Math.abs(diff) > 50) {
+                  if (diff > 0) {
+                    nextImage();
+                  } else {
+                    prevImage();
+                  }
+                  touchStart.current = null;
+                }
+              }}
+              onTouchEnd={() => {
+                touchStart.current = null;
+              }}
+            >
               <AnimatePresence mode="wait">
                 <motion.img
                   key={selectedIndex}
@@ -57,32 +102,43 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
                 />
               </AnimatePresence>
               
-              {/* Navigation buttons */}
+              {/* Navigation buttons - larger on mobile */}
               <button
                 onClick={prevImage}
-                className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
+                className={cn(
+                  "absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80",
+                  isMobile ? "p-4" : "lg:left-4"
+                )}
               >
-                <ChevronLeft className="w-5 lg:w-6 h-5 lg:h-6" />
+                <ChevronLeft className={cn("w-6 h-6", isMobile && "w-8 h-8")} />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
+                className={cn(
+                  "absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80",
+                  isMobile ? "p-4" : "lg:right-4"
+                )}
               >
-                <ChevronRight className="w-5 lg:w-6 h-5 lg:h-6" />
+                <ChevronRight className={cn("w-6 h-6", isMobile && "w-8 h-8")} />
               </button>
               
-              {/* Fullscreen button */}
-              <button
-                onClick={() => setIsFullscreen(true)}
-                className="absolute top-2 lg:top-4 right-2 lg:right-4 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
-                aria-label="View fullscreen"
-              >
-                <Maximize2 className="w-5 lg:w-6 h-5 lg:h-6" />
-              </button>
+              {/* Fullscreen button - hidden on mobile */}
+              {!isMobile && (
+                <button
+                  onClick={() => setIsFullscreen(true)}
+                  className="absolute top-2 lg:top-4 right-2 lg:right-4 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
+                  aria-label="View fullscreen"
+                >
+                  <Maximize2 className="w-5 lg:w-6 h-5 lg:h-6" />
+                </button>
+              )}
             </div>
             
-            {/* Thumbnail gallery */}
-            <div className="h-20 lg:h-24 mt-3 lg:mt-4 flex gap-2 overflow-x-auto">
+            {/* Thumbnail gallery - scrollable on mobile */}
+            <div className={cn(
+              "flex gap-2 overflow-x-auto",
+              isMobile ? "h-24 mt-2 px-2" : "h-20 lg:h-24 mt-3 lg:mt-4"
+            )}>
               {allImages.map((image, index) => (
                 <button
                   key={index}
@@ -104,11 +160,17 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
           </div>
           
           {/* Right side - Details display */}
-          <div className="w-full lg:w-1/3 h-[40vh] lg:h-full p-4 lg:p-6 overflow-y-auto">
+          <div className={cn(
+            "w-full overflow-y-auto",
+            isMobile ? "h-[25vh] p-4" : "lg:w-1/3 h-[40vh] lg:h-full p-4 lg:p-6"
+          )}>
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-2 right-2 lg:top-4 lg:right-4 w-8 h-8 flex items-center justify-center rounded-full bg-black/20 text-white/80 hover:text-white hover:bg-black/30 text-xl"
+              className={cn(
+                "absolute w-8 h-8 flex items-center justify-center rounded-full bg-black/20 text-white/80 hover:text-white hover:bg-black/30 text-xl",
+                isMobile ? "top-2 right-2" : "top-4 right-4"
+              )}
             >
               ×
             </button>
@@ -136,8 +198,8 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
         </div>
       </div>
       
-      {/* Fullscreen view */}
-      {isFullscreen && (
+      {/* Fullscreen view - conditional rendering based on device type */}
+      {isFullscreen && !isMobile && (
         <FullscreenView
           images={allImages}
           initialIndex={selectedIndex}

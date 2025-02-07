@@ -10,6 +10,7 @@ import { PageTransition } from "./components/PageTransition";
 const Index = lazy(() => import("./pages/Index"));
 const Discover = lazy(() => import("./pages/Discover"));
 const Contact = lazy(() => import("./pages/Contact"));
+const NotFound = lazy(() => import("./pages/404"));
 
 const AppContent = () => {
   const location = useLocation();
@@ -30,6 +31,7 @@ const AppContent = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/discover" element={<Discover />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </PageTransition>
           </AnimatePresence>
