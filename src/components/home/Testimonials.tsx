@@ -58,7 +58,7 @@ export const Testimonials = () => {
       {/* Marquee container */}
       <div className="relative">
         {/* First marquee - moving left */}
-        <div className="marquee-container mb-8">
+        <div className="marquee-container mb-4 md:mb-6 lg:mb-8">
           <div className="marquee-content">
             {[...testimonials.slice(0, 3), ...testimonials.slice(0, 3)].map((testimonial, index) => (
               <div 
@@ -66,9 +66,9 @@ export const Testimonials = () => {
                 className="testimonial-card group relative hover:z-10"
               >
                 <div className="testimonial-content">
-                  <p className="text-white mb-6 text-xl font-normal tracking-wide" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>"{testimonial.text}"</p>
+                  <p className="text-white mb-6 text-base md:text-lg lg:text-xl font-normal tracking-wide" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>"{testimonial.text}"</p>
                   <div>
-                    <p className="font-bold text-white text-lg tracking-wide" style={{ textShadow: '0 0 8px rgba(255,255,255,0.25)' }}>{testimonial.author}</p>
+                    <p className="font-bold text-white text-base md:text-lg tracking-wide" style={{ textShadow: '0 0 8px rgba(255,255,255,0.25)' }}>{testimonial.author}</p>
                     <p className="text-red-hot font-semibold tracking-wide">{testimonial.role}</p>
                   </div>
                 </div>
@@ -94,9 +94,9 @@ export const Testimonials = () => {
                 className="testimonial-card group relative hover:z-10"
               >
                 <div className="testimonial-content">
-                  <p className="text-white mb-6 italic text-xl font-normal tracking-wide" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>"{testimonial.text}"</p>
+                  <p className="text-white mb-6 italic text-base md:text-lg lg:text-xl font-normal tracking-wide" style={{ textShadow: '0 0 10px rgba(255,255,255,0.3)' }}>"{testimonial.text}"</p>
                   <div>
-                    <p className="font-bold text-white text-lg tracking-wide" style={{ textShadow: '0 0 8px rgba(255,255,255,0.25)' }}>{testimonial.author}</p>
+                    <p className="font-bold text-white text-base md:text-lg tracking-wide" style={{ textShadow: '0 0 8px rgba(255,255,255,0.25)' }}>{testimonial.author}</p>
                     <p className="text-red-hot font-semibold tracking-wide">{testimonial.role}</p>
                   </div>
                 </div>

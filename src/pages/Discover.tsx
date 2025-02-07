@@ -19,18 +19,18 @@ const Discover = () => {
 
   return (
     <>
-      {/* Background Logo */}
-      <div className="fixed top-8 left-8 z-0">
+      {/* Centered Background Logo */}
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-0">
         <img 
           src="/MattCoffeyDesignLOGO.jpg" 
           alt="Matt Coffey Design" 
-          className="w-40 h-auto opacity-30 brightness-[2] contrast-[1.2]"
+          className="w-48 h-auto opacity-30 brightness-[2] contrast-[1.2]"
         />
       </div>
 
       {/* Floating Home Button */}
       <motion.div 
-        className="fixed top-[140px] left-8 z-50"
+        className="fixed top-[40px] left-8 z-50"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
@@ -52,7 +52,7 @@ const Discover = () => {
       </motion.div>
 
       {/* Gallery Grid */}
-      <div className="h-screen w-screen overflow-hidden bg-charcoal">
+      <div className="h-screen w-screen overflow-hidden">
         <GalleryGrid items={items} />
       </div>
     </>

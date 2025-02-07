@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import { GalleryItem } from '@/data/gallery-items';
 import { cn } from '@/lib/utils';
-import { format } from 'date-fns';
 import { FullscreenView } from './FullscreenView';
 
 /**
@@ -122,11 +121,6 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
             {/* Category */}
             <div className="inline-block px-3 py-1 mb-3 lg:mb-4 rounded-full bg-white/10 text-sm text-white/80">
               {item.category}
-            </div>
-            
-            {/* Date */}
-            <div className="text-sm text-white/60 mb-3 lg:mb-4">
-              {format(new Date(), 'MMMM d, yyyy')}
             </div>
             
             {/* Description */}
