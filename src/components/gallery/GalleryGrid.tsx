@@ -50,14 +50,14 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   const [pausedColumns, setPausedColumns] = useState<{ [key: number]: boolean }>({});
   // Dynamic scroll speed based on viewport
   const [scrollSpeed, setScrollSpeed] = useState(() => 
-    typeof window !== 'undefined' && window.innerWidth < 768 ? 1.5 : 1
+    typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 1.5
   );
 
   // Update scroll speed and columns on resize
   const handleResize = useCallback(() => {
     const newNumColumns = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
     setNumColumns(newNumColumns);
-    setScrollSpeed(window.innerWidth < 768 ? 1.5 : 1);
+    setScrollSpeed(window.innerWidth < 768 ? 1 : 1.5);
     
     // Reset paused columns state with the new number of columns
     const newPausedColumns: { [key: number]: boolean } = {};
