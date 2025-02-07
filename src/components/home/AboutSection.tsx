@@ -38,7 +38,7 @@ export const AboutSection = () => {
               <img
                 src="/gallery-images/MattCoffey.jpeg"
                 alt="Hey, I'm Matt Coffey, working on some cool metalwork!"
-                className="object-cover w-full h-full transform scale-[1.02] hover:scale-[1.05] transition-transform duration-500"
+                className="object-cover w-full h-full transform scale-[1.02] hover:scale-[1.05] transition-transform duration-500 [image-orientation:from-image]"
                 loading="eager"
                 onError={(e) => {
                   console.error('Image failed to load:', e);
