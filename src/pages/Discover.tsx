@@ -51,9 +51,8 @@ const Discover = () => {
       </motion.div>
 
       {/* Gallery Grid */}
-      {/* On mobile/tablet use overflow-auto for smooth scrolling,
-          on larger screens retain overflow-hidden */}
-      <div className="h-screen w-screen overflow-auto md:overflow-hidden">
+      {/* Using min-h-screen to let mobile browsers adjust the height as needed */}
+      <div className="min-h-screen w-screen overflow-auto md:overflow-hidden">
         <GalleryGrid items={items} />
       </div>
     </>
