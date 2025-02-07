@@ -200,7 +200,7 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
                     onClick={() => setSelectedItem(item)}
                     whileHover={{ scale: 1.2, zIndex: 10 }}
                     style={{
-                      transform: typeof window !== 'undefined' && window.innerWidth >= 768 
+                      transform: typeof window !== 'undefined' && window.innerWidth >= 768 && columnIndex === 1
                         ? `translateX(${itemIndex % 2 === 0 ? '-20px' : '20px'})` 
                         : 'none'
                     }}
