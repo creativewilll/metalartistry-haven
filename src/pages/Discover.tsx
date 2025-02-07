@@ -2,15 +2,15 @@ import { useMemo } from 'react';
 import { GalleryGrid } from '@/components/gallery/GalleryGrid';
 import { galleryItems } from '@/data/gallery-items';
 import { motion } from 'framer-motion';
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Home } from "lucide-react";
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Home } from 'lucide-react';
 
 /**
  * Discover Page Component
  * 
- * Displays a full-screen gallery grid with infinite scrolling columns
- * and a background logo with floating home button.
+ * Displays a full-screen gallery grid with an automatic, infinite scrolling column,
+ * a background logo, and a floating home button.
  */
 const Discover = () => {
   // No filtering, show all items
@@ -50,9 +50,9 @@ const Discover = () => {
         </motion.div>
       </motion.div>
 
-      {/* Gallery Grid */}
-      {/* Using min-h-screen to let mobile browsers adjust the height as needed */}
-      <div className="min-h-screen w-screen overflow-auto md:overflow-hidden">
+      {/* Gallery Grid Container */}
+      {/* Using overflow-visible to prevent clipping of the auto-scrolling column */}
+      <div className="relative w-screen min-h-screen overflow-visible">
         <GalleryGrid items={items} />
       </div>
     </>
