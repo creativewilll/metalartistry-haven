@@ -54,13 +54,13 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
       {/* Main container with metallic theme */}
       <div className={cn(
         "bg-gradient-to-br from-slate-700 via-zinc-700 to-stone-700 overflow-hidden border border-white/10",
-        isMobile ? "w-full h-full" : "w-[95vw] h-[90vh] rounded-lg"
+        isMobile ? "w-full h-[80vh] rounded-lg" : "w-[95vw] h-[90vh] rounded-lg"
       )}>
         <div className="flex flex-col lg:flex-row h-full">
           {/* Left side - Image display */}
           <div className={cn(
             "w-full flex flex-col lg:border-r border-white/10",
-            isMobile ? "h-[60vh] p-0" : "lg:w-2/3 h-[50vh] lg:h-full p-3 lg:p-4"
+            isMobile ? "h-[40vh] p-0" : "lg:w-2/3 h-[50vh] lg:h-full p-3 lg:p-4"
           )}>
             {/* Main image container */}
             <div 
