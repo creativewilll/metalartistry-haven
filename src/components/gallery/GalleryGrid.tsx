@@ -180,7 +180,7 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
               <div
                 className="flex flex-col items-center space-y-6 md:space-y-[100px] absolute top-0 left-0 right-0"
                 style={{
-                  minHeight: '200%',
+                  minHeight: '100vh',
                   transformOrigin: '50% 0%',
                   animation: columnIndex === 1
                     ? `infiniteScrollDown ${60 / scrollSpeed}s linear infinite`
