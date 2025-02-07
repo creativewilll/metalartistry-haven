@@ -142,7 +142,7 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
       {/* For mobile devices: Two horizontal marquees */}
       {deviceType === "mobile" ? (
         <div className="w-full h-screen overflow-hidden" style={backgroundStyle}>
-          <div className="flex flex-col h-full">
+          <div className="flex flex-col h-full" style={{ marginTop: "12vh" }}>
             {columns.map((column, colIndex) => (
               <div
                 key={colIndex}
