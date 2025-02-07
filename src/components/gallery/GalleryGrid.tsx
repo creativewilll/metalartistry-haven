@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog";
 import { GalleryItem } from "@/data/gallery-items";
 import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { DetailView } from './DetailView';
@@ -51,22 +51,43 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadedImages, setLoadedImages] = useState(new Set<string>());
+  const [numColumns, setNumColumns] = useState(() => 
+    typeof window !== 'undefined' ? 
+      window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3 
+    : 3
+  );
   // Manage pause state per column:
-  const [pausedColumns, setPausedColumns] = useState<{ [key: number]: boolean }>({ 0: false, 1: false, 2: false });
+  const [pausedColumns, setPausedColumns] = useState<{ [key: number]: boolean }>({});
   // Dynamic scroll speed based on viewport
   const [scrollSpeed, setScrollSpeed] = useState(() => 
-    window.innerWidth < 768 ? 0.75 : 1
+    typeof window !== 'undefined' && window.innerWidth < 768 ? 0.75 : 1
   );
 
-  // Update scroll speed on resize
-  useEffect(() => {
-    const updateScrollSpeed = () => {
-      setScrollSpeed(window.innerWidth < 768 ? 0.75 : 0.5);
-    };
-
-    window.addEventListener('resize', updateScrollSpeed);
-    return () => window.removeEventListener('resize', updateScrollSpeed);
+  // Update scroll speed and columns on resize
+  const handleResize = useCallback(() => {
+    const newNumColumns = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    setNumColumns(newNumColumns);
+    setScrollSpeed(window.innerWidth < 768 ? 0.75 : 0.5);
+    
+    // Reset paused columns state with the new number of columns
+    const newPausedColumns: { [key: number]: boolean } = {};
+    for (let i = 0; i < newNumColumns; i++) {
+      newPausedColumns[i] = false;
+    }
+    setPausedColumns(newPausedColumns);
   }, []);
+
+  useEffect(() => {
+    // Initialize paused columns state
+    const initialPausedColumns: { [key: number]: boolean } = {};
+    for (let i = 0; i < numColumns; i++) {
+      initialPausedColumns[i] = false;
+    }
+    setPausedColumns(initialPausedColumns);
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [handleResize, numColumns]);
 
   // Preload images
   useEffect(() => {
@@ -97,37 +118,17 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
 
   // Prepare duplicated items for infinite scroll
   const columns = useMemo(() => {
-    const cols: GalleryItem[][] = [[], [], []];
-    const numColumns = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-
+    const cols: GalleryItem[][] = Array(numColumns).fill([]).map(() => []);
+    
     // Distribute items across columns based on screen size
     items.forEach((item, index) => {
       const colIndex = index % numColumns;
       cols[colIndex].push(item);
     });
 
-    // DO NOT reverse the order for the middle column.
-    // Duplicate each column (appending a contiguous copy for seamless scrolling)
-    return cols.slice(0, numColumns).map(column => [...column, ...column]);
-  }, [items]);
-
-  // Add resize listener to update columns when screen size changes
-  useEffect(() => {
-    const handleResize = () => {
-      const numColumns = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-      const cols: GalleryItem[][] = [[], [], []];
-      
-      items.forEach((item, index) => {
-        const colIndex = index % numColumns;
-        cols[colIndex].push(item);
-      });
-
-      setPausedColumns({ 0: false, 1: false, 2: false });
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [items]);
+    // Duplicate each column for seamless scrolling
+    return cols.map((column, index) => [...column, ...column]);
+  }, [items, numColumns]);
 
   return (
     <>
@@ -178,7 +179,7 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
         </motion.div>
 
         {/* Main gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full gap-[100px] px-[100px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full gap-6 md:gap-[100px] px-4 md:px-[100px]">
           {columns.map((column, columnIndex) => (
             <div 
               key={columnIndex} 
@@ -187,7 +188,7 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
               onMouseLeave={() => setPausedColumns(prev => ({ ...prev, [columnIndex]: false }))}
             >
               <div
-                className="flex flex-col items-center space-y-[100px]"
+                className="flex flex-col items-center space-y-6 md:space-y-[100px]"
                 style={{
                   // Use the new downward animation for the middle column
                   animation: columnIndex === 1
