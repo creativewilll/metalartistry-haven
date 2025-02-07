@@ -39,8 +39,6 @@ if (typeof document !== 'undefined') {
  */
 export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [loadedImages, setLoadedImages] = useState(new Set<string>());
   const [numColumns, setNumColumns] = useState(() => 
     typeof window !== 'undefined' ? 
       window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3 
@@ -79,33 +77,6 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [handleResize, numColumns]);
 
-  // Preload images
-  useEffect(() => {
-    let mounted = true;
-    let loadedCount = 0;
-    
-    const primaryImages = items.map(item => item.images[0].url);
-    primaryImages.forEach(url => {
-      const img = new Image();
-      img.onload = () => {
-        if (mounted) {
-          loadedCount++;
-          setLoadedImages(prev => {
-            const newSet = new Set(prev);
-            newSet.add(url);
-            if (loadedCount >= primaryImages.length * 0.5) {
-              setIsLoading(false);
-            }
-            return newSet;
-          });
-        }
-      };
-      img.src = url;
-    });
-
-    return () => { mounted = false; };
-  }, [items]);
-
   // Prepare duplicated items for infinite scroll
   const columns = useMemo(() => {
     const cols: GalleryItem[][] = Array(numColumns).fill([]).map(() => []);
@@ -134,40 +105,11 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
             rgba(205, 127, 50, 0.25),
             rgba(144, 175, 144, 0.25),
             rgba(119, 136, 153, 0.2),
-            rgba(20, 20, 20, 0.99)
           )
         `,
         backgroundSize: '500% 500%',
         animation: 'gradientFlow 40s cubic-bezier(0.4, 0, 0.2, 1) infinite'
       }}>
-        {/* Loading overlay */}
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: isLoading ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
-          className={cn(
-            "absolute inset-0 z-50 flex items-center justify-center",
-            "",
-            { "pointer-events-none": !isLoading }
-          )}
-        >
-          <motion.div 
-            className="space-y-4 text-center"
-            animate={{ opacity: isLoading ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="text-zinc-400 text-sm">Loading gallery...</div>
-            <div className="w-48 h-1 bg-zinc-800 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-zinc-600 to-stone-600"
-                initial={{ width: "0%" }}
-                animate={{ width: `${(loadedImages.size / items.length) * 100}%` }}
-                transition={{ duration: 0.3 }}
-              />
-            </div>
-          </motion.div>
-        </motion.div>
-
         {/* Main gallery */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full gap-6 md:gap-[100px] px-4 md:px-[100px]">
           {columns.map((column, columnIndex) => (
@@ -216,9 +158,6 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
                         alt={item.title}
                         className="w-full h-auto object-cover rounded-lg"
                         loading="lazy"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: loadedImages.has(item.images[0].url) ? 1 : 0 }}
-                        transition={{ duration: 0.5 }}
                       />
                       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-lg" />
                       <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-b-lg">
