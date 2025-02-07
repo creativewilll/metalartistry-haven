@@ -39,8 +39,20 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   const [loadedImages, setLoadedImages] = useState(new Set<string>());
   // Manage pause state per column:
   const [pausedColumns, setPausedColumns] = useState<{ [key: number]: boolean }>({ 0: false, 1: false, 2: false });
-  // Set scroll speed to a halfway value (approximately 1.25)
-  const [scrollSpeed] = useState(1.25);
+  // Dynamic scroll speed based on viewport
+  const [scrollSpeed, setScrollSpeed] = useState(() => 
+    window.innerWidth < 768 ? 0.75 : 1.25
+  );
+
+  // Update scroll speed on resize
+  useEffect(() => {
+    const updateScrollSpeed = () => {
+      setScrollSpeed(window.innerWidth < 768 ? 0.75 : 1.25);
+    };
+
+    window.addEventListener('resize', updateScrollSpeed);
+    return () => window.removeEventListener('resize', updateScrollSpeed);
+  }, []);
 
   // Preload images
   useEffect(() => {
@@ -72,16 +84,35 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   // Prepare duplicated items for infinite scroll
   const columns = useMemo(() => {
     const cols: GalleryItem[][] = [[], [], []];
+    const numColumns = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
 
-    // Distribute items across columns
+    // Distribute items across columns based on screen size
     items.forEach((item, index) => {
-      const colIndex = index % 3;
+      const colIndex = index % numColumns;
       cols[colIndex].push(item);
     });
 
     // DO NOT reverse the order for the middle column.
     // Duplicate each column (appending a contiguous copy for seamless scrolling)
-    return cols.map(column => [...column, ...column]);
+    return cols.slice(0, numColumns).map(column => [...column, ...column]);
+  }, [items]);
+
+  // Add resize listener to update columns when screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      const numColumns = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+      const cols: GalleryItem[][] = [[], [], []];
+      
+      items.forEach((item, index) => {
+        const colIndex = index % numColumns;
+        cols[colIndex].push(item);
+      });
+
+      setPausedColumns({ 0: false, 1: false, 2: false });
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [items]);
 
   return (
@@ -116,7 +147,7 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
         </motion.div>
 
         {/* Main gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-3 h-full gap-[100px] px-[100px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 h-full gap-[100px] px-[100px]">
           {columns.map((column, columnIndex) => (
             <div 
               key={columnIndex} 

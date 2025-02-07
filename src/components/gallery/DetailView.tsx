@@ -40,9 +40,9 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
       {/* Main container with metallic theme */}
       <div className="w-[95vw] h-[90vh] bg-gradient-to-br from-slate-700 via-zinc-700 to-stone-700 rounded-lg overflow-hidden border border-white/10">
-        <div className="flex h-full">
+        <div className="flex flex-col lg:flex-row h-full">
           {/* Left side - Image display */}
-          <div className="w-2/3 h-full flex flex-col p-4 border-r border-white/10">
+          <div className="w-full lg:w-2/3 h-[50vh] lg:h-full flex flex-col p-3 lg:p-4 lg:border-r border-white/10">
             {/* Main image container */}
             <div className="relative flex-grow bg-black/20 rounded-lg overflow-hidden">
               <AnimatePresence mode="wait">
@@ -61,29 +61,29 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
               {/* Navigation buttons */}
               <button
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
+                className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 lg:w-6 h-5 lg:h-6" />
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
+                className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 lg:w-6 h-5 lg:h-6" />
               </button>
               
               {/* Fullscreen button */}
               <button
                 onClick={() => setIsFullscreen(true)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
+                className="absolute top-2 lg:top-4 right-2 lg:right-4 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80"
                 aria-label="View fullscreen"
               >
-                <Maximize2 className="w-6 h-6" />
+                <Maximize2 className="w-5 lg:w-6 h-5 lg:h-6" />
               </button>
             </div>
             
             {/* Thumbnail gallery */}
-            <div className="h-24 mt-4 flex gap-2 overflow-x-auto">
+            <div className="h-20 lg:h-24 mt-3 lg:mt-4 flex gap-2 overflow-x-auto">
               {allImages.map((image, index) => (
                 <button
                   key={index}
@@ -105,32 +105,32 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
           </div>
           
           {/* Right side - Details display */}
-          <div className="w-1/3 h-full p-6 overflow-y-auto">
+          <div className="w-full lg:w-1/3 h-[40vh] lg:h-full p-4 lg:p-6 overflow-y-auto">
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-white/80 hover:text-white"
+              className="absolute top-2 right-2 lg:top-4 lg:right-4 w-8 h-8 flex items-center justify-center rounded-full bg-black/20 text-white/80 hover:text-white hover:bg-black/30 text-xl"
             >
               ×
             </button>
             
             {/* Title */}
-            <h2 className="text-2xl font-bold text-white mb-2">
+            <h2 className="text-xl lg:text-2xl font-bold text-white mb-2 pr-8">
               {item.title}
             </h2>
             
             {/* Category */}
-            <div className="inline-block px-3 py-1 mb-4 rounded-full bg-white/10 text-sm text-white/80">
+            <div className="inline-block px-3 py-1 mb-3 lg:mb-4 rounded-full bg-white/10 text-sm text-white/80">
               {item.category}
             </div>
             
             {/* Date */}
-            <div className="text-sm text-white/60 mb-4">
+            <div className="text-sm text-white/60 mb-3 lg:mb-4">
               {format(new Date(), 'MMMM d, yyyy')}
             </div>
             
             {/* Description */}
-            <p className="text-white/80 mb-6 leading-relaxed">
+            <p className="text-sm lg:text-base text-white/80 mb-4 lg:mb-6 leading-relaxed">
               {item.description}
             </p>
             
