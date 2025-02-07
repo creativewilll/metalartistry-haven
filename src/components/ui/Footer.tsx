@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import Modal from './Modal'
+import PrivacyPolicy from './PrivacyPolicy'
+import TermsOfService from './TermsOfService'
 
 const Footer = () => {
+  const [isPrivacyOpen, setIsPrivacyOpen] = useState(false)
+  const [isTermsOpen, setIsTermsOpen] = useState(false)
+
   return (
     <footer className="bg-black text-gray-300 py-16">
       <div className="container mx-auto px-4">
@@ -19,15 +26,36 @@ const Footer = () => {
           <div className="space-y-6">
             <h2 className="text-xl font-semibold text-white">Legal</h2>
             <div className="flex flex-col space-y-3">
-              <Link to="/privacy" className="hover:text-white transition-colors">
+              <button 
+                onClick={() => setIsPrivacyOpen(true)} 
+                className="text-left hover:text-white transition-colors"
+              >
                 Privacy Policy
-              </Link>
-              <Link to="/terms" className="hover:text-white transition-colors">
-                Terms of Service
-              </Link>
-              <button className="text-left hover:text-white transition-colors">
-                Cookie Settings
               </button>
+              <button 
+                onClick={() => setIsTermsOpen(true)} 
+                className="text-left hover:text-white transition-colors"
+              >
+                Terms of Service
+              </button>
+
+              {/* Privacy Policy Modal */}
+              <Modal
+                isOpen={isPrivacyOpen}
+                onClose={() => setIsPrivacyOpen(false)}
+                title="Privacy Policy"
+              >
+                <PrivacyPolicy />
+              </Modal>
+
+              {/* Terms of Service Modal */}
+              <Modal
+                isOpen={isTermsOpen}
+                onClose={() => setIsTermsOpen(false)}
+                title="Terms of Service"
+              >
+                <TermsOfService />
+              </Modal>
               <p className="text-gray-400">
                 &copy; {new Date().getFullYear()} MattCoffeyDesign. All Rights Reserved.
               </p>

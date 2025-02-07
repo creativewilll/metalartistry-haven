@@ -1,4 +1,3 @@
-// Import necessary dependencies and components
 import { useMemo } from 'react';
 import { GalleryGrid } from '@/components/gallery/GalleryGrid';
 import { galleryItems } from '@/data/gallery-items';
@@ -52,7 +51,9 @@ const Discover = () => {
       </motion.div>
 
       {/* Gallery Grid */}
-      <div className="h-screen w-screen overflow-hidden">
+      {/* On mobile/tablet use overflow-auto for smooth scrolling,
+          on larger screens retain overflow-hidden */}
+      <div className="h-screen w-screen overflow-auto md:overflow-hidden">
         <GalleryGrid items={items} />
       </div>
     </>
