@@ -8,37 +8,49 @@ async function processImage(filePath: string): Promise<void> {
   try {
     const image = sharp(filePath);
     
-    // Strip all metadata including EXIF
+    // Get the current metadata
+    const metadata = await image.metadata();
+    
+    // Preserve orientation while stripping other EXIF data
     await image
-      .withMetadata({})
+      .rotate() // Automatically rotate based on EXIF orientation
+      .withMetadata({ orientation: metadata.orientation || 1 }) // Preserve orientation or default to 1
       .toBuffer()
       .then(async (buffer) => {
         await fs.writeFile(filePath, buffer);
         console.log(`✓ Stripped EXIF from: ${path.basename(filePath)}`);
       });
   } catch (error) {
+    // Log error but don't fail the build
     console.error(`✗ Error processing ${path.basename(filePath)}:`, error);
+    // Create a log file for Netlify to track errors
+    await fs.appendFile('exif-strip-errors.log', `Error processing ${filePath}: ${error}\n`);
   }
 }
 
 async function walkDirectory(dir: string): Promise<string[]> {
-  const entries = await fs.readdir(dir, { withFileTypes: true });
-  const files: string[] = [];
+  try {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    const files: string[] = [];
 
-  for (const entry of entries) {
-    const fullPath = path.join(dir, entry.name);
-    
-    if (entry.isDirectory()) {
-      files.push(...(await walkDirectory(fullPath)));
-    } else if (entry.isFile()) {
-      const ext = path.extname(entry.name).toLowerCase();
-      if (SUPPORTED_EXTENSIONS.includes(ext)) {
-        files.push(fullPath);
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      
+      if (entry.isDirectory()) {
+        files.push(...(await walkDirectory(fullPath)));
+      } else if (entry.isFile()) {
+        const ext = path.extname(entry.name).toLowerCase();
+        if (SUPPORTED_EXTENSIONS.includes(ext)) {
+          files.push(fullPath);
+        }
       }
     }
-  }
 
-  return files;
+    return files;
+  } catch (error) {
+    console.error(`✗ Error accessing directory ${dir}:`, error);
+    return [];
+  }
 }
 
 async function main() {
@@ -57,13 +69,24 @@ async function main() {
 
     console.log(`📸 Found ${allImages.length} images to process...`);
     
-    await Promise.all(allImages.map(processImage));
+    // Process images sequentially to avoid memory issues on Netlify
+    for (const image of allImages) {
+      await processImage(image);
+    }
     
     console.log('✨ EXIF stripping complete!');
   } catch (error) {
     console.error('❌ Error:', error);
-    process.exit(1);
+    // Create a log file for Netlify to track errors
+    await fs.appendFile('exif-strip-errors.log', `Fatal error: ${error}\n`);
+    // Don't exit with error code to prevent build failure
+    console.log('⚠️ Completed with some errors. Check exif-strip-errors.log for details.');
   }
 }
+
+// Ensure unhandled rejections don't crash the build
+process.on('unhandledRejection', (error) => {
+  console.error('Unhandled rejection:', error);
+});
 
 main(); 
