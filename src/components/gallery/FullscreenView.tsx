@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
@@ -37,8 +37,8 @@ export const FullscreenView = ({ images, initialIndex, onClose }: FullscreenView
   }, []);
 
   // Navigation handlers
-  const nextImage = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const prevImage = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const nextImage = useCallback(() => setCurrentIndex((prev) => (prev + 1) % images.length), [images.length]);
+  const prevImage = useCallback(() => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length), [images.length]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -58,7 +58,7 @@ export const FullscreenView = ({ images, initialIndex, onClose }: FullscreenView
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [nextImage, prevImage, onClose]);
 
   return (
     <div className="fixed inset-0 z-[60] bg-black">
