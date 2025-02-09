@@ -36,9 +36,12 @@ export const AboutSection = () => {
           >
             <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/gallery-images/MattCoffey.jpeg"
+                src="/gallery-images/MattCoffey.webp"
                 alt="Hey, I'm Matt Coffey, working on some cool metalwork!"
-                className="object-cover w-full h-full transform scale-[1.02] hover:scale-[1.05] transition-transform duration-500 [image-orientation:from-image]"
+                className="object-cover w-full h-full transform scale-[1.02] hover:scale-[1.05] transition-transform duration-500 [image-orientation:from-image] rotate-0"
+                style={{
+                  imageOrientation: 'from-image'
+                }}
                 loading="eager"
                 onError={(e) => {
                   console.error('Image failed to load:', e);
@@ -70,11 +73,6 @@ export const AboutSection = () => {
               </h2>
               <div className="w-20 h-1 bg-gradient-to-r from-orange-400 to-amber-500" />
             </div>
-            
-            <p className="text-xl text-white/90 leading-relaxed">
-              Hey there, I'm Matt Coffey, a specialist blacksmith based in the beautiful state of Michigan! I focus on
-              creating unique, custom metalwork that always stands out!
-            </p>
 
             <div className="space-y-6 text-lg">
               <motion.p

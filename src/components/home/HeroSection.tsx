@@ -34,9 +34,6 @@ export const HeroSection = () => {
                 aria-hidden="true"
               />
             </div>
-            <p className="text-xl text-center text-white max-w-3xl mx-auto">
-              I'm all about crafting unique metalwork pieces that bring a touch of elegance and craft to your space.
-            </p>
           </motion.div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
             <Link

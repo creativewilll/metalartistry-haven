@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { DetailView } from "./DetailView";
 import { GalleryItem } from "@/data/gallery-items";
 
@@ -25,7 +25,7 @@ const SequentialLazyImage = ({
   style,
   onClick,
 }: SequentialLazyImageProps) => {
-  const mergedStyle = { ...style, pointerEvents: "auto" };
+  const mergedStyle = { ...style, pointerEvents: "auto" as const };
 
   return forceLoad ? (
     <motion.img
@@ -75,33 +75,28 @@ const SequentialColumn = ({
   return (
     <>
       {orderedItems.map((item, index) => {
-        // When forceLoadAll is true, always load the image.
         const forceLoad = forceLoadAll
           ? true
           : !reverse
           ? index <= maxLoadedIndex + 2
           : index >= minLoadedIndex - 2;
 
-        // Compute the alternating horizontal offset (desktop only).
-        const alternatingTransform =
-          deviceType === "desktop"
-            ? !reverse
-              ? index % 2 === 0
-                ? "translateX(-20px)"
-                : "translateX(20px)"
-              : index % 2 === 0
-              ? "translateX(20px)"
-              : "translateX(-20px)"
-            : "none";
-
         return (
           <motion.div
             key={`${item.id}-${index}`}
             className="w-full flex justify-center"
-            style={{ transform: alternatingTransform }}
+            layout
+            layoutId={`card-${item.id}`}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{
+              layout: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 },
+            }}
           >
             <div
-              className="relative group cursor-pointer overflow-hidden rounded-lg"
+              className="relative group cursor-pointer overflow-hidden rounded-2xl"
               style={{ width: `${cardWidth}px` }}
             >
               {/* 3:2 Aspect Ratio Container */}
@@ -109,7 +104,7 @@ const SequentialColumn = ({
                 <SequentialLazyImage
                   src={item.images[0].url}
                   alt={item.title}
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                  className="absolute inset-0 w-full h-full object-cover rounded-2xl"
                   forceLoad={forceLoad}
                   onLoaded={() => {
                     if (!reverse) {
@@ -122,12 +117,14 @@ const SequentialColumn = ({
                 />
               </div>
               {/* Overlays with pointerEvents disabled so clicks pass through */}
-              <div
-                className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-lg"
+              <motion.div
+                className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 rounded-2xl"
                 style={{ pointerEvents: "none" }}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.2 }}
               />
-              <div
-                className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-b-lg"
+              <motion.div
+                className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-b-2xl"
                 style={{ pointerEvents: "none" }}
               >
                 <h3 className="text-white text-sm font-light leading-tight">{item.title}</h3>
@@ -136,7 +133,7 @@ const SequentialColumn = ({
                     +{item.childImages.length} more images
                   </div>
                 )}
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         );
@@ -171,8 +168,9 @@ const animationsCSS = `
     100% { background-position: 0% 0%; }
   }
 `;
-if (typeof document !== "undefined") {
+if (typeof document !== "undefined" && !document.getElementById("gallery-grid-animations")) {
   const style = document.createElement("style");
+  style.id = "gallery-grid-animations";
   style.textContent = animationsCSS;
   document.head.appendChild(style);
 }
@@ -202,23 +200,16 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
   const [pausedColumns, setPausedColumns] = useState<{ [key: number]: boolean }>({});
 
   const handleResize = useCallback(() => {
-    const newDevice = getDeviceType();
-    setDeviceType(newDevice);
-    setNumColumns(getNumColumns(newDevice));
-    setScrollSpeed(getScrollSpeed(newDevice));
-    const newPaused: { [key: number]: boolean } = {};
-    for (let i = 0; i < getNumColumns(newDevice); i++) {
-      newPaused[i] = false;
-    }
-    setPausedColumns(newPaused);
+    const device = getDeviceType();
+    const columnsCount = getNumColumns(device);
+    setDeviceType(device);
+    setNumColumns(columnsCount);
+    setScrollSpeed(getScrollSpeed(device));
+    setPausedColumns(Object.fromEntries(Array.from({ length: columnsCount }, (_, i) => [i, false])));
   }, []);
 
   useEffect(() => {
-    const initialPaused: { [key: number]: boolean } = {};
-    for (let i = 0; i < numColumns; i++) {
-      initialPaused[i] = false;
-    }
-    setPausedColumns(initialPaused);
+    setPausedColumns(Object.fromEntries(Array.from({ length: numColumns }, (_, i) => [i, false])));
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [handleResize, numColumns]);
@@ -266,56 +257,59 @@ export const GalleryGrid = ({ items }: { items: GalleryItem[] }) => {
             padding: "16px",
           }}
         >
-          {columns.map((column, colIndex) => {
-            // On desktop, force load and reverse the middle column (index 1)
-            const reverse = deviceType === "desktop" && colIndex === 1;
-            return (
-              <div
-                key={colIndex}
-                className="relative overflow-hidden h-full"
-                onMouseEnter={() =>
-                  setPausedColumns((prev) => ({ ...prev, [colIndex]: true }))
-                }
-                onMouseLeave={() =>
-                  setPausedColumns((prev) => ({ ...prev, [colIndex]: false }))
-                }
-              >
+          <AnimatePresence>
+            {columns.map((column, colIndex) => {
+              const reverse = deviceType === "desktop" && colIndex === 1;
+              return (
                 <div
-                  className="flex flex-col items-center absolute top-0 left-0 right-0"
-                  style={{
-                    minHeight: "100vh",
-                    transformOrigin: "50% 0%",
-                    gap: `${cardSpacing.vertical}px`,
-                    animation:
-                      deviceType === "desktop" && colIndex === 1
-                        ? `infiniteScrollDown ${60 / scrollSpeed}s linear infinite`
-                        : `infiniteScroll ${60 / scrollSpeed}s linear infinite`,
-                    animationPlayState: pausedColumns[colIndex] ? "paused" : "running",
-                    willChange: "transform",
-                    backfaceVisibility: "hidden",
-                    WebkitBackfaceVisibility: "hidden",
-                    transform: "translate3d(0, 0, 0)",
-                  }}
+                  key={colIndex}
+                  className="relative overflow-hidden h-full"
+                  onMouseEnter={() =>
+                    setPausedColumns((prev) => ({ ...prev, [colIndex]: true }))
+                  }
+                  onMouseLeave={() =>
+                    setPausedColumns((prev) => ({ ...prev, [colIndex]: false }))
+                  }
                 >
-                  <SequentialColumn
-                    items={column}
-                    cardWidth={cardWidth}
-                    onImageClick={setSelectedItem}
-                    deviceType={deviceType}
-                    reverse={reverse}
-                    // Only force load the middle column on desktop
-                    forceLoadAll={deviceType === "desktop" && colIndex === 1}
-                  />
+                  <div
+                    className="flex flex-col items-center absolute top-0 left-0 right-0"
+                    style={{
+                      minHeight: "100vh",
+                      transformOrigin: "50% 0%",
+                      gap: `${cardSpacing.vertical}px`,
+                      animation: (
+                        deviceType === "desktop" && colIndex === 1
+                          ? `infiniteScrollDown ${60 / scrollSpeed}s linear infinite`
+                          : `infiniteScroll ${60 / scrollSpeed}s linear infinite`
+                      ),
+                      animationPlayState: pausedColumns[colIndex] ? "paused" : "running",
+                      willChange: "transform",
+                      backfaceVisibility: "hidden",
+                      WebkitBackfaceVisibility: "hidden",
+                      transform: "translate3d(0, 0, 0)",
+                    }}
+                  >
+                    <SequentialColumn
+                      items={column}
+                      cardWidth={cardWidth}
+                      onImageClick={setSelectedItem}
+                      deviceType={deviceType}
+                      reverse={reverse}
+                      forceLoadAll={deviceType === "desktop" && colIndex === 1}
+                    />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </AnimatePresence>
         </div>
       </div>
 
-      {selectedItem && (
-        <DetailView item={selectedItem} onClose={() => setSelectedItem(null)} />
-      )}
+      <AnimatePresence>
+        {selectedItem && (
+          <DetailView item={selectedItem} onClose={() => setSelectedItem(null)} />
+        )}
+      </AnimatePresence>
     </>
   );
 };
