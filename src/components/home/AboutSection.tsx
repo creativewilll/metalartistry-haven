@@ -109,12 +109,12 @@ export const AboutSection = () => {
                 className="flex items-center gap-4 pt-4"
               >
                 <div className="flex flex-col">
-                  <span className="text-4xl font-bold bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">15+</span>
+                  <span className="text-4xl font-bold bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">25+</span>
                   <span className="text-sm text-gray-400">Years Experience</span>
                 </div>
                 <div className="w-px h-12 bg-gray-700" />
                 <div className="flex flex-col">
-                  <span className="text-4xl font-bold bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">1000+</span>
+                  <span className="text-4xl font-bold bg-gradient-to-r from-gray-100 via-white to-gray-300 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(255,255,255,0.1)]">1500+</span>
                   <span className="text-sm text-gray-400">Projects Completed</span>
                 </div>
               </motion.div>
