@@ -30,6 +30,9 @@ const Navigation = () => {
               <Link to="/contact" className="text-silver hover:text-cream transition-colors">
                 Contact
               </Link>
+              <Link to="/galleries" className="text-silver hover:text-cream transition-colors">
+                Galleries
+              </Link>
             </div>
           </div>
 
@@ -69,6 +72,13 @@ const Navigation = () => {
               onClick={() => setIsOpen(false)}
             >
               Contact
+            </Link>
+            <Link
+              to="/galleries"
+              className="block px-3 py-2 text-silver hover:text-cream"
+              onClick={() => setIsOpen(false)}
+            >
+              Galleries
             </Link>
           </div>
         </div>

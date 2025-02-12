@@ -77,7 +77,7 @@ const Footer = () => {
             <h2 className="text-xl font-semibold text-white">Contact Us</h2>
             <div className="space-y-3 text-gray-400">
               <p>Traverse City, MI</p>
-              <p>Phone: (231) 645-0611</p>
+              <p>Phone: (231) 645-0622</p>
               <p>Email: mcdesignart@aol.com</p>
             </div>
           </div>
