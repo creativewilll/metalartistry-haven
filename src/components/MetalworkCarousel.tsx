@@ -11,6 +11,12 @@ import { categoryShowcases } from "@/data/gallery-items";
 const MetalworkCarousel = () => {
   const navigate = useNavigate();
 
+  const handleCategoryClick = (category: string) => {
+    // Create the same URL-friendly ID as in Galleries.tsx
+    const sectionId = category.toLowerCase().replace(/[, ]/g, '-');
+    navigate(`/discover#${sectionId}`);
+  };
+
   return (
     <div className="container mx-auto px-4 my-8">
       {/* Main heading with metallic effect */}
@@ -24,7 +30,7 @@ const MetalworkCarousel = () => {
               <CarouselItem key={index}>
                 <div 
                   className="cursor-pointer"
-                  onClick={() => navigate('/discover')}
+                  onClick={() => handleCategoryClick(showcase.category)}
                 >
                   <div className="relative w-full h-[400px] rounded-lg">
                     <div className="absolute inset-0 overflow-hidden rounded-lg">

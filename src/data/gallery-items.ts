@@ -249,7 +249,7 @@ export const galleryItems: GalleryItem[] = [
       { url: '/gallery-images/CustomStovehood1 2.jpeg', alt: 'Front view' }
     ],
     childImages: [
-      { url: '/gallery-images/CustomStovehood1-2 2jpeg', alt: 'Up-close, detailed view of the finished piece' }
+      { url: '/gallery-images/CustomStovehood1-2 2.jpeg', alt: 'Up-close, detailed view of the finished piece' }
     ],
     isCategoryImage: false
   },
@@ -534,4 +534,64 @@ export const galleryItems: GalleryItem[] = [
       ],
       isCategoryImage: false
     },
+    {
+      id: 34,
+      category: 'Doors and Windows',
+      title: 'Industrial Steel Vault Doors',
+      description: 'A pair of industrial steel vault doors, featuring a unique design with a custom-welded frame and a rugged industrial edge.',
+      images: [
+        { url: '/gallery-images/VaultDoor1.jpeg', alt: 'Front view' },
+      ],
+      childImages: [
+        { url: '/gallery-images/VaultDoor2.jpeg', alt: 'Close-up of the steel vault door, showcasing the custom-welded frame and rugged industrial edge.' },
+        { url: '/gallery-images/VaultDoor3.jpeg', alt: 'Secondary view' },
+        { url: '/gallery-images/VaultDoor4.jpeg', alt: 'Alternate view' },
+        { url: '/gallery-images/VaultDoor-handle.jpeg', alt: 'Custom Steel Captains Handle' },
+        { url: '/gallery-images/VaultDoor-PROCESS.jpeg', alt: 'Behind the scenes!' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 35,
+      category: 'Doors and Windows',
+      title: 'Sliding Barnwood and Steel Doors',
+      description: 'A pair of sliding barnwood and steel doors, featuring a unique design with a custom-welded frame and a rugged industrial edge.',
+      images: [
+        { url: '/gallery-images/CustomDoor-SlidingPantryBarnDoors1.jpg', alt: 'Front view' }
+      ],
+      childImages: [
+        { url: '/gallery-images/CustomDoor-SlidingPantryBarnDoors2.jpg', alt: 'Close-up of the steel vault door, showcasing the custom-welded frame and rugged industrial edge.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 36,
+      category: 'Doors and Windows',
+      title: 'Custom Steel Doors',
+      description: 'A pair of custom steel doors, featuring a unique design with a custom-welded frame and a rugged industrial edge.',
+      images: [
+        { url: '/gallery-images/CustomMetalDoor1-6 2.jpeg', alt: 'Front view' }
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 37,
+      category: 'Doors and Windows',
+      title: 'Custom Steel Doors',
+      description: 'Elegant steel doors with a industrail steel frame, combining modern aesthetics with industrial durability.',
+      images: [
+        { url: '/gallery-images/CustomMetalDoor1-5 2.jpeg', alt: 'Front view' }
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 38,
+      category: 'Doors and Windows',
+      title: 'Custom Steel Doors',
+      description: 'A pair of custom steel doors, featuring a unique design with a custom-welded frame and a rugged industrial edge.',
+      images: [
+        { url: '/gallery-images/CustomMetalDoor1-4 2.jpeg', alt: 'Front view' }
+      ],
+      isCategoryImage: false
+    }
 ];
