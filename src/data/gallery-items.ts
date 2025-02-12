@@ -442,10 +442,10 @@ export const galleryItems: GalleryItem[] = [
     {
       id: 27,
       category: 'Custom Furniture',
-      title: 'Polished Bronze Bar Tops',
-      description: 'Luxurious handcrafted bronze bar tops, meticulously polished for a sleek and reflective finish.',
+      title: 'Polished Copper Bar Tops',
+      description: 'Luxurious handcrafted Copper bar tops, meticulously polished for a sleek and reflective finish.',
       images: [
-        { url: '/gallery-images/CustomBronzeBartops1 2.jpeg', alt: 'Front view' }
+        { url: '/gallery-images/CustomCopperBartops1 2.jpeg', alt: 'Front view' }
       ],
       isCategoryImage: false
     },
