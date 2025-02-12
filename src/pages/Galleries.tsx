@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { galleryItems, GalleryItem } from '@/data/gallery-items';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -287,61 +287,129 @@ const ImageCarousel = ({ images }: { images: GalleryItem[] }) => {
 };
 
 const CategorySection = ({ category, items, isEven }: { category: string; items: GalleryItem[]; isEven: boolean }) => {
-  // Only apply order classes on desktop (md and up)
-  const contentOrder = isEven ? 'md:order-1' : 'md:order-2';
-  const carouselOrder = isEven ? 'md:order-2' : 'md:order-1';
-
   // Create a URL-friendly ID from the category name
-  const sectionId = category.toLowerCase().replace(/[, ]/g, '-');
-
+  const sectionId = category.toLowerCase().replace(/[,\s]+/g, '-');
+  
   return (
-    <section 
+    <motion.div
       id={sectionId}
-      className="min-h-[300px] md:min-h-[400px] flex items-center px-4 md:px-6 py-8 md:py-16 bg-[#1a1a1a] border-b border-gray-800"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={cn(
+        "w-full py-12 md:py-24",
+        isEven ? "bg-neutral-950" : "bg-black"
+      )}
     >
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
-          {/* Text content - always first on mobile */}
-          <div className={`w-full md:w-1/2 ${contentOrder} mb-6 md:mb-0 order-1`}>
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-white">{category}</h2>
-              <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
-                {categoryDescriptions[category]}
-              </p>
-            </div>
-          </div>
-          {/* Carousel - always second on mobile */}
-          <div className={`w-full md:w-1/2 overflow-hidden ${carouselOrder} order-2`}>
-            <ImageCarousel images={items} />
-          </div>
-        </div>
+      <div className="container px-4 mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, x: isEven ? 50 : -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="mb-8"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{category}</h2>
+          <p className="text-neutral-400 max-w-2xl">
+            {categoryDescriptions[category as keyof typeof categoryDescriptions]}
+          </p>
+        </motion.div>
+        <ImageCarousel images={items} />
       </div>
-    </section>
+    </motion.div>
   );
 };
 
 const Galleries = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    // Simulate loading of resources
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (!isLoading && location.hash) {
+      const timer = setTimeout(() => {
+        const sectionId = decodeURIComponent(location.hash.slice(1));
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offset = 80; // adjust to your header height
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - offset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      }, 800); // delay to allow animations to finish
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading, location.hash]);
+
   return (
-    <div className="min-h-screen bg-[#121212] pt-24 md:pt-32">
-      {/* Category Sections */}
-      {categories.map((category, index) => {
-        const items = galleryItems.filter(item => item.category === category);
-        if (items.length === 0) return null;
-        
-        // For the last section (Custom Projects), force image to left by setting isEven to false
-        const isLastSection = category === 'Custom Projects';
-        const isEven = isLastSection ? false : index % 2 === 0;
-        
-        return (
-          <CategorySection
-            key={category}
-            category={category}
-            items={items}
-            isEven={isEven}
-          />
-        );
-      })}
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-black"
+    >
+      <AnimatePresence>
+        {isLoading ? (
+          <motion.div
+            key="loader"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black flex items-center justify-center z-50"
+          >
+            <motion.div
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [1, 0.8, 1]
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="w-12 h-12 rounded-full border-2 border-neutral-800 border-t-white animate-spin"
+            />
+          </motion.div>
+        ) : (
+          <>
+            <motion.div
+              key="content"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {categories.map((category, index) => {
+                const categoryItems = galleryItems.filter(
+                  (item) => item.category === category
+                );
+                return (
+                  <CategorySection
+                    key={category}
+                    category={category}
+                    items={categoryItems}
+                    isEven={index % 2 === 0}
+                  />
+                );
+              })}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

@@ -61,17 +61,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-
-          {/* Quick Links */}
-          <div className="space-y-6">
-            <h2 className="text-xl font-semibold text-white">Quick Links</h2>
-            <nav className="flex flex-col space-y-3">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <Link to="/about" className="hover:text-white transition-colors">Disover My Work</Link>
-              <Link to="/services" className="hover:text-white transition-colors">Contact Me</Link>
-            </nav>
-          </div>
-
+          
           {/* Contact Us */}
           <div className="space-y-6">
             <h2 className="text-xl font-semibold text-white">Contact Us</h2>

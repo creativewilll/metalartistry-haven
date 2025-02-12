@@ -29,11 +29,17 @@ const CategoryShowcase = () => {
 
       <div className="pt-20 pb-10">
         {categories.map((category) => {
+          const sectionId = category.toLowerCase().replace(/[, ]/g, '-');
           const items = galleryItems.filter(item => item.category === category).slice(0, 5); // select up to 5 projects per category
           if (items.length === 0) return null;
           return (
             <section key={category} className="my-12 px-4">
-              <h2 className="text-2xl font-bold mb-4">{category}</h2>
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold">{category}</h2>
+                <Link to={`/galleries#${sectionId}`} className="text-blue-500 hover:underline">
+                  View All
+                </Link>
+              </div>
               <div className="overflow-hidden">
                 <div className="marquee-container">
                   <div className="marquee-content flex space-x-8">

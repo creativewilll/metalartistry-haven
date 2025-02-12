@@ -14,7 +14,7 @@ const MetalworkCarousel = () => {
   const handleCategoryClick = (category: string) => {
     // Create the same URL-friendly ID as in Galleries.tsx
     const sectionId = category.toLowerCase().replace(/[, ]/g, '-');
-    navigate(`/discover#${sectionId}`);
+    navigate(`/galleries#${sectionId}`);
   };
 
   return (
