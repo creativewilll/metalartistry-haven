@@ -142,7 +142,10 @@ export const galleryItems: GalleryItem[] = [
       { url: '/gallery-images/SilverSpruceBrewingco5.jpeg', alt: 'Front-view of finished bar with custom stools and lighting' },
       { url: '/gallery-images/SilverSpruceBrewingco7.jpeg', alt: 'Custom bar accents and decor' },
       { url: '/gallery-images/SilverSpruceBrewingco8.jpeg', alt: 'Fully custom seating for 25+ customers at once' },
-      { url: '/gallery-images/SilverSpruceBrewingco9.jpeg', alt: 'Handcrafted steel beer taps with custom metal signage' }
+      { url: '/gallery-images/SilverSpruceBrewingco9.jpeg', alt: 'Handcrafted steel beer taps with custom metal signage' },
+      { url: '/gallery-images/SilverSpruceBrewingco1.jpeg', alt: 'Custom-built bar with reclaimed barnwood beams' },
+      { url: '/gallery-images/SilverSpruceBrewingco-CustomVanity.jpg', alt: 'Custom-built vanity with custom steel frame and reclaimed barnwood accents' },
+      { url: '/gallery-images/SilverSpruceBrewingco-process.jpeg', alt: 'Behind the scenes!' }
     ]
   },
   //Railings, Fences, and Gates
@@ -237,7 +240,8 @@ export const galleryItems: GalleryItem[] = [
     childImages: [
       { url: '/gallery-images/CustomSecurity_NaturesFence1-3.jpeg', alt: 'Meticulous attention to detail' },
       { url: '/gallery-images/CustomSecurity_NaturesFence1-2.jpeg', alt: 'Secondary view of the fencing' },
-      { url: '/gallery-images/CustomSecurity_NaturesFence1-4.jpeg', alt: 'Another view of the security solution' }
+      { url: '/gallery-images/CustomSecurity_NaturesFence1-4.jpeg', alt: 'Another view of the security solution' },
+      { url: '/gallery-images/CustomSecurity_NaturesFence3.jpg', alt: 'Another view of the security solution' }
     ]
   },
   {
@@ -249,7 +253,8 @@ export const galleryItems: GalleryItem[] = [
       { url: '/gallery-images/CustomStovehood1 2.jpeg', alt: 'Front view' }
     ],
     childImages: [
-      { url: '/gallery-images/CustomStovehood1-2 2.jpeg', alt: 'Up-close, detailed view of the finished piece' }
+      { url: '/gallery-images/CustomStovehood1-2 2.jpeg', alt: 'Up-close, detailed view of the finished piece' },
+      { url: '/gallery-images/CustomStovehood-PROCESS1.jpeg', alt: 'Behind the scenes! Custom Stovehood Installation' }
     ],
     isCategoryImage: false
   },
@@ -547,7 +552,7 @@ export const galleryItems: GalleryItem[] = [
         { url: '/gallery-images/VaultDoor3.jpeg', alt: 'Secondary view' },
         { url: '/gallery-images/VaultDoor4.jpeg', alt: 'Alternate view' },
         { url: '/gallery-images/VaultDoor-handle.jpeg', alt: 'Custom Steel Captains Handle' },
-        { url: '/gallery-images/VaultDoor-PROCESS.jpeg', alt: 'Behind the scenes!' },
+        { url: '/gallery-images/VaultDoor-PROCESS1.jpeg', alt: 'Behind the scenes!' },
       ],
       isCategoryImage: false
     },
@@ -593,5 +598,124 @@ export const galleryItems: GalleryItem[] = [
         { url: '/gallery-images/CustomMetalDoor1-4 2.jpeg', alt: 'Front view' }
       ],
       isCategoryImage: false
+    },
+    {
+      id: 39,
+      category: 'Behind the Scenes',
+      title: 'Industrial Railing Process',
+      description: 'A behind the scenes look at the process of creating a custom industrial railing.',
+      images: [
+        { url: '/gallery-images/IndoorBarnBuildPROCESS1.jpeg', alt: 'Front view' }
+      ],
+      childImages: [
+        { url: '/gallery-images/IndoorBarnBuildPROCESS1-2.jpeg', alt: 'Behind the scenes!' }
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 40,
+      category: 'Behind the Scenes',
+      title: 'Custom Steel Fireplace',
+      description: 'A behind the scenes look at the process of creating a custom steel fireplace.',
+      images: [
+        { url: '/gallery-images/CustomSteelFireplace1-5-PROCESS.jpeg', alt: 'Front view' }
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 41,
+      category: 'Behind the Scenes',
+      title: 'Custom Cutting Process',
+      description: 'A peak at the process of creating custom steel sheets.',
+      images: [
+        { url: '/gallery-images/customsheetpatternprocess1.jpeg', alt: 'Front view' }
+      ],
+      childImages: [
+        { url: '/gallery-images/customsheetpatternprocess1-2.jpeg', alt: 'Behind the scenes!' },
+        { url: '/gallery-images/customsheetpatternprocess1-1.jpeg', alt: 'Behind the scenes!' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 42,
+      category: 'Art and Decor',
+      title: 'Sleeping Bears',
+      description: 'Custom-cut, precision-crafted metal wall decor - Sleeping Bears. ',
+      images: [
+        { url: '/gallery-images/CustomMetalWallPanels-SleepingBears.jpg', alt: 'Front view' }
+      ],
+      childImages: [
+        { url: '/gallery-images/CustomMetalWallPanels-SleepingBearProcess1.jpg', alt: 'Behind the scenes!' },
+        { url: '/gallery-images/CustomMetalWallPanels-SleepingBearProcess2.jpg', alt: 'Behind the scenes!' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 43,
+      category: 'Art and Decor',
+      title: 'Gypsy Soul',
+      description: 'A precision-cut metal wall piece ~ Gypsy Soul.',
+      images: [
+        { url: '/gallery-images/CustomMetalArt3-GypseySoul.jpg', alt: 'Front view' }
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 44,
+      category: 'Art and Decor',
+      title: 'The Oaks - Custom Signage',
+      description: 'Handcrafted custom metal signage for The Oaks',
+      images: [
+        { url: '/gallery-images/CustomMetalSign-TheOaks1.jpg', alt: 'Front view' }
+      ],
+      childImages: [
+        { url: '/gallery-images/CustomMetalSign-TheOaks1-1.jpg', alt: 'Close-up of the metal signage' },
+        { url: '/gallery-images/CustomMetalSign-TheOaks1-2.jpg', alt: 'Close-up of the metal signage' },
+        { url: '/gallery-images/CustomMetalSign-TheOaksProcess.jpg', alt: 'Behind the scenes!' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 45,
+      category: 'Behind the Scenes',
+      title: 'Custom Steel Barn Beams',
+      description: 'A behind the scenes look at the process of installing custom interior support beams',
+      images: [
+        { url: '/gallery-images/CustomSteelBarnRack 2.jpeg', alt: 'Front view' }
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 46,
+      category: 'Custom Furniture',
+      title: 'Custom-Built Dining Set',
+      description: 'A custom-built dining set with a modern industrial design, featuring a custom-welded frame and a rugged industrial edge.',
+      images: [
+        { url: '/gallery-images/CustomDiningSet-WithBench.jpg', alt: 'An awesome, custom dining table and bench dining set, with a modern industrial design.' }
+      ],
+      isCategoryImage: false
+    }, 
+    {
+      id: 47,
+      category: 'Custom Furniture',
+      title: 'Live-Edge Custom Shelving',
+      description: 'A custom-built dining set with a modern industrial design, featuring a custom-welded frame and a rugged industrial edge.',  
+      images: [
+        { url: '/gallery-images/CustomShelves-LiveEdge1.jpg', alt: 'An awesome, custom dining table and bench dining set, with a modern industrial design.' },
+      ],
+      childImages: [
+        { url: '/gallery-images/CustomShelves-LiveEdge2.jpg', alt: 'Second view of the custom shelving' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 48,
+      category: 'Custom Projects',
+      title: 'Custom Kitchen Build',
+      description: 'A custom-built kitchen with a modern industrial design, sleek steel accents, and gorgeous countertops.',
+      images: [
+        { url: '/gallery-images/CustomIndoor-KitchenBuild 2.jpeg', alt: 'A stylish, modern kitchen with sleek steel accents and gorgeous countertops.' },
+      ],
+      isCategoryImage: false
     }
-];
+  ]

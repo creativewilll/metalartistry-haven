@@ -19,13 +19,13 @@ const categories = [
 
 // Category descriptions - you may want to move these to a data file
 const categoryDescriptions = {
-  'Railings, Fences, and Gates': 'Explore our collection of meticulously crafted metal railings, fences, and gates. Each piece combines safety with stunning artistry.',
-  'Custom Furniture': 'Discover unique furniture pieces that blend form and function, crafted with precision and artistic vision.',
-  'Commercial': 'View our commercial projects where functionality meets innovative design for businesses.',
-  'Art and Decor': 'Browse our artistic metalwork and decorative pieces that add character to any space.',
-  'Doors and Windows': 'See our custom doors and windows that provide both security and aesthetic appeal.',
-  'Behind the Scenes': 'Get a glimpse into our workshop and see how we bring these pieces to life.',
-  'Custom Projects': 'Explore our diverse range of custom projects tailored to unique client needs.'
+  'Railings, Fences, and Gates': 'Explore my collection of hand-crafted metal railings, fences, and gates. Each piece combines safety with stunning artistry and functionality, is custom-made through a process of design, cutting, and welding, and is designed to last a lifetime.',
+  'Custom Furniture': 'Discover unique, custom-designed furniture that blends stylish design, functionality, and decades of experience into one-of-a-kind experiences and pieces.',
+  'Commercial': 'View a select few of my commercial projects where I work with businesses to create custom metalwork solutions for their spaces.',
+  'Art and Decor': 'Browse my artistic metalwork and decorative pieces that add character to any space.',
+  'Doors and Windows': 'See my custom doors and windows that provide both security and aesthetic appeal.',
+  'Behind the Scenes': 'Get a glimpse into my workshop and see how I bring these pieces to life.',
+  'Custom Projects': 'Explore my diverse range of custom projects tailored to unique client needs.'
 };
 
 const ImageCarousel = ({ images }: { images: GalleryItem[] }) => {
