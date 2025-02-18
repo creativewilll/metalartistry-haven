@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { galleryItems, GalleryItem } from '@/data/gallery-items';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -33,24 +33,31 @@ const ImageCarousel = ({ images }: { images: GalleryItem[] }) => {
   const [direction, setDirection] = useState(0);
   const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const scrollPositionRef = useRef(0);
 
   // Add effect to handle body scroll lock
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (selectedItem) {
-      document.body.style.overflow = 'hidden';
+      // Save the current scroll position
+      scrollPositionRef.current = window.scrollY;
       document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollPositionRef.current}px`;
       document.body.style.width = '100%';
-      document.body.style.height = '100%';
+      document.body.style.overflow = 'hidden';
     } else {
+      // Restore body styles
       document.body.style.overflow = '';
       document.body.style.position = '';
+      document.body.style.top = '';
       document.body.style.width = '';
-      document.body.style.height = '';
+      // Restore the scroll position
+      window.scrollTo(0, scrollPositionRef.current);
     }
 
     return () => {
       document.body.style.overflow = '';
       document.body.style.position = '';
+      document.body.style.top = '';
       document.body.style.width = '';
       document.body.style.height = '';
     };
@@ -266,17 +273,21 @@ const ImageCarousel = ({ images }: { images: GalleryItem[] }) => {
               }}
               layout
             >
-              <DetailView 
-                item={selectedItem}
-                isFullscreen={isFullscreen}
-                onFullscreenToggle={() => setIsFullscreen(!isFullscreen)}
-                onClose={() => {
+              <motion.button
+                className="absolute top-6 right-6 z-50 bg-white/10 hover:bg-white/20 rounded-full p-2"
+                onClick={(e) => {
+                  e.stopPropagation();
                   if (isFullscreen) {
                     setIsFullscreen(false);
                   } else {
                     setSelectedItem(null);
                   }
                 }}
+              >
+                <X className="w-4 h-4 text-white" />
+              </motion.button>
+              <DetailView 
+                item={selectedItem}
               />
             </motion.div>
           </motion.div>

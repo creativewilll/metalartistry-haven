@@ -180,14 +180,6 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
         
         {/* Right side - Details display */}
         <div className="w-full lg:w-1/3 h-[40%] lg:h-full p-4 lg:p-6">
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            className="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-black/20 text-white/80 hover:text-white hover:bg-black/30 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-          
           {/* Title */}
           <h2 className="text-xl lg:text-2xl font-bold text-white mb-2 pr-12">
             {item.title}

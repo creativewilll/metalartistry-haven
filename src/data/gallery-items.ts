@@ -505,8 +505,8 @@ export const galleryItems: GalleryItem[] = [
     {
       id: 31,
       category: 'Custom Projects',
-      title: 'Modern Steel Fireplace Surround',
-      description: 'A sleek steel fireplace surround, blending contemporary aesthetics with industrial strength in a modern home setting.',
+      title: 'Custom Fireplace Hot-Rolled Patina',
+      description: 'Hot-rolled patina and clear coat added to existing steel fireplace. fireplace surround, blending contemporary aesthetics with industrial strength in a modern home setting.',
       images: [
         { url: '/gallery-images/CustomIndoor-SteelFireplace1 2.jpeg', alt: 'Front view' }
       ],
@@ -712,7 +712,7 @@ export const galleryItems: GalleryItem[] = [
       id: 48,
       category: 'Custom Projects',
       title: 'Custom Kitchen Build',
-      description: 'A custom-built kitchen with a modern industrial design, sleek steel accents, and gorgeous countertops.',
+      description: 'Custom hot-rolled patina added to the modern industrial steel kitchen.',
       images: [
         { url: '/gallery-images/CustomIndoor-KitchenBuild 2.jpeg', alt: 'A stylish, modern kitchen with sleek steel accents and gorgeous countertops.' },
       ],
