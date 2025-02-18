@@ -68,7 +68,7 @@ const Footer = () => {
             <div className="space-y-3 text-gray-400">
               <p>Traverse City, MI</p>
               <p>Phone: (231) 645-0622</p>
-              <p>Email: mcdesignart@aol.com</p>
+              <p>Email: mattcoffeydesign@gmail.com</p>
             </div>
           </div>
 

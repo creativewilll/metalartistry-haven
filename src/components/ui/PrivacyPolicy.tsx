@@ -41,7 +41,7 @@ const PrivacyPolicy = () => {
       <section className="space-y-2">
         <h5 className="font-medium">Contact Us</h5>
         <p>
-          If you have any questions about this Privacy Policy, please contact us at mcdesignart@aol.com
+          If you have any questions about this Privacy Policy, please contact us at mattcoffeydesign@gmail.com
         </p>
       </section>
     </div>
