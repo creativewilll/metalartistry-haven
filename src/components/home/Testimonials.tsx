@@ -34,6 +34,16 @@ const testimonials = [
     text: "I have done business with Matt for a long time, and will continue to! The quality and intricacy of his work is simply unmatched, and he continually enables us to sell the best custom furniture on the market!",
     author: "Anonymous",
     role: "High-end Furniture Retailer"
+  },
+  {
+    text: "Got busy yesterday and didn't get the chance to shoot you a quick note concerning how pleased we are with the final product. We're just as happy with the wine rack also and greatly appreciate both your efforts towards making us so...for what most likly will be the rest of our lives in this house. There's just something about good art done well and Matt's pieces are just that! Beautiful, masterfully crafted, and built to last. We're looking forward to our next project with you!",
+    author: "John and Carol Sear",
+    role: "Homeowners"
+  }, 
+  {
+    text: "Matt has built us some incredible pieces for our gallery and home. Matt is a true artist and it shows in every piece he creates",
+    author: "Rob and Gina Evins",
+    role: "Homeowners"
   }
 ];
 

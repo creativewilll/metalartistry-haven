@@ -676,16 +676,6 @@ export const galleryItems: GalleryItem[] = [
       isCategoryImage: false
     },
     {
-      id: 45,
-      category: 'Behind the Scenes',
-      title: 'Custom Steel Barn Beams',
-      description: 'A behind the scenes look at the process of installing custom interior support beams',
-      images: [
-        { url: '/gallery-images/CustomSteelBarnRack 2.jpeg', alt: 'Front view' }
-      ],
-      isCategoryImage: false
-    },
-    {
       id: 46,
       category: 'Custom Furniture',
       title: 'Custom-Built Dining Set',
@@ -715,6 +705,126 @@ export const galleryItems: GalleryItem[] = [
       description: 'Custom hot-rolled patina added to the modern industrial steel kitchen.',
       images: [
         { url: '/gallery-images/CustomIndoor-KitchenBuild 2.jpeg', alt: 'A stylish, modern kitchen with sleek steel accents and gorgeous countertops.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 49,
+      category: 'Doors and Windows',
+      title: 'Modern Steel Entry Door',
+      description: 'A contemporary steel entry door featuring clean lines and minimalist design, perfect for modern homes.',
+      images: [
+        { url: '/gallery-images/custom-metal-door1.jpg', alt: 'Modern steel entry door with sleek design and premium finish.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 50,
+      category: 'Doors and Windows',
+      title: 'Industrial Pivot Door',
+      description: 'A statement pivot door crafted from blackened steel with custom hardware, creating a bold entrance for any space.',
+      images: [
+        { url: '/gallery-images/custom-metal-door2.jpg', alt: 'Heavy-duty industrial pivot door with custom blackened steel finish.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 51,
+      category: 'Doors and Windows',
+      title: 'Rustic Steel French Doors',
+      description: 'Handcrafted steel French doors combining rustic charm with industrial strength, perfect for indoor-outdoor living spaces.',
+      images: [
+        { url: '/gallery-images/custom-metal-door3.jpg', alt: 'Pair of rustic steel French doors with glass panels and custom hardware.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 52,
+      category: 'Doors and Windows',
+      title: 'Custom Steel Window Frames',
+      description: 'Precision-crafted steel window frames designed to enhance both traditional and contemporary architectural styles.',
+      images: [
+        { url: '/gallery-images/custom-metal-door4.jpg', alt: 'Custom fabricated steel window frames with clean welds and durable finish.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 53,
+      category: 'Doors and Windows',
+      title: 'Steel and Glass Pocket Door',
+      description: 'A space-saving steel and glass pocket door that slides seamlessly into the wall, combining functionality with industrial elegance.',
+      images: [
+        { url: '/gallery-images/custom-metal-door5.jpg', alt: 'Steel-framed glass pocket door with custom track system and hardware.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 54,
+      category: 'Doors and Windows',
+      title: 'Patina Steel Bi-fold Doors',
+      description: 'Custom bi-fold doors with a distinctive patina finish, creating a striking visual element while maximizing open space.',
+      images: [
+        { url: '/gallery-images/custom-metal-door6.jpg', alt: 'Patina-finished steel bi-fold doors with custom hardware and installation.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 55,
+      category: 'Doors and Windows',
+      title: 'Heavy-Duty Security Door',
+      description: 'A fortress-like steel security door that doesn\'t compromise on style, featuring custom metalwork and reinforced construction.',
+      images: [
+        { url: '/gallery-images/custom-metal-door7.jpg', alt: 'Heavy-duty steel security door with decorative elements and premium locking system.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 56,
+      category: 'Doors and Windows',
+      title: 'Minimalist Steel Window Wall',
+      description: 'A stunning floor-to-ceiling steel window wall with ultra-thin frames, maximizing views while maintaining structural integrity.',
+      images: [
+        { url: '/gallery-images/custom-metal-door8.jpg', alt: 'Minimalist steel window wall installation with clean lines and maximum glass exposure.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 57,
+      category: 'Doors and Windows',
+      title: 'Arched Steel Door Frame',
+      description: 'A custom-built arched steel door frame adding architectural interest to both interior and exterior doorways.',
+      images: [
+        { url: '/gallery-images/custom-metal-door9.jpg', alt: 'Arched steel door frame with precision craftsmanship and elegant curves.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 58,
+      category: 'Doors and Windows',
+      title: 'Perforated Steel Screen Door',
+      description: 'A unique perforated steel screen door providing both privacy and ventilation with a distinctive artistic pattern.',
+      images: [
+        { url: '/gallery-images/custom-metal-door10.jpg', alt: 'Perforated steel screen door with custom pattern and durable hardware.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 59,
+      category: 'Doors and Windows',
+      title: 'Custom Steel Skylight Frames',
+      description: 'Precision-engineered steel skylight frames bringing natural light into interior spaces with clean, industrial aesthetics.',
+      images: [
+        { url: '/gallery-images/custom-metal-door11.jpg', alt: 'Custom steel skylight frames designed for durability and minimal sight lines.' },
+      ],
+      isCategoryImage: false
+    },
+    {
+      id: 60,
+      category: 'Doors and Windows',
+      title: 'Steel-Framed Barn Door',
+      description: 'A modern interpretation of the classic barn door with a robust steel frame and custom sliding hardware system.',
+      images: [
+        { url: '/gallery-images/custom-metal-door12.jpg', alt: 'Steel-framed barn door with custom track system and industrial aesthetic.' },
       ],
       isCategoryImage: false
     }

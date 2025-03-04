@@ -26,6 +26,8 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   // Track fullscreen state and device type
   const [isMobile, setIsMobile] = useState(false);
+  // Add state for mobile fullscreen view
+  const [isMobileFullscreen, setIsMobileFullscreen] = useState(false);
   // Touch gesture handling
   const touchStart = useRef<number | null>(null);
   const imageRef = useRef<HTMLImageElement>(null);
@@ -52,14 +54,18 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
           nextImage();
           break;
         case 'Escape':
-          onClose?.();
+          if (isMobileFullscreen) {
+            setIsMobileFullscreen(false);
+          } else {
+            onClose?.();
+          }
           break;
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
+  }, [onClose, isMobileFullscreen]);
   
   // Combine main images and child images for the gallery
   const allImages = [...item.images, ...(item.childImages || [])];
@@ -70,7 +76,11 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
 
   // Fullscreen handler
   const handleFullscreen = async () => {
-    if (imageRef.current) {
+    if (isMobile) {
+      // Use custom fullscreen for mobile
+      setIsMobileFullscreen(true);
+    } else if (imageRef.current) {
+      // Use browser API for desktop
       try {
         if (document.fullscreenElement) {
           await document.exitFullscreen();
@@ -84,123 +94,194 @@ export const DetailView = ({ item, onClose }: DetailViewProps) => {
   };
 
   return (
-    <motion.div 
-      className="w-full h-full max-w-7xl mx-auto bg-gradient-to-br from-slate-700 via-zinc-700 to-stone-700 rounded-lg border border-white/10 shadow-2xl overflow-hidden"
-      initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.9, opacity: 0 }}
-      transition={{ type: "spring", duration: 0.5 }}
-    >
-      <div className="flex flex-col lg:flex-row h-full relative">
-        {/* Left side - Image display */}
-        <div className="w-full lg:w-2/3 h-[60%] lg:h-full flex flex-col lg:border-r border-white/10">
-          {/* Main image container */}
-          <div 
-            className="relative flex-grow bg-black/20 rounded-lg"
-            onTouchStart={(e) => {
-              const touch = e.touches[0];
-              touchStart.current = touch.clientX;
-            }}
-            onTouchMove={(e) => {
-              if (!touchStart.current) return;
-              const touch = e.touches[0];
-              const diff = touchStart.current - touch.clientX;
-              if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                  nextImage();
-                } else {
-                  prevImage();
+    <>
+      <motion.div 
+        className="w-full h-full max-w-7xl mx-auto bg-gradient-to-br from-slate-700 via-zinc-700 to-stone-700 rounded-lg border border-white/10 shadow-2xl overflow-hidden"
+        initial={{ scale: 0.9, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.9, opacity: 0 }}
+        transition={{ type: "spring", duration: 0.5 }}
+      >
+        <div className="flex flex-col lg:flex-row h-full relative">
+          {/* Close button for the detail view */}
+          {onClose && (
+            <button
+              onClick={onClose}
+              className="absolute top-2 right-2 z-50 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80 hover:text-white transition-colors"
+              aria-label="Close detail view"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          )}
+          
+          {/* Left side - Image display */}
+          <div className="w-full lg:w-2/3 h-[60%] lg:h-full flex flex-col lg:border-r border-white/10">
+            {/* Main image container */}
+            <div 
+              className="relative flex-grow bg-black/20 rounded-lg"
+              onTouchStart={(e) => {
+                const touch = e.touches[0];
+                touchStart.current = touch.clientX;
+              }}
+              onTouchMove={(e) => {
+                if (!touchStart.current) return;
+                const touch = e.touches[0];
+                const diff = touchStart.current - touch.clientX;
+                if (Math.abs(diff) > 50) {
+                  if (diff > 0) {
+                    nextImage();
+                  } else {
+                    prevImage();
+                  }
+                  touchStart.current = null;
                 }
+              }}
+              onTouchEnd={() => {
                 touchStart.current = null;
-              }
-            }}
-            onTouchEnd={() => {
-              touchStart.current = null;
-            }}
-          >
-            <AnimatePresence mode="wait">
-              <motion.img
-                ref={imageRef}
-                key={selectedIndex}
-                src={allImages[selectedIndex].url}
-                alt={allImages[selectedIndex].alt}
-                className="absolute inset-0 w-full h-full object-contain cursor-zoom-in"
-                onClick={handleFullscreen}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              />
-            </AnimatePresence>
-            
-            {/* Navigation buttons */}
-            <button
-              onClick={prevImage}
-              className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80 hover:text-white transition-colors"
+              }}
             >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={nextImage}
-              className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80 hover:text-white transition-colors"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-
-            {/* Fullscreen button */}
-            <button
-              onClick={handleFullscreen}
-              className="absolute top-2 right-12 lg:right-2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80 hover:text-white transition-colors"
-            >
-              <Maximize2 className="w-5 h-5" />
-            </button>
-          </div>
-          
-          {/* Thumbnail gallery */}
-          <div className="h-20 mt-3 flex gap-2 px-2 overflow-x-auto">
-            {allImages.map((image, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedIndex(index)}
-                className={cn(
-                  "relative flex-shrink-0 h-full aspect-square rounded-md overflow-hidden",
-                  "hover:ring-2 hover:ring-white/30 transition-all",
-                  selectedIndex === index && "ring-2 ring-white/50"
-                )}
-              >
-                <img
-                  src={image.url}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
+              <AnimatePresence mode="wait">
+                <motion.img
+                  ref={imageRef}
+                  key={selectedIndex}
+                  src={allImages[selectedIndex].url}
+                  alt={allImages[selectedIndex].alt}
+                  className="absolute inset-0 w-full h-full object-contain cursor-zoom-in"
+                  onClick={handleFullscreen}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
                 />
+              </AnimatePresence>
+              
+              {/* Navigation buttons */}
+              <button
+                onClick={prevImage}
+                className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80 hover:text-white transition-colors"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-6 h-6" />
               </button>
-            ))}
+              <button
+                onClick={nextImage}
+                className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80 hover:text-white transition-colors"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+
+              {/* Fullscreen button */}
+              <button
+                onClick={handleFullscreen}
+                className="absolute top-2 right-12 lg:right-2 p-2 rounded-full bg-slate-800/80 hover:bg-slate-700/80 text-white/80 hover:text-white transition-colors"
+                aria-label="Toggle fullscreen"
+              >
+                <Maximize2 className="w-5 h-5" />
+              </button>
+            </div>
+            
+            {/* Thumbnail gallery */}
+            <div className="h-20 mt-3 flex gap-2 px-2 overflow-x-auto">
+              {allImages.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedIndex(index)}
+                  className={cn(
+                    "relative flex-shrink-0 h-full aspect-square rounded-md overflow-hidden",
+                    "hover:ring-2 hover:ring-white/30 transition-all",
+                    selectedIndex === index && "ring-2 ring-white/50"
+                  )}
+                  aria-label={`Select image ${index + 1}`}
+                >
+                  <img
+                    src={image.url}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Right side - Details display */}
+          <div className="w-full lg:w-1/3 h-[40%] lg:h-full p-4 lg:p-6">
+            {/* Title */}
+            <h2 className="text-xl lg:text-2xl font-bold text-white mb-2 pr-12">
+              {item.title}
+            </h2>
+            
+            {/* Category */}
+            <div className="inline-block px-3 py-1 mb-3 rounded-full bg-white/10 text-sm text-white/80">
+              {item.category}
+            </div>
+            
+            {/* Description */}
+            <p className="text-sm lg:text-base text-white/80 mb-4 leading-relaxed">
+              {item.description}
+            </p>
+            
+            {/* Image count */}
+            <div className="text-sm text-white/60">
+              {allImages.length} images in gallery
+            </div>
           </div>
         </div>
-        
-        {/* Right side - Details display */}
-        <div className="w-full lg:w-1/3 h-[40%] lg:h-full p-4 lg:p-6">
-          {/* Title */}
-          <h2 className="text-xl lg:text-2xl font-bold text-white mb-2 pr-12">
-            {item.title}
-          </h2>
-          
-          {/* Category */}
-          <div className="inline-block px-3 py-1 mb-3 rounded-full bg-white/10 text-sm text-white/80">
-            {item.category}
-          </div>
-          
-          {/* Description */}
-          <p className="text-sm lg:text-base text-white/80 mb-4 leading-relaxed">
-            {item.description}
-          </p>
-          
-          {/* Image count */}
-          <div className="text-sm text-white/60">
-            {allImages.length} images in gallery
-          </div>
-        </div>
-      </div>
-    </motion.div>
+      </motion.div>
+
+      {/* Mobile Fullscreen View */}
+      <AnimatePresence>
+        {isMobileFullscreen && (
+          <motion.div 
+            className="fixed inset-0 z-[200] bg-black flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setIsMobileFullscreen(false)}
+              className="absolute top-4 right-4 z-50 p-3 rounded-full bg-black/30 hover:bg-black/50 text-white/90 hover:text-white transition-colors"
+              aria-label="Close fullscreen view"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            
+            {/* Fullscreen image */}
+            <img
+              src={allImages[selectedIndex].url}
+              alt={allImages[selectedIndex].alt}
+              className="max-w-full max-h-full object-contain"
+            />
+
+            {/* Navigation overlay for swipe gestures */}
+            <div 
+              className="absolute inset-0 z-10"
+              onTouchStart={(e) => {
+                const touch = e.touches[0];
+                touchStart.current = touch.clientX;
+              }}
+              onTouchMove={(e) => {
+                if (!touchStart.current) return;
+                const touch = e.touches[0];
+                const diff = touchStart.current - touch.clientX;
+                if (Math.abs(diff) > 50) {
+                  if (diff > 0) {
+                    nextImage();
+                  } else {
+                    prevImage();
+                  }
+                  touchStart.current = null;
+                }
+              }}
+              onTouchEnd={() => {
+                touchStart.current = null;
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
