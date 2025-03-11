@@ -741,10 +741,10 @@ export const galleryItems: GalleryItem[] = [
     {
       id: 52,
       category: 'Doors and Windows',
-      title: 'Custom Steel Window Frames',
-      description: 'Precision-crafted steel window frames designed to enhance both traditional and contemporary architectural styles.',
+      title: 'Custom Steel Door Frame',
+      description: 'Precision-crafted steel door frames designed to enhance both traditional and contemporary architectural styles.',
       images: [
-        { url: '/gallery-images/custom-metal-door4.jpg', alt: 'Custom fabricated steel window frames with clean welds and durable finish.' },
+        { url: '/gallery-images/custom-metal-door4.jpg', alt: 'Custom fabricated steel door frames with clean welds and durable finish.' },
       ],
       isCategoryImage: false
     },
@@ -781,10 +781,10 @@ export const galleryItems: GalleryItem[] = [
     {
       id: 56,
       category: 'Doors and Windows',
-      title: 'Minimalist Steel Window Wall',
-      description: 'A stunning floor-to-ceiling steel window wall with ultra-thin frames, maximizing views while maintaining structural integrity.',
+      title: 'Handforged Steel Door',
+      description: 'A stunning handforged steel door with a custom patina finish, creating a striking visual element while maximizing open space.',
       images: [
-        { url: '/gallery-images/custom-metal-door8.jpg', alt: 'Minimalist steel window wall installation with clean lines and maximum glass exposure.' },
+        { url: '/gallery-images/custom-metal-door8.jpg', alt: 'Handforged steel door with custom patina finish.' },
       ],
       isCategoryImage: false
     },
@@ -801,20 +801,20 @@ export const galleryItems: GalleryItem[] = [
     {
       id: 58,
       category: 'Doors and Windows',
-      title: 'Perforated Steel Screen Door',
-      description: 'A unique perforated steel screen door providing both privacy and ventilation with a distinctive artistic pattern.',
+      title: 'Custom Metal Door',
+      description: 'A unique custom metal door with a custom patina finish, creating a striking visual element while maximizing open space.',
       images: [
-        { url: '/gallery-images/custom-metal-door10.jpg', alt: 'Perforated steel screen door with custom pattern and durable hardware.' },
+        { url: '/gallery-images/custom-metal-door10.jpg', alt: 'Custom metal door with custom patina finish.' },
       ],
       isCategoryImage: false
     },
     {
       id: 59,
       category: 'Doors and Windows',
-      title: 'Custom Steel Skylight Frames',
-      description: 'Precision-engineered steel skylight frames bringing natural light into interior spaces with clean, industrial aesthetics.',
+      title: 'Handforged Custom Metal Door',
+      description: 'A unique handforged custom metal door with a custom patina finish, creating a striking visual element while maximizing open space.',
       images: [
-        { url: '/gallery-images/custom-metal-door11.jpg', alt: 'Custom steel skylight frames designed for durability and minimal sight lines.' },
+        { url: '/gallery-images/custom-metal-door11.jpg', alt: 'Handforged custom metal door with custom patina finish.' },
       ],
       isCategoryImage: false
     },
