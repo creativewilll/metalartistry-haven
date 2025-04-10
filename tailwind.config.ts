@@ -105,6 +105,8 @@ export default {
         // Accent Colors
         'red-hot': '#FF4500',
         'molten-silver': '#A8A9AD',
+        'bronze': '#CD7F32',
+        'silver': '#C0C0C0',
         
         // Secondary Colors
         'burnt-ember': '#8B0000',

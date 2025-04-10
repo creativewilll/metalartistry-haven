@@ -1,25 +1,28 @@
 import { HeroSection } from '@/components/home/HeroSection';
 import { Testimonials } from '@/components/home/Testimonials';
 import { CTASection } from '@/components/home/CTASection';
-import { InstagramFeed } from '@/components/home/InstagramFeed';
 import { AboutSection } from '@/components/home/AboutSection';
+import { InstagramFeed } from '@/components/home/InstagramFeed';
 import MetalworkCarousel from '@/components/MetalworkCarousel';
+import { PageTransition } from "@/components/PageTransition";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
 
-const Index = () => {
+export default function Index() {
   return (
-    <div className="min-h-screen px-4">
-      <HeroSection />
-      <div className="max-w-[1400px] mx-auto">
-        <div className="space-y-24 mb-24">
-          <MetalworkCarousel />
-          <AboutSection />
-          <Testimonials />
+    <PageTransition>
+      <main className="relative">
+        <HeroSection />
+        <div className="max-w-[1400px] mx-auto">
+          <div className="space-y-24 mb-24">
+            <MetalworkCarousel />
+            <AboutSection />
+            <FeaturedProducts />
+            <Testimonials />
+          </div>
+          <InstagramFeed />
+          <CTASection />
         </div>
-        <InstagramFeed />
-        <CTASection />
-      </div>
-    </div>
+      </main>
+    </PageTransition>
   );
-};
-
-export default Index;
+}

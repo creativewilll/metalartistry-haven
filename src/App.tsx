@@ -1,10 +1,11 @@
-import { Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Navigation from "./components/Navigation";
 import Footer from "./components/ui/Footer";
 import { cn } from "@/lib/utils";
 import { PageTransition } from "./components/PageTransition";
+import { CartProvider } from '@/contexts/CartContext';
 
 // Lazy load page components
 const Index = lazy(() => import("./pages/Index"));
@@ -12,6 +13,11 @@ const Discover = lazy(() => import("./pages/Discover"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/404"));
 const Galleries = lazy(() => import("./pages/Galleries"));
+const Shop = lazy(() => import("./pages/Shop"));
+const ProductDetail = lazy(() => import("./components/shop/ProductDetail"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const CheckoutSuccess = lazy(() => import("./pages/CheckoutSuccess"));
+const CartPage = lazy(() => import("./pages/CartPage"));
 
 const AppContent = () => {
   const location = useLocation();
@@ -33,6 +39,11 @@ const AppContent = () => {
                 <Route path="/discover" element={<Discover />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/galleries" element={<Galleries />} />
+                <Route path="/shop" element={<Shop />} />
+                <Route path="/shop/product/:id" element={<ProductDetail />} />
+                <Route path="/cart" element={<CartPage />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/checkout/success" element={<CheckoutSuccess />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </PageTransition>
@@ -46,7 +57,9 @@ const AppContent = () => {
 
 const App = () => (
   <BrowserRouter>
-    <AppContent />
+    <CartProvider>
+      <AppContent />
+    </CartProvider>
   </BrowserRouter>
 );
 
