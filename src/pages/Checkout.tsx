@@ -4,8 +4,6 @@ import { useCart } from '@/contexts/CartContext';
 import { ArrowLeft, CreditCard, Check, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { PageTransition } from '@/components/PageTransition';
-import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-import { stripePromise } from '@/lib/stripe';
 
 // Stripe Card Element styling to match our theme
 const CARD_ELEMENT_OPTIONS = {
@@ -26,14 +24,22 @@ const CARD_ELEMENT_OPTIONS = {
   }
 };
 
-// The inner checkout form with Stripe hooks
+// Placeholder for payment processing logic
+const processPayment = async (formData: any) => {
+  // In a real application, integrate with your chosen payment gateway here
+  console.log("Processing payment with:", formData);
+  // Simulate API call
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  // Simulate success
+  return { success: true };
+};
+
 const CheckoutForm = () => {
   const { cart, getCartTotal, clearCart } = useCart();
   const navigate = useNavigate();
   const [isProcessing, setIsProcessing] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [step, setStep] = useState(1);
-  const [clientSecret, setClientSecret] = useState('');
   const [formData, setFormData] = useState({
     email: '',
     name: '',
@@ -45,9 +51,51 @@ const CheckoutForm = () => {
     saveInfo: true
   });
   
-  // Get Stripe hooks
-  const stripe = useStripe();
-  const elements = useElements();
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
+    setFormData(prev => ({ ...prev, [name]: newValue }));
+  };
+  
+  // Function to handle the payment submission
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsProcessing(true);
+    setPaymentError(null);
+    
+    try {
+      // Use the placeholder payment processing function
+      const paymentResult = await processPayment(formData);
+
+      if (paymentResult.success) {
+        // If successful, clear cart and navigate to success page
+        clearCart();
+        navigate('/checkout/success');
+      } else {
+        setPaymentError("Payment failed. Please try again.");
+        setIsProcessing(false);
+      }
+    } catch (error) {
+      console.error('Error processing payment:', error);
+      setPaymentError(
+        error instanceof Error 
+          ? error.message 
+          : "An unknown error occurred while processing your payment"
+      );
+      setIsProcessing(false);
+    }
+  };
+  
+  const nextStep = () => {
+    if (formData.email && formData.name && formData.address && formData.city && 
+        formData.state && formData.postalCode && formData.country) {
+      setStep(2);
+      window.scrollTo(0, 0);
+    } else {
+      // Simple form validation
+      alert("Please fill out all required fields");
+    }
+  };
   
   if (cart.length === 0) {
     return (
@@ -72,71 +120,6 @@ const CheckoutForm = () => {
       </PageTransition>
     );
   }
-  
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    const newValue = type === 'checkbox' ? (e.target as HTMLInputElement).checked : value;
-    setFormData(prev => ({ ...prev, [name]: newValue }));
-  };
-  
-  // Function to handle the payment submission
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsProcessing(true);
-    setPaymentError(null);
-    
-    if (!stripe || !elements) {
-      // Stripe.js has not loaded yet
-      setIsProcessing(false);
-      return;
-    }
-    
-    // Get the Card Element
-    const cardElement = elements.getElement(CardElement);
-    
-    if (!cardElement) {
-      setPaymentError("Card information is incomplete");
-      setIsProcessing(false);
-      return;
-    }
-    
-    // In a real app, you would send the order data to your backend,
-    // which would create a payment intent with Stripe API and return the client secret
-    // For demo, we're simulating a successful payment
-    try {
-      // Simulate processing time
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // For demo purposes, simulate a successful payment
-      // In real implementation, you would use confirmCardPayment with the client secret
-      
-      // If successful, clear cart and navigate to success page
-      clearCart();
-      navigate('/checkout/success');
-    } catch (error) {
-      console.error('Error processing payment:', error);
-      setPaymentError(
-        error instanceof Error 
-          ? error.message 
-          : "An unknown error occurred while processing your payment"
-      );
-      setIsProcessing(false);
-    }
-  };
-  
-  const nextStep = () => {
-    if (formData.email && formData.name && formData.address && formData.city && 
-        formData.state && formData.postalCode && formData.country) {
-      setStep(2);
-      window.scrollTo(0, 0);
-      
-      // In a real implementation, this is where you would create a payment intent
-      // by sending the order data to your backend, which would return the client secret
-    } else {
-      // Simple form validation
-      alert("Please fill out all required fields");
-    }
-  };
   
   return (
     <PageTransition>
@@ -324,65 +307,45 @@ const CheckoutForm = () => {
                   </div>
                 )}
                 
-                {/* Step 2: Payment Information */}
+                {/* Step 2: Payment Information - Placeholder */}
                 {step === 2 && (
                   <div>
-                    <div className="mb-6 p-3 bg-zinc-800/60 rounded-md border border-zinc-700/60 flex items-center gap-3">
-                      <Lock className="h-4 w-4 text-bronze" />
-                      <span className="text-sm text-gray-300">Your payment info is secured with industry-standard encryption</span>
-                    </div>
-                    
-                    {/* Stripe Card Element */}
-                    <div className="p-6 border border-zinc-700 rounded-md bg-zinc-800 mb-6">
-                      <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-400 mb-3" htmlFor="card-element">
-                          Credit or Debit Card
-                        </label>
-                        <CardElement
-                          id="card-element"
-                          options={CARD_ELEMENT_OPTIONS}
-                          className="p-4 bg-zinc-900 border border-zinc-700 rounded-md"
-                        />
-                      </div>
-                      
-                      {/* Show any payment errors */}
-                      {paymentError && (
-                        <div className="mt-4 p-3 bg-red-900/40 border border-red-700 rounded-md text-red-200 text-sm">
-                          {paymentError}
-                        </div>
-                      )}
-                    </div>
-                    
                     <div className="mb-6">
-                      <label className="flex items-center">
-                        <input
-                          type="checkbox"
-                          name="saveInfo"
-                          checked={formData.saveInfo}
-                          onChange={handleInputChange}
-                          className="h-4 w-4 accent-bronze mr-2"
-                        />
-                        <span className="text-sm text-gray-300">Save payment information for next time</span>
+                      <label className="block text-sm font-medium text-gray-400 mb-2">
+                        Payment Method
                       </label>
+                      <div className="p-4 bg-zinc-800 border border-zinc-700 rounded-md text-silver">
+                        {/* Placeholder for payment form elements */}
+                        <p className="text-sm text-gray-400">Payment integration placeholder. Click below to simulate payment.</p>
+                        {/* Example: Display masked card info if available */}
+                        {/* <p>Card ending in **** 1234</p> */}
+                      </div>
                     </div>
-                    
-                    <button
+
+                    {paymentError && (
+                      <div className="mb-4 p-3 bg-red-900/30 border border-red-600 text-red-300 rounded-md text-sm">
+                        {paymentError}
+                      </div>
+                    )}
+
+                    <Button 
                       type="submit"
-                      className="w-full py-6 bg-bronze hover:bg-amber-600 text-white font-medium rounded-md transition-colors flex items-center justify-center"
-                      disabled={isProcessing || !stripe}
+                      className="w-full text-lg font-semibold 
+                      bg-[linear-gradient(135deg,#18181b_0%,#27272a_70%,#f59e0b_85%,#fbbf24_100%)]
+                      hover:bg-amber-500 hover:bg-none
+                      text-white rounded-lg transition-all duration-300
+                      shadow-lg hover:shadow-xl transform hover:-translate-y-1
+                      border border-bronze/20 hover:border-amber-400
+                      disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isProcessing}
                     >
-                      {isProcessing ? (
-                        <>
-                          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          Processing Payment...
-                        </>
-                      ) : (
-                        `Pay $${getCartTotal().toLocaleString()}`
-                      )}
-                    </button>
+                      {isProcessing ? 'Processing...' : `Pay $${getCartTotal().toLocaleString()}`}
+                    </Button>
+
+                    <div className="mt-4 flex items-center justify-center text-xs text-gray-500">
+                      <Lock className="h-3 w-3 mr-1" />
+                      <span>Secure Payment Placeholder</span>
+                    </div>
                   </div>
                 )}
               </form>
@@ -438,12 +401,10 @@ const CheckoutForm = () => {
   );
 };
 
-// Main checkout component wrapped with Stripe Elements
+// Main checkout component - Removed Stripe Elements wrapper
 const Checkout = () => {
   return (
-    <Elements stripe={stripePromise}>
-      <CheckoutForm />
-    </Elements>
+    <CheckoutForm />
   );
 };
 
