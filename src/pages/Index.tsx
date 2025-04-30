@@ -5,7 +5,6 @@ import { AboutSection } from '@/components/home/AboutSection';
 import { InstagramFeed } from '@/components/home/InstagramFeed';
 import MetalworkCarousel from '@/components/MetalworkCarousel';
 import { PageTransition } from "@/components/PageTransition";
-import FeaturedProducts from "@/components/home/FeaturedProducts";
 
 export default function Index() {
   return (
@@ -16,7 +15,6 @@ export default function Index() {
           <div className="space-y-24 mb-24">
             <MetalworkCarousel />
             <AboutSection />
-            <FeaturedProducts />
             <Testimonials />
           </div>
           <InstagramFeed />

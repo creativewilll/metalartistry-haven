@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ShoppingBag } from 'lucide-react';
-import { useCart } from '@/contexts/CartContext';
+import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { getCartCount, setIsCartOpen } = useCart();
-  const cartCount = getCartCount();
 
   return (
     <nav className="fixed w-full z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
@@ -36,51 +33,17 @@ const Navigation = () => {
               <Link to="/galleries" className="text-silver hover:text-cream transition-colors">
                 Galleries
               </Link>
-              <Link to="/shop" className="text-silver hover:text-cream transition-colors">
-                Shop
-              </Link>
             </div>
           </div>
 
-          {/* Right side - Cart */}
-          <div className="flex items-center">
-            <div className="hidden md:flex items-center">
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative text-silver hover:text-cream p-2 transition-colors"
-                aria-label="Shopping cart"
-              >
-                <ShoppingBag size={22} />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-bronze text-white rounded-full text-xs font-bold h-5 w-5 flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </button>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative text-silver hover:text-cream p-2 transition-colors mr-2"
-                aria-label="Shopping cart"
-              >
-                <ShoppingBag size={20} />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-bronze text-white rounded-full text-xs font-bold h-4 w-4 flex items-center justify-center">
-                    {cartCount}
-                  </span>
-                )}
-              </button>
-              
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-silver hover:text-cream"
-              >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-silver hover:text-cream"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
         </div>
       </div>
@@ -116,13 +79,6 @@ const Navigation = () => {
               onClick={() => setIsOpen(false)}
             >
               Galleries
-            </Link>
-            <Link
-              to="/shop"
-              className="block px-3 py-2 text-silver hover:text-cream"
-              onClick={() => setIsOpen(false)}
-            >
-              Shop
             </Link>
           </div>
         </div>
