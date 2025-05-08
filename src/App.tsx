@@ -12,16 +12,18 @@ const Discover = lazy(() => import("./pages/Discover"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/404"));
 const Galleries = lazy(() => import("./pages/Galleries"));
+const TypeForm = lazy(() => import("./components/contact/TypeForm"));
 
 const AppContent = () => {
   const location = useLocation();
   const isDiscoverPage = location.pathname === '/discover';
+  const isTypeFormPage = location.pathname === '/contact-form';
 
   return (
     <div className={cn("min-h-screen flex flex-col", {
       "bg-zinc-950": isDiscoverPage
     })}>
-      {!isDiscoverPage && <Navigation />}
+      {!isDiscoverPage && !isTypeFormPage && <Navigation />}
       <main className={cn("flex-grow", {
         "h-screen": isDiscoverPage
       })}>
@@ -32,6 +34,7 @@ const AppContent = () => {
                 <Route path="/" element={<Index />} />
                 <Route path="/discover" element={<Discover />} />
                 <Route path="/contact" element={<Contact />} />
+                <Route path="/contact-form" element={<TypeForm />} />
                 <Route path="/galleries" element={<Galleries />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
@@ -39,7 +42,7 @@ const AppContent = () => {
           </AnimatePresence>
         </Suspense>
       </main>
-      {!isDiscoverPage && <Footer />}
+      {!isDiscoverPage && !isTypeFormPage && <Footer />}
     </div>
   );
 };

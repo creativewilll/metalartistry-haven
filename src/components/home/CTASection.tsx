@@ -1,5 +1,6 @@
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 export const CTASection = () => {
   return (
@@ -29,33 +30,15 @@ export const CTASection = () => {
 
           {/* CTA button with enhanced effects */}
           <div className="relative group z-20">
-            <div className="absolute -inset-1 bg-gradient-to-r from-bronze via-silver to-bronze 
-              rounded-lg blur opacity-70 group-hover:opacity-100 transition duration-1000 
-              group-hover:duration-200 animate-gradient-xy"></div>
-            <Link
-              to="/contact"
-              className="relative inline-flex items-center px-8 py-4 text-lg md:text-xl font-semibold 
-                bg-[linear-gradient(135deg,#18181b_0%,#27272a_70%,#f59e0b_85%,#fbbf24_100%)]
-                hover:bg-amber-500 hover:bg-none
-                text-white rounded-lg transition-all duration-700
-                transform hover:-translate-y-1 group/button
-                border border-bronze/20 hover:border-amber-400
-                shadow-lg hover:shadow-2xl hover:shadow-amber-500/50
-                after:absolute after:inset-0 after:rounded-lg
-                after:transition-all after:ease-in
-                after:[background:theme(colors.amber.500/0)]
-                hover:after:animate-intensify-glow
-                overflow-hidden
-                [&_*]:z-10 [&_*]:relative"
-            >
-              <span className="flex items-center transition-colors duration-700">
-                <Sparkles className="w-5 h-5 mr-3 animate-pulse text-white 
-                  group-hover/button:text-amber-100 group-hover/button:animate-spark" />
-                Start Your Project
-                <ArrowRight className="ml-3 group-hover/button:translate-x-1 transition-transform
-                  group-hover/button:text-amber-100" />
-              </span>
-            </Link>
+            <Button asChild>
+              <Link to="/contact-form" target="_blank">
+                <span className="flex items-center transition-colors duration-700">
+                  <Sparkles className="w-5 h-5 mr-3 animate-pulse text-white" />
+                  Start Your Project
+                  <ArrowRight className="ml-3" />
+                </span>
+              </Link>
+            </Button>
           </div>
 
         </div>

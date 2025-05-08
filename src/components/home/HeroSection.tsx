@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 
 export const HeroSection = () => {
   return (
@@ -36,45 +37,24 @@ export const HeroSection = () => {
             </div>
           </motion.div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
-            <Link
-              to="/discover"
-              className="inline-flex items-center px-8 py-4 text-lg font-semibold 
-              relative bg-[linear-gradient(135deg,#18181b_0%,#27272a_70%,#f59e0b_85%,#fbbf24_100%)]
-              hover:bg-amber-500 hover:bg-none
-              text-white rounded-lg transition-all duration-300
-              shadow-lg hover:shadow-xl transform hover:-translate-y-1
-              border border-bronze/20 hover:border-amber-400
-              group hover:animate-nod overflow-hidden"
-            >
-              Explore my Work
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center px-8 py-4 text-lg font-semibold 
-              relative bg-[linear-gradient(135deg,#18181b_0%,#27272a_70%,#f59e0b_85%,#fbbf24_100%)]
-              hover:bg-amber-500 hover:bg-none
-              text-white rounded-lg transition-all duration-300
-              shadow-lg hover:shadow-xl transform hover:-translate-y-1
-              border border-bronze/20 hover:border-amber-400
-              group hover:animate-nod overflow-hidden"
-            >
-              Contact me!
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/galleries"
-              className="inline-flex items-center px-8 py-4 text-lg font-semibold 
-              relative bg-[linear-gradient(135deg,#18181b_0%,#27272a_70%,#f59e0b_85%,#fbbf24_100%)]
-              hover:bg-amber-500 hover:bg-none
-              text-white rounded-lg transition-all duration-300
-              shadow-lg hover:shadow-xl transform hover:-translate-y-1
-              border border-bronze/20 hover:border-amber-400
-              group hover:animate-nod overflow-hidden"
-            >
-              Specialties
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <Button asChild>
+              <Link to="/discover">
+                Explore my Work
+                <ArrowRight className="ml-2" />
+              </Link>
+            </Button>
+            <Button asChild>
+              <Link to="/contact">
+                Contact me!
+                <ArrowRight className="ml-2" />
+              </Link>
+            </Button>
+            <Button asChild>
+              <Link to="/galleries">
+                Specialties
+                <ArrowRight className="ml-2" />
+              </Link>
+            </Button>
           </div>
         </div>
       </div>

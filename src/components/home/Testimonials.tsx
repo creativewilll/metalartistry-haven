@@ -42,8 +42,8 @@ const testimonials = [
   }, 
   {
     text: "Matt has built us some incredible pieces for our gallery and home. Matt is a true artist and it shows in every piece he creates",
-    author: "Rob and Gina Evins",
-    role: "Homeowners"
+    author: "Rob and Gina Evina",
+    role: "Owners of Woodland Creek Furniture"
   }
 ];
 
