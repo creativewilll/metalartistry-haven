@@ -1,24 +1,62 @@
+# Dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
 # Logs
-logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Environment / secrets
+.env*
+!.env.example
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# --- AI tools & IDE ---
+
+# Cursor IDE
+.cursor/
+
+# Vibe-tools / Cursor-tools
+vibe-tools.config.json
+.vibe-tools.env
+cursor-tools.config.json
+.cursor-tools.env
+
+# Repomix (AI context bundler)
+.repomix-output.txt
+repomix.config.json
+repomix-output.*
+
+# Google AI Studio
+metadata.json
+
+# Local AI research scratchpads
+local-research/
+local-docs/
+
+# Aider
+.aider*
+.aider.tags.cache.v3/
+
+# Claude Code
+.claude/
+
+# GitHub Copilot
+.copilot/
+
+# Windsurf / Codeium
+.windsurf/
+.codeium/
+
+# Generic AI prompt/scratchpad files
+*.prompt
+.ai-scratchpad*

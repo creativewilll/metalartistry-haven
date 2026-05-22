@@ -1,29 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MattCoffeyDesign</title>
-    <meta name="description" content="MattCoffeyDesign - High-End, Custom Metalworking Blacksmithing" />
-    <meta name="author" content="Will Spurlock" />
-    <meta property="og:image" content="MattCoffeyDesignMetalworking.jpg" />
-    <meta property="og:title" content="MattCoffeyDesign" />
-    <meta property="og:description" content="High-End, Custom Metalworking Blacksmithing" />
-    <meta property="og:type" content="website" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Railway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-      * {
-        font-family: 'Railway', sans-serif;
-      }
-    </style>
-    <script async defer src="https://www.instagram.com/embed.js"></script>
+    <title>Matt Coffey Design | Master Blacksmith | Traverse City</title>
+    <meta name="description" content="25+ years of master metalworking. Custom railings, gates, signage, doors, structural supports, and heirloom furniture forged in Traverse City, Northern Michigan." />
+    <meta name="author" content="Matt Coffey" />
+    <meta name="generator" content="Vite + React" />
+    <meta http-equiv="content-language" content="en-US" />
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="Matt Coffey Design Journal" href="/rss.xml" />
+    
+    <!-- LLM Content Files -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full content" />
+    
+    <!-- Identity / rel=me -->
+    <link rel="me" href="https://instagram.com/mattcoffeydesign" />
+    <link rel="me" href="https://facebook.com/mattcoffeydesign" />
+    
+    <!-- Preconnect to origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-
   <body>
     <div id="root"></div>
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Netlify Hidden Form Stubs for SPA Form Detection -->
+    <form name="contact-short" data-netlify="true" hidden>
+      <input type="text" name="name" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <select name="projectType"></select>
+      <select name="budget"></select>
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
+
+    <form name="contact-intake" data-netlify="true" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <select name="budget"></select>
+      <textarea name="projectDescription"></textarea>
+      <textarea name="extra"></textarea>
+      <input name="bot-field" />
+    </form>
+
+    <form name="newsletter" data-netlify="true" hidden>
+      <input type="email" name="email" />
+      <input name="bot-field" />
+    </form>
   </body>
 </html>
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Matt Coffey Design Journal</title>
+    <link>https://mattcoffeydesign.com/journal</link>
+    <description>Master Blacksmith | Traverse City | 25+ years of master metalworking. Custom railings, furniture, and architectural art in Northern Michigan.</description>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 21 May 2026 20:04:48 GMT</lastBuildDate>
+    <atom:link href="https://mattcoffeydesign.com/rss.xml" rel="self" type="application/rss+xml" />
+    <image>
+      <url>https://mattcoffeydesign.com/gallery-images/MattCoffeyHero.jpeg</url>
+      <title>Matt Coffey Design Journal</title>
+      <link>https://mattcoffeydesign.com/journal</link>
+    </image>
+    <item>
+      <title>The Truth About Powder Coating vs. Traditional Patina Finishes</title>
+      <link>https://mattcoffeydesign.com/journal/powder-coat-vs-patina-finishes</link>
+      <guid isPermaLink="true">https://mattcoffeydesign.com/journal/powder-coat-vs-patina-finishes</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 GMT</pubDate>
+      <description>In architectural metalwork, the finish dictates the lifespan. Why we often argue against commercial powder coating in favor of deep-penetrating oil and chemical patinas.</description>
+      <category>Materials</category>
+      <enclosure url="https://mattcoffeydesign.com/gallery-images/CustomIndoor-KitchenBuild-2.jpeg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Case Study: Engineering the Lake Leelanau Spiral Staircase</title>
+      <link>https://mattcoffeydesign.com/journal/lake-leelanau-spiral-staircase-case-study</link>
+      <guid isPermaLink="true">https://mattcoffeydesign.com/journal/lake-leelanau-spiral-staircase-case-study</guid>
+      <pubDate>Tue, 22 Sep 2026 00:00:00 GMT</pubDate>
+      <description>Engineering a floating three-story spiral staircase using one-inch solid mild steel, without visible welds.</description>
+      <category>Projects</category>
+      <enclosure url="https://mattcoffeydesign.com/gallery-images/CustomIndoorRailing1-2.jpeg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Anatomy of an Anvil: Why I Still Use a 100-Year-Old Tool</title>
+      <link>https://mattcoffeydesign.com/journal/anatomy-of-an-anvil</link>
+      <guid isPermaLink="true">https://mattcoffeydesign.com/journal/anatomy-of-an-anvil</guid>
+      <pubDate>Fri, 07 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Modern anvils lack the rebound and soul of forged-steel historic pieces. A deep dive into the Peter Wright anvil.</description>
+      <category>Philosophy</category>
+      <enclosure url="https://mattcoffeydesign.com/gallery-images/workshop1-2.jpeg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Hot-Rolled vs Cold-Rolled Steel in Architectural Metalwork</title>
+      <link>https://mattcoffeydesign.com/journal/hot-rolled-vs-cold-rolled-steel</link>
+      <guid isPermaLink="true">https://mattcoffeydesign.com/journal/hot-rolled-vs-cold-rolled-steel</guid>
+      <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
+      <description>They look identical on a spreadsheet, but behave entirely differently at the forge. Which material is right for your home?</description>
+      <category>Materials</category>
+      <enclosure url="https://mattcoffeydesign.com/gallery-images/customsheetpatternprocess1.jpeg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>The Lost Art of Structural Riveting in Modern Metalwork</title>
+      <link>https://mattcoffeydesign.com/journal/the-lost-art-of-structural-riveting</link>
+      <guid isPermaLink="true">https://mattcoffeydesign.com/journal/the-lost-art-of-structural-riveting</guid>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Before ARC and MIG welding, bridges and skyscrapers were pinned entirely by rivets. We bring this ancient joinery technique to modern residential designs.</description>
+      <category>Process</category>
+      <enclosure url="https://mattcoffeydesign.com/gallery-images/IndoorBarnBuildPROCESS1.jpeg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Blacksmith vs. Welder: What&apos;s the Difference?</title>
+      <link>https://mattcoffeydesign.com/journal/blacksmith-vs-welder-whats-the-difference</link>
+      <guid isPermaLink="true">https://mattcoffeydesign.com/journal/blacksmith-vs-welder-whats-the-difference</guid>
+      <pubDate>Fri, 01 May 2026 00:00:00 GMT</pubDate>
+      <description>Understanding the distinction between blacksmiths and welders helps clients choose the right craftsman for their architectural metalwork project.</description>
+      <category>Education</category>
+      <enclosure url="https://mattcoffeydesign.com/gallery-images/workshop1-2.jpeg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Wrought Iron vs. Cast Iron vs. Mild Steel: A Guide for Homeowners</title>
+      <link>https://mattcoffeydesign.com/journal/wrought-iron-vs-cast-iron-vs-mild-steel</link>
+      <guid isPermaLink="true">https://mattcoffeydesign.com/journal/wrought-iron-vs-cast-iron-vs-mild-steel</guid>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Three materials, three distinct characteristics. Learn which metal is right for your railing, gate, or furniture project.</description>
+      <category>Materials</category>
+      <enclosure url="https://mattcoffeydesign.com/gallery-images/customsheetpatternprocess1.jpeg" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://mattcoffeydesign.com/</loc>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/MattCoffeyHero.jpeg</image:loc>
+      <image:caption>Master blacksmith Matt Coffey in his Traverse City forge</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mattcoffeydesign.com/discover</loc>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomIndoorRailing1-2.jpeg</image:loc>
+      <image:caption>Custom hand-forged interior steel railing with scrollwork</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomGate_Bear1-2.jpeg</image:loc>
+      <image:caption>Custom bear-themed steel entry gate with hand-forged details</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomMetalDoor1-2.jpeg</image:loc>
+      <image:caption>Custom architectural steel door with bronze patina finish</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/GypsyFarms_CustomBarBuild7-2.jpeg</image:loc>
+      <image:caption>Commercial bar installation with custom steel foot rail</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomIndoor-KitchenBuild-2.jpeg</image:loc>
+      <image:caption>Custom indoor kitchen steel build with range hood</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomBench1-2.jpeg</image:loc>
+      <image:caption>Custom steel and wood bench with forged legs</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomMetalWallDecor1-2.jpeg</image:loc>
+      <image:caption>Custom metal wall art sculpture with organic forms</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomIndoor-SteelFireplace1-2.jpeg</image:loc>
+      <image:caption>Custom steel fireplace surround with patina finish</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomStovehood1-2.jpeg</image:loc>
+      <image:caption>Custom forged steel range hood with riveted details</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomRanchGate1-2.jpeg</image:loc>
+      <image:caption>Custom ranch entry gate with hand-forged scrollwork</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomCopperBartops1-2.jpeg</image:loc>
+      <image:caption>Custom copper bar top with hand-hammered texture</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomMetalGate1-2.jpeg</image:loc>
+      <image:caption>Custom steel gate with architectural bronze handles</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomSteelBarnRack-2.jpeg</image:loc>
+      <image:caption>Heavy-duty structural steel barn rack installation</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomGate_MasonaryBricks1-2.jpeg</image:loc>
+      <image:caption>Custom steel gate integrated with masonry brick pillars</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomIndoorShelving-2.jpeg</image:loc>
+      <image:caption>Custom steel shelving unit with forged brackets</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/CustomFireSafetyBox1-2.jpeg</image:loc>
+      <image:caption>Custom steel fire safety box with patina finish</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/Custom-CandleHolder-2.jpeg</image:loc>
+      <image:caption>Custom forged steel candle holder with scroll base</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/Custom-Crafted-Handrails-for-seniors1.jpeg</image:loc>
+      <image:caption>Custom accessibility handrails with decorative forged elements</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mattcoffeydesign.com/about</loc>
+    <image:image>
+      <image:loc>https://mattcoffeydesign.com/gallery-images/workshop1-2.jpeg</image:loc>
+      <image:caption>Interior of the Matt Coffey Design forge workshop</image:caption>
+    </image:image>
+  </url>
+</urlset>
