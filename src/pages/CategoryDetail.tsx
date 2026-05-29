@@ -159,12 +159,12 @@ export function CategoryDetail() {
     <>
       <QuickAnswer
         id="quick-answer"
-        text={`Matt Coffey Design specializes in ${category.displayName.toLowerCase()} using traditional hand-forging techniques. ${category.whatItIs.slice(0, 200)}... Typical pricing: ${category.priceRange}. Browse ${categoryItems.length} portfolio pieces below.`}
+        text={`Matt Coffey Design specializes in ${category.displayName.toLowerCase()} using traditional hand-forging techniques. ${category.whatItIs.slice(0, 200)}... Browse ${categoryItems.length} portfolio pieces below.`}
       />
 
       <SiteHead
         title={`${category.displayName} | Custom Metalwork | Traverse City`}
-        description={`${category.tagline}. ${category.whatItIs.slice(0, 120)}... Browse ${categoryItems.length} hand-forged pieces with pricing, materials, and typical use cases.`}
+        description={`${category.tagline}. ${category.whatItIs.slice(0, 120)}... Browse ${categoryItems.length} hand-forged pieces with materials and typical use cases.`}
         keywords={category.keywords}
         schema={allSchemas}
         image={`${siteUrl}${category.heroImage}`}
@@ -210,10 +210,11 @@ export function CategoryDetail() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              {/* Price Badge */}
+              {/* HIDDEN (prices unverified by owner) — restore to show price badge:
               <div className="absolute -bottom-6 right-6 bg-brushed-bronze text-forge-black px-6 py-3 font-mono text-sm uppercase tracking-wider">
                 {category.priceRange}
               </div>
+              */}
             </div>
 
             {/* Content */}
@@ -347,7 +348,9 @@ export function CategoryDetail() {
                 { attribute: "Scrollwork", optionA: "Hand-hammered; organic variation", optionB: "Machine-bent; uniform curves" },
                 { attribute: "Longevity", optionA: "100+ years with maintenance", optionB: "10–20 years before failure" },
                 { attribute: "Repairability", optionA: "Individual elements replaceable", optionB: "Often requires full replacement" },
+                /* HIDDEN (prices unverified by owner) — restore to show per-foot cost row:
                 { attribute: "Cost", optionA: "$400–800+ per linear foot", optionB: "$150–300 per linear foot" },
+                */
                 { attribute: "Value", optionA: "Appreciating asset; heirloom quality", optionB: "Depreciating consumable product" },
               ]}
             />

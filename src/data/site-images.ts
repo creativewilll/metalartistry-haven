@@ -105,7 +105,7 @@ export const BUSINESS_INFO = {
   ],
   founder: {
     name: "Matt Coffey",
-    id: "https://mattcoffeydesign.com/about#matt-coffey",
+    id: "https://mattcoffeydesign.com/#matt-coffey",
     jobTitle: "Master Blacksmith",
     hasOccupation: {
       name: "Blacksmith",

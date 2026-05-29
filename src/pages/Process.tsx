@@ -129,15 +129,16 @@ export function Process() {
 
   // Calculate total time from steps
   const totalTime = "6 - 18 Weeks";
-  const estimatedCost = {
-    currency: "USD",
-    min: 2500,
-    max: 50000
-  };
+  // HIDDEN (prices unverified by owner) — restore to re-add estimatedCost to the HowTo schema:
+  // const estimatedCost = {
+  //   currency: "USD",
+  //   min: 2500,
+  //   max: 50000
+  // };
 
   return (
     <>
-      <QuickAnswer text="Matt Coffey Design's custom metalwork process has six stages — discovery call, on-site consultation, sketching, material selection, forging and fabrication, and installation — typically spanning 6 to 18 weeks. Pricing starts at $2,500 for furniture, $4,000 for railings per 10 linear feet, and $12,000 for driveway entry gates." />
+      <QuickAnswer text="Matt Coffey Design's custom metalwork process has six stages — discovery call, on-site consultation, sketching, material selection, forging and fabrication, and installation — typically spanning 6 to 18 weeks. Every commission is bespoke and quoted per project after a discovery call and site visit." />
 
       <SiteHead
         title="The Process"
@@ -149,12 +150,14 @@ export function Process() {
             "name": "How to Commission Custom Architectural Metalwork",
             "description": "A 6-step process for commissioning custom hand-forged metalwork from Matt Coffey Design in Traverse City, Michigan — from discovery call to installed piece.",
             "totalTime": "P6W/P18W",
+            /* HIDDEN (prices unverified by owner) — restore to re-add estimatedCost to schema:
             "estimatedCost": {
               "@type": "MonetaryAmount",
               "currency": estimatedCost.currency,
               "minValue": estimatedCost.min,
               "maxValue": estimatedCost.max
             },
+            */
             "tool": tools.map(t => ({ "@type": "HowToTool", "name": t })),
             "step": steps.map((s, i) => ({
               "@type": "HowToStep",
@@ -170,11 +173,13 @@ export function Process() {
             "@context": "https://schema.org",
             "@type": "FAQPage",
             "mainEntity": [
+              /* HIDDEN (prices unverified by owner) — restore this FAQ when pricing is confirmed:
               {
                 "@type": "Question",
                 "name": "How much does custom metalwork cost?",
                 "acceptedAnswer": { "@type": "Answer", "text": "Custom metalwork is priced per project based on labor hours and materials. Starting prices: custom furniture from $2,500, interior railings from $4,000 per 10 linear feet, driveway entry gates from $12,000." }
               },
+              */
               {
                 "@type": "Question",
                 "name": "How long does the custom metalwork process take?",
@@ -343,7 +348,8 @@ export function Process() {
             </a>
           </div>
 
-          {/* Pricing Transparency - Semantic dl/dt/dd */}
+          {/* HIDDEN (prices unverified by owner) — change `false` to `true` to restore the Pricing Transparency block */}
+          {false && (
           <div className="space-y-8">
             <h2 className="text-3xl font-display">Pricing Transparency</h2>
             <p className="text-iron-grey">
@@ -364,6 +370,7 @@ export function Process() {
               </div>
             </dl>
           </div>
+          )}
         </div>
       </section>
 

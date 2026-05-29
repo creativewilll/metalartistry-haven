@@ -122,7 +122,7 @@ export function Services() {
     <>
       <QuickAnswer
         id="quick-answer"
-        text="Matt Coffey Design offers nine categories of custom hand-forged metalwork in Northern Michigan: Railings, Fences, and Gates; Custom Furniture; Commercial Installations; Art and Decor; Doors and Windows; Custom Projects; Outdoor Metal Decor; Kitchens and Bar Tops; and Behind the Scenes process documentation. Each category features extensive portfolios with pricing, materials, and typical use cases."
+        text="Matt Coffey Design offers nine categories of custom hand-forged metalwork in Northern Michigan: Railings, Fences, and Gates; Custom Furniture; Commercial Installations; Art and Decor; Doors and Windows; Custom Projects; Outdoor Metal Decor; Kitchens and Bar Tops; and Behind the Scenes process documentation. Each category features extensive portfolios with materials and typical use cases."
       />
 
       <SiteHead
@@ -195,10 +195,11 @@ export function Services() {
                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                    />
                    <div className="absolute inset-0 border border-brushed-bronze/10 pointer-events-none" />
-                   {/* Price Range Badge */}
+                   {/* HIDDEN (prices unverified by owner) — restore to show price range badge:
                    <div className="absolute top-4 right-4 px-3 py-1.5 bg-forge-black/80 backdrop-blur-sm border border-brushed-bronze/30 text-xs font-mono uppercase tracking-wider text-chalk">
                      {category.priceRange.split(';')[0]}
                    </div>
+                   */}
                 </div>
 
                 {/* AEO Block - Collapsible */}
@@ -296,6 +297,7 @@ export function Services() {
               while a sculpture requires only aesthetic consideration and proper anchoring.
             </p>
 
+            {/* HIDDEN (prices unverified by owner) — restore to show budget guidance:
             <p>
               Finally, consider <strong>budget parameters</strong> relative to project scope. Railings and gates
               typically represent larger investments ($4,000–$25,000+) due to material volume and structural
@@ -303,6 +305,7 @@ export function Services() {
               significant visual impact. Commercial installations require the largest budgets ($15,000–$100,000+)
               reflecting both scale and durability demands.
             </p>
+            */}
 
             <p>
               If your vision spans multiple categories—a restaurant requiring railings, furniture, and signage

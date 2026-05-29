@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Instagram, Facebook } from 'lucide-react';
 import { SITE_IMAGES, BUSINESS_INFO } from '../../data/site-images';
 import { usePhoneActions } from '../contact';
+import { FEATURES } from '../../config/features';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -46,7 +47,7 @@ export function Footer() {
               { name: 'Process', path: '/process' },
               { name: 'Discover', path: '/discover' },
               { name: 'Journal', path: '/journal' },
-              { name: 'About', path: '/about' },
+              ...(FEATURES.aboutPage ? [{ name: 'About', path: '/about' }] : []),
               { name: 'Glossary', path: '/glossary' },
               { name: 'Contact', path: '/contact' }
             ].map(link => (

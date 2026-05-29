@@ -89,10 +89,12 @@ A railing is not merely a safety barrier; it dictates the physical boundary of a
     ],
     priceRange: '$4,000 per 10 linear feet and up; driveway gates from $12,000',
     faqs: [
+      /* HIDDEN (prices unverified by owner) — restore this FAQ when pricing is confirmed:
       {
         q: 'How much does a custom railing cost?',
         a: 'Pricing is calculated per linear foot and varies based on scrollwork complexity, steel gauge, finish selection, and installation requirements. A basic industrial railing starts around $400 per linear foot installed, while ornate spiral staircases with intricate scrollwork can exceed $800 per linear foot. Site visits are required for firm quotes on all railing projects.',
       },
+      */
       {
         q: 'Do custom steel railings rust in Northern Michigan winters?',
         a: 'When properly protected with zinc primer and baked-on powder coat or deep-penetrating oil finishes, steel railings resist rust even in harsh lake-effect snow zones. The key is proper drainage design—water must not pool in crevices. I engineer all outdoor installations with weep holes and slope considerations.',
@@ -270,10 +272,12 @@ The creative process for art pieces differs fundamentally from commissioned func
     ],
     priceRange: '$800 for accent pieces; large sculptures from $5,000',
     faqs: [
+      /* HIDDEN (prices unverified by owner) — restore this FAQ when pricing is confirmed:
       {
         q: 'How do you price custom metal sculptures?',
         a: 'Sculpture pricing depends on scale, complexity, material selection, and installation requirements. Small wall pieces start around $800, while large-scale public installations can exceed $25,000. I provide detailed quotes after design development and maquette approval.',
       },
+      */
       {
         q: 'Can you create art from my concept or sketch?',
         a: 'Yes. Many commissions begin with client concepts—a favorite natural form, a meaningful symbol, or an abstract idea. I develop these concepts through sketches and maquettes before full-scale fabrication begins.',

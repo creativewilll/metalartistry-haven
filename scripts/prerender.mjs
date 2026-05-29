@@ -42,7 +42,7 @@ const ROUTES = [
   '/services',
   '/process',
   ...CATEGORY_SLUGS.map(s => `/services/${s}`),
-  '/about',
+  // '/about',  // disabled at launch — re-add when FEATURES.aboutPage is true
   '/contact',
   '/contact-form',
   '/journal',

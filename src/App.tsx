@@ -1,10 +1,10 @@
+import { lazy, Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes, Navigate, useLocation, useParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'motion/react';
-import { ComingSoonGate } from './components/ComingSoonGate';
+import { FEATURES } from './config/features';
 import { SiteLayout } from './components/layout/SiteLayout';
 import { PageLoaderProvider, PageLoader } from './components/loading';
-import { About } from './pages/About';
 import { CategoryDetail } from './pages/CategoryDetail';
 import { Contact } from './pages/Contact';
 import { ContactForm } from './pages/ContactForm';
@@ -16,6 +16,13 @@ import { NotFound } from './pages/NotFound';
 import { Process } from './pages/Process';
 import { Services } from './pages/Services';
 import { Glossary } from './pages/Glossary';
+
+// Flag-gated surfaces. Declared as lazy() so their chunks are only fetched
+// when the feature flag renders them — disabled, they never load for visitors.
+const ComingSoonGate = lazy(() =>
+  import('./components/ComingSoonGate').then((m) => ({ default: m.ComingSoonGate }))
+);
+const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })));
 
 function RedirectCategorySlug() {
   const { slug } = useParams<{ slug: string }>();
@@ -67,7 +74,18 @@ function AnimatedRoutes() {
         <Route path="/discover/:slug" element={<AnimatedRoute><Discover /></AnimatedRoute>} />
         <Route path="/journal" element={<AnimatedRoute><Journal /></AnimatedRoute>} />
         <Route path="/journal/:slug" element={<AnimatedRoute><JournalPost /></AnimatedRoute>} />
-        <Route path="/about" element={<AnimatedRoute><About /></AnimatedRoute>} />
+        {FEATURES.aboutPage && (
+          <Route
+            path="/about"
+            element={
+              <AnimatedRoute>
+                <Suspense fallback={null}>
+                  <About />
+                </Suspense>
+              </AnimatedRoute>
+            }
+          />
+        )}
         <Route path="/glossary" element={<AnimatedRoute><Glossary /></AnimatedRoute>} />
         <Route path="/contact" element={<AnimatedRoute><Contact /></AnimatedRoute>} />
         <Route path="/contact-form" element={<AnimatedRoute><ContactForm /></AnimatedRoute>} />
@@ -78,18 +96,26 @@ function AnimatedRoutes() {
 }
 
 export default function App() {
+  const app = (
+    <BrowserRouter>
+      <PageLoaderProvider>
+        <PageLoader />
+        <SiteLayout>
+          <AnimatedRoutes />
+        </SiteLayout>
+      </PageLoaderProvider>
+    </BrowserRouter>
+  );
+
   return (
     <HelmetProvider>
-      <ComingSoonGate>
-        <BrowserRouter>
-          <PageLoaderProvider>
-            <PageLoader />
-            <SiteLayout>
-              <AnimatedRoutes />
-            </SiteLayout>
-          </PageLoaderProvider>
-        </BrowserRouter>
-      </ComingSoonGate>
+      {FEATURES.comingSoonGate ? (
+        <Suspense fallback={null}>
+          <ComingSoonGate>{app}</ComingSoonGate>
+        </Suspense>
+      ) : (
+        app
+      )}
     </HelmetProvider>
   );
 }

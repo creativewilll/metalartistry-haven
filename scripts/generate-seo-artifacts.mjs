@@ -43,7 +43,7 @@ const STATIC_ROUTES = [
   { path: '/process', priority: 0.8, changefreq: 'monthly' },
   { path: '/discover', priority: 0.8, changefreq: 'weekly' },
   { path: '/journal', priority: 0.9, changefreq: 'weekly' },
-  { path: '/about', priority: 0.7, changefreq: 'monthly' },
+  // { path: '/about', priority: 0.7, changefreq: 'monthly' },  // disabled at launch — re-add when FEATURES.aboutPage is true
   { path: '/contact', priority: 0.9, changefreq: 'monthly' },
   { path: '/glossary', priority: 0.7, changefreq: 'monthly' },
   { path: '/contact-form', priority: 0.6, changefreq: 'monthly' },
@@ -454,7 +454,7 @@ const GALLERY_IMAGES = [
   { url: '/gallery-images/CustomGate_MasonaryBricks1-2.jpeg', caption: 'Custom steel gate integrated with masonry brick pillars', page: '/discover' },
   { url: '/gallery-images/CustomIndoorShelving-2.jpeg', caption: 'Custom steel shelving unit with forged brackets', page: '/discover' },
   { url: '/gallery-images/CustomFireSafetyBox1-2.jpeg', caption: 'Custom steel fire safety box with patina finish', page: '/discover' },
-  { url: '/gallery-images/workshop1-2.jpeg', caption: 'Interior of the Matt Coffey Design forge workshop', page: '/about' },
+  // { url: '/gallery-images/workshop1-2.jpeg', caption: 'Interior of the Matt Coffey Design forge workshop', page: '/about' },  // disabled at launch — re-add when FEATURES.aboutPage is true
   { url: '/gallery-images/Custom-CandleHolder-2.jpeg', caption: 'Custom forged steel candle holder with scroll base', page: '/discover' },
   { url: '/gallery-images/Custom-Crafted-Handrails-for-seniors1.jpeg', caption: 'Custom accessibility handrails with decorative forged elements', page: '/discover' },
 ];

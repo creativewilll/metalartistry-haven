@@ -91,9 +91,9 @@ function generateBlogPostingSchema(post: JournalPost, canonicalUrl: string) {
     dateModified: post.updatedDateTime || post.dateTime,
     author: {
       '@type': 'Person',
-      '@id': `${siteUrl}/about#matt-coffey`,
+      '@id': `${siteUrl}/#matt-coffey`,
       name: post.author,
-      url: `${siteUrl}/about`,
+      url: siteUrl,
       jobTitle: 'Master Blacksmith',
     },
     publisher: {

@@ -13,10 +13,12 @@ const faqs = [
     q: "What is your typical lead time?",
     a: "My queue is typically booked 3 to 6 months in advance. For large builds like grand entry gates or full commercial restaurant build-outs, I recommend contacting me early in the architectural drafting phase so structural requirements can be coordinated."
   },
+  /* HIDDEN (pricing/deposit terms unverified by owner) — restore when confirmed:
   {
     q: "How much is the deposit?",
     a: "Once a design is finalized and a fixed quote is provided, I require a 50% non-refundable deposit to secure your place in the queue and order raw materials. The remaining 50% is due upon completion or installation."
   },
+  */
   {
     q: "Do you install or just deliver?",
     a: "For local projects in Northern Michigan, I typically handle installation myself or supervise a trusted crew. For furniture and smaller pieces, I offer custom crating and freight shipping nationwide. For large architectural installations outside my service area, we coordinate with local contractors."

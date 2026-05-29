@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from '../../lib/utils';
 import { SITE_IMAGES } from '../../data/site-images';
+import { FEATURES } from '../../config/features';
 
 const links = [
   { name: 'Home', path: '/' },
@@ -11,7 +12,7 @@ const links = [
   { name: 'Process', path: '/process' },
   { name: 'Discover', path: '/discover' },
   { name: 'Journal', path: '/journal' },
-  { name: 'About', path: '/about' },
+  ...(FEATURES.aboutPage ? [{ name: 'About', path: '/about' }] : []),
   { name: 'Contact', path: '/contact' },
 ];
 

@@ -8,6 +8,7 @@ import { SITE_IMAGES, BUSINESS_INFO } from '../data/site-images';
 import { galleryItems } from '../data/gallery-items';
 import { ForgeFeed } from '../components/marketing';
 import { QuickAnswer } from '../components/seo/QuickAnswer';
+import { FEATURES } from '../config/features';
 
 const specialties = [
   { title: "Railings & Gates", desc: "Forged safety that doubles as art.", icon: <Scaling size={24} />, bgImage: SITE_IMAGES.specialties.railings, link: "/discover?category=Railings,%20Fences,%20and%20Gates" },
@@ -442,11 +443,13 @@ export function Home() {
                  <div className="font-mono text-xs text-iron-grey uppercase tracking-widest">Year Established</div>
               </motion.div>
             </div>
-            <div className="pt-4">
-              <Link to="/about" className="inline-flex items-center gap-2 group text-sm font-mono tracking-widest text-chalk hover:text-white-hot uppercase transition-colors">
-                Read the Story <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+            {FEATURES.aboutPage && (
+              <div className="pt-4">
+                <Link to="/about" className="inline-flex items-center gap-2 group text-sm font-mono tracking-widest text-chalk hover:text-white-hot uppercase transition-colors">
+                  Read the Story <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
+            )}
           </div>
           
           <div className="order-1 lg:order-2 relative">
