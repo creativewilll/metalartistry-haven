@@ -1,6 +1,5 @@
-import { useState, FormEvent } from 'react';
-import { motion, useReducedMotion } from 'motion/react';
-import { Mail, Phone, MapPin, ChevronDown } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Mail, Phone, MapPin, ChevronDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SiteHead } from '../components/layout/SiteHead';
 import { QuickAnswer } from '../components/seo/QuickAnswer';
@@ -53,48 +52,11 @@ const recentCommissions = [
 ].filter(Boolean);
 
 export function Contact() {
-  const prefersReducedMotion = useReducedMotion();
   const { openPhoneActions } = usePhoneActions();
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [formError, setFormError] = useState<string>('');
-  const [messageLength, setMessageLength] = useState(0);
-  const MAX_MESSAGE_LENGTH = 2000;
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setFormStatus('submitting');
-    setFormError('');
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    try {
-      // Netlify form submission
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(formData as any).toString(),
-      });
-
-      if (response.ok) {
-        setFormStatus('success');
-        form.reset();
-        setMessageLength(0);
-      } else {
-        setFormStatus('error');
-        setFormError('Something went wrong. Please try again.');
-      }
-    } catch {
-      setFormStatus('error');
-      setFormError('Unable to send message. Please try emailing directly.');
-    }
-  };
 
   return (
     <>
-      <QuickAnswer text="Contact Matt Coffey Design to start a custom metalwork commission. Call (231) 645-0622, email info@mattcoffeydesign.com, or fill out the online form. The studio is located in Traverse City, Michigan and serves all of Northern Michigan by appointment." />
+      <QuickAnswer text="Contact Matt Coffey Design to start a custom metalwork commission. Call (231) 645-0622 or email info@mattcoffeydesign.com. The studio is located in Traverse City, Michigan and serves all of Northern Michigan by appointment." />
 
       <SiteHead 
         title="Contact the Forge"
@@ -193,7 +155,7 @@ export function Contact() {
                     If you have an idea that requires fire and a hammer, I want to hear about it.
                   </p>
                   <p className="text-lg text-iron-grey leading-relaxed mt-4">
-                    Send me the details of what you're imagining. I am typically in the shop with the machinery running during the day, so email or the form below is the best way to initiate a project. I review inquiries every evening and will respond within 48 hours.
+                    Send me the details of what you're imagining. I am typically in the shop with the machinery running during the day, so email or a phone call is the best way to initiate a project. I review inquiries every evening and will respond within 48 hours.
                   </p>
                </div>
 
@@ -225,168 +187,53 @@ export function Contact() {
                </div>
             </div>
 
-            {/* Right: Work Order Form (Visual Only) */}
+            {/* Right: Direct Contact Panel */}
             <div className="bg-chalk p-8 md:p-10 rounded-sm relative text-forge-black shadow-xl">
                <div className="absolute top-0 inset-x-0 h-2 bg-brushed-bronze rounded-t-sm" />
                <div className="mb-8 border-b border-forge-black/10 pb-6 flex justify-between items-end">
-                 <h2 className="text-2xl font-display font-bold">Work Order Inquiry</h2>
+                 <h2 className="text-2xl font-display font-bold">Start the Conversation</h2>
                  <span className="font-mono text-xs uppercase tracking-widest text-iron-grey">Est. 1999</span>
                </div>
 
-               {/* noscript fallback for users without JavaScript */}
-               <noscript>
-                 <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-sm">
-                   <p className="text-sm text-amber-800">
-                     JavaScript is required to use this form. Please email us directly at{' '}
-                     <a href={`mailto:${BUSINESS_INFO.email}`} className="underline font-semibold">
-                       {BUSINESS_INFO.email}
-                     </a>
-                   </p>
-                 </div>
-               </noscript>
+               <p className="text-sm text-iron-grey leading-relaxed mb-8">
+                 The fastest way to reach me is directly. Email your project details, rough
+                 dimensions, and any inspiration images, or call the shop. I read every
+                 message personally and respond within 48 hours.
+               </p>
 
-               {/* Success/Error Messages */}
-               {formStatus === 'success' && (
-                 <div role="status" className="mb-6 p-4 bg-green-50 border border-green-200 rounded-sm">
-                   <p className="text-sm text-green-800 font-medium">Message sent successfully!</p>
-                   <p className="text-xs text-green-700 mt-1">We'll get back to you within 48 hours.</p>
-                 </div>
-               )}
-               {formStatus === 'error' && (
-                 <div role="status" className="mb-6 p-4 bg-red-50 border border-red-200 rounded-sm">
-                   <p className="text-sm text-red-800 font-medium">{formError}</p>
-                 </div>
-               )}
-
-               <form className="space-y-6" onSubmit={handleSubmit} data-netlify="true" name="contact-short" method="POST">
-                  <input type="hidden" name="form-name" value="contact-short" />
-                  <input name="bot-field" hidden />
-                  <div className="grid grid-cols-2 gap-6">
-                     <div className="space-y-2">
-                       <label htmlFor="contact-name" className="font-mono text-xs uppercase tracking-widest text-forge-black font-semibold">
-                         Name <span aria-label="required">*</span>
-                       </label>
-                       <input 
-                         id="contact-name"
-                         name="name"
-                         type="text" 
-                         required
-                         aria-required="true"
-                         aria-describedby="name-helper"
-                         className="w-full bg-transparent border-b border-forge-black/30 pb-2 focus:outline-none focus:border-brushed-bronze transition-colors placeholder:text-iron-grey/50" 
-                         placeholder="John Doe" 
-                       />
-                       <p id="name-helper" className="text-xs text-iron-grey/60">Your full name for our records</p>
-                     </div>
-                     <div className="space-y-2">
-                       <label htmlFor="contact-phone" className="font-mono text-xs uppercase tracking-widest text-forge-black font-semibold">
-                         Phone <span aria-label="required">*</span>
-                       </label>
-                       <input 
-                         id="contact-phone"
-                         name="phone"
-                         type="tel" 
-                         required
-                         aria-required="true"
-                         aria-describedby="phone-helper"
-                         className="w-full bg-transparent border-b border-forge-black/30 pb-2 focus:outline-none focus:border-brushed-bronze transition-colors placeholder:text-iron-grey/50" 
-                         placeholder="(555) 000-0000" 
-                       />
-                       <p id="phone-helper" className="text-xs text-iron-grey/60">Best number to reach you</p>
-                     </div>
-                  </div>
-
-                  <div className="space-y-2">
-                     <label htmlFor="contact-email" className="font-mono text-xs uppercase tracking-widest text-forge-black font-semibold">
-                       Email <span aria-label="required">*</span>
-                     </label>
-                     <input 
-                       id="contact-email"
-                       name="email"
-                       type="email" 
-                       required
-                       aria-required="true"
-                       aria-describedby="email-helper"
-                       className="w-full bg-transparent border-b border-forge-black/30 pb-2 focus:outline-none focus:border-brushed-bronze transition-colors placeholder:text-iron-grey/50" 
-                       placeholder="john@example.com" 
-                     />
-                     <p id="email-helper" className="text-xs text-iron-grey/60">We'll send a confirmation to this address</p>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-6">
-                     <div className="space-y-2">
-                       <label htmlFor="contact-project-type" className="font-mono text-xs uppercase tracking-widest text-forge-black font-semibold">
-                         Project Type
-                       </label>
-                       <select
-                         id="contact-project-type"
-                         name="projectType"
-                         aria-describedby="project-helper"
-                         className="w-full bg-transparent border-b border-forge-black/30 pb-2 focus:outline-none focus:border-brushed-bronze transition-colors text-forge-black"
-                       >
-                         <option>Railing / Gate</option>
-                         <option>Custom Furniture</option>
-                         <option>Metal Art & Decor</option>
-                         <option>Commercial</option>
-                         <option>Custom / Other</option>
-                       </select>
-                       <p id="project-helper" className="text-xs text-iron-grey/60">Select the best match</p>
-                     </div>
-                     <div className="space-y-2">
-                       <label htmlFor="contact-budget" className="font-mono text-xs uppercase tracking-widest text-forge-black font-semibold">
-                         Budget Range
-                       </label>
-                       <select 
-                         id="contact-budget"
-                         name="budget"
-                         aria-describedby="budget-helper"
-                         className="w-full bg-transparent border-b border-forge-black/30 pb-2 focus:outline-none focus:border-brushed-bronze transition-colors text-forge-black"
-                       >
-                         <option>$2.5k - $5k</option>
-                         <option>$5k - $10k</option>
-                         <option>$10k - $25k</option>
-                         <option>$25k+</option>
-                       </select>
-                       <p id="budget-helper" className="text-xs text-iron-grey/60">Helps us scope the project</p>
-                     </div>
-                  </div>
-
-                  <div className="space-y-2">
-                     <label htmlFor="contact-message" className="font-mono text-xs uppercase tracking-widest text-forge-black font-semibold">
-                       Tell me about it
-                     </label>
-                     <textarea 
-                       id="contact-message"
-                       name="message"
-                       rows={4} 
-                       maxLength={MAX_MESSAGE_LENGTH}
-                       aria-describedby="message-helper message-counter"
-                       onChange={(e) => setMessageLength(e.target.value.length)}
-                       className="w-full bg-transparent border-b border-forge-black/30 pb-2 focus:outline-none focus:border-brushed-bronze transition-colors resize-none placeholder:text-iron-grey/50" 
-                       placeholder="Rough dimensions, material thoughts, timeline..." 
-                     />
-                     <div className="flex justify-between">
-                       <p id="message-helper" className="text-xs text-iron-grey/60">Include dimensions, materials, and timeline</p>
-                       <p id="message-counter" className="text-xs text-iron-grey/60" aria-live="polite">
-                         {messageLength}/{MAX_MESSAGE_LENGTH}
-                       </p>
-                     </div>
-                  </div>
-
-                  <button 
-                    type="submit" 
-                    disabled={formStatus === 'submitting'}
-                    className="w-full h-14 bg-forge-black text-chalk font-mono text-sm tracking-widest uppercase hover:bg-brushed-bronze transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-brushed-bronze focus:outline-none rounded-sm disabled:opacity-50 disabled:cursor-not-allowed"
+               <div className="space-y-4">
+                  <a
+                    href={`mailto:${BUSINESS_INFO.email}`}
+                    className="flex items-center justify-between gap-4 p-5 bg-forge-black text-chalk rounded-sm hover:bg-brushed-bronze hover:text-forge-black transition-colors group focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brushed-bronze"
                   >
-                     {formStatus === 'submitting' ? 'Sending...' : 'Submit Request'}
+                     <span className="flex items-center gap-4">
+                       <Mail size={22} className="shrink-0" />
+                       <span className="flex flex-col text-left">
+                         <span className="font-mono text-[10px] uppercase tracking-widest opacity-70">Email the Forge</span>
+                         <span className="font-mono text-sm tracking-wide break-all">{BUSINESS_INFO.email}</span>
+                       </span>
+                     </span>
+                     <ArrowRight size={18} className="shrink-0 transition-transform group-hover:translate-x-1" />
+                  </a>
+
+                  <button
+                    onClick={openPhoneActions}
+                    className="w-full flex items-center justify-between gap-4 p-5 border border-forge-black/20 rounded-sm hover:border-brushed-bronze hover:bg-brushed-bronze/10 transition-colors group text-left focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brushed-bronze"
+                  >
+                     <span className="flex items-center gap-4">
+                       <Phone size={22} className="shrink-0 text-brushed-bronze" />
+                       <span className="flex flex-col">
+                         <span className="font-mono text-[10px] uppercase tracking-widest text-iron-grey">Call or Text</span>
+                         <span className="font-mono text-sm tracking-wide">{BUSINESS_INFO.phoneDisplay}</span>
+                       </span>
+                     </span>
+                     <ArrowRight size={18} className="shrink-0 text-iron-grey transition-transform group-hover:translate-x-1" />
                   </button>
-               </form>
-               
-               <div className="mt-6 text-center">
-                 <Link to="/contact-form" className="text-xs font-mono uppercase tracking-widest text-iron-grey hover:text-brushed-bronze transition-colors">
-                   Or use our full intake form &rarr;
-                 </Link>
                </div>
+
+               <p className="mt-8 pt-6 border-t border-forge-black/10 text-xs font-mono uppercase tracking-widest text-iron-grey text-center">
+                 By appointment only · Traverse City, MI
+               </p>
             </div>
          </div>
       </section>

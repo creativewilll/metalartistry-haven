@@ -42,13 +42,17 @@ const STATIC_ROUTES = [
   { path: '/services', priority: 0.9, changefreq: 'monthly' },
   { path: '/process', priority: 0.8, changefreq: 'monthly' },
   { path: '/discover', priority: 0.8, changefreq: 'weekly' },
-  { path: '/journal', priority: 0.9, changefreq: 'weekly' },
+  // { path: '/journal', priority: 0.9, changefreq: 'weekly' },  // hidden — re-add when FEATURES.journal is true
   // { path: '/about', priority: 0.7, changefreq: 'monthly' },  // disabled at launch — re-add when FEATURES.aboutPage is true
   { path: '/contact', priority: 0.9, changefreq: 'monthly' },
   { path: '/glossary', priority: 0.7, changefreq: 'monthly' },
-  { path: '/contact-form', priority: 0.6, changefreq: 'monthly' },
+  // { path: '/contact-form', priority: 0.6, changefreq: 'monthly' },  // intake form removed — dead lead pipeline
   ...CATEGORY_ROUTES,
 ];
+
+// Journal is hidden (FEATURES.journal = false). Flip to true to re-include
+// journal posts in the sitemap, RSS feed, and llms-full.txt.
+const JOURNAL_ENABLED = false;
 
 // Journal posts data (inline to avoid import issues during build)
 const JOURNAL_POSTS = [
@@ -491,13 +495,13 @@ function generateSitemap() {
       changefreq: route.changefreq,
       priority: route.priority,
     })),
-    // Journal posts
-    ...JOURNAL_POSTS.map(post => ({
+    // Journal posts (hidden while JOURNAL_ENABLED is false)
+    ...(JOURNAL_ENABLED ? JOURNAL_POSTS.map(post => ({
       loc: `${SITE_URL}/journal/${post.slug}`,
       lastmod: formatDate(post.updatedDateTime || post.dateTime),
       changefreq: 'monthly',
       priority: 0.8,
-    })),
+    })) : []),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -516,7 +520,7 @@ ${urls.map(url => `  <url>
 // Generate RSS XML
 function generateRSS() {
   const now = new Date().toUTCString();
-  const items = JOURNAL_POSTS.map(post => {
+  const items = (JOURNAL_ENABLED ? JOURNAL_POSTS : []).map(post => {
     const postUrl = `${SITE_URL}/journal/${post.slug}`;
     const imageUrl = `${SITE_URL}${post.image}`;
 
@@ -705,16 +709,18 @@ Primary footprint: Grand Traverse, Leelanau, Benzie, and Antrim counties in Nort
     }
   });
 
-  // Add journal articles
-  content += `## Journal Articles\n\n`;
-  JOURNAL_POSTS.forEach(post => {
-    const postContent = JOURNAL_POST_CONTENT[post.slug];
-    if (postContent) {
-      content += `### ${post.title}\n\n`;
-      content += `Category: ${post.category} | Date: ${post.dateTime}\n\n`;
-      content += `${postContent.content}\n\n---\n\n`;
-    }
-  });
+  // Add journal articles (hidden while JOURNAL_ENABLED is false)
+  if (JOURNAL_ENABLED) {
+    content += `## Journal Articles\n\n`;
+    JOURNAL_POSTS.forEach(post => {
+      const postContent = JOURNAL_POST_CONTENT[post.slug];
+      if (postContent) {
+        content += `### ${post.title}\n\n`;
+        content += `Category: ${post.category} | Date: ${post.dateTime}\n\n`;
+        content += `${postContent.content}\n\n---\n\n`;
+      }
+    });
+  }
 
   // Add glossary
   content += `## Glossary of Metalworking Terms\n\n`;

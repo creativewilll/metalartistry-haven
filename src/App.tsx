@@ -7,11 +7,8 @@ import { SiteLayout } from './components/layout/SiteLayout';
 import { PageLoaderProvider, PageLoader } from './components/loading';
 import { CategoryDetail } from './pages/CategoryDetail';
 import { Contact } from './pages/Contact';
-import { ContactForm } from './pages/ContactForm';
 import { Discover } from './pages/Discover';
 import { Home } from './pages/Home';
-import { Journal } from './pages/Journal';
-import { JournalPost } from './pages/JournalPost';
 import { NotFound } from './pages/NotFound';
 import { Process } from './pages/Process';
 import { Services } from './pages/Services';
@@ -23,6 +20,8 @@ const ComingSoonGate = lazy(() =>
   import('./components/ComingSoonGate').then((m) => ({ default: m.ComingSoonGate }))
 );
 const About = lazy(() => import('./pages/About').then((m) => ({ default: m.About })));
+const Journal = lazy(() => import('./pages/Journal').then((m) => ({ default: m.Journal })));
+const JournalPost = lazy(() => import('./pages/JournalPost').then((m) => ({ default: m.JournalPost })));
 
 function RedirectCategorySlug() {
   const { slug } = useParams<{ slug: string }>();
@@ -72,8 +71,35 @@ function AnimatedRoutes() {
         <Route path="/categories/:slug" element={<RedirectCategorySlug />} />
         <Route path="/discover" element={<AnimatedRoute><Discover /></AnimatedRoute>} />
         <Route path="/discover/:slug" element={<AnimatedRoute><Discover /></AnimatedRoute>} />
-        <Route path="/journal" element={<AnimatedRoute><Journal /></AnimatedRoute>} />
-        <Route path="/journal/:slug" element={<AnimatedRoute><JournalPost /></AnimatedRoute>} />
+        {FEATURES.journal ? (
+          <>
+            <Route
+              path="/journal"
+              element={
+                <AnimatedRoute>
+                  <Suspense fallback={null}>
+                    <Journal />
+                  </Suspense>
+                </AnimatedRoute>
+              }
+            />
+            <Route
+              path="/journal/:slug"
+              element={
+                <AnimatedRoute>
+                  <Suspense fallback={null}>
+                    <JournalPost />
+                  </Suspense>
+                </AnimatedRoute>
+              }
+            />
+          </>
+        ) : (
+          <>
+            <Route path="/journal" element={<Navigate to="/" replace />} />
+            <Route path="/journal/:slug" element={<Navigate to="/" replace />} />
+          </>
+        )}
         {FEATURES.aboutPage && (
           <Route
             path="/about"
@@ -88,7 +114,8 @@ function AnimatedRoutes() {
         )}
         <Route path="/glossary" element={<AnimatedRoute><Glossary /></AnimatedRoute>} />
         <Route path="/contact" element={<AnimatedRoute><Contact /></AnimatedRoute>} />
-        <Route path="/contact-form" element={<AnimatedRoute><ContactForm /></AnimatedRoute>} />
+        {/* Intake form removed — dead lead pipeline. Old links redirect to /contact. */}
+        <Route path="/contact-form" element={<Navigate to="/contact" replace />} />
         <Route path="*" element={<AnimatedRoute><NotFound /></AnimatedRoute>} />
       </Routes>
     </AnimatePresence>

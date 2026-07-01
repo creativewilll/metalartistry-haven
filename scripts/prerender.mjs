@@ -15,6 +15,9 @@ import { createServer } from 'http';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = join(__dirname, '..', 'dist');
 
+// Journal is hidden (FEATURES.journal = false). Slugs kept here for easy
+// restore — re-add `/journal` + `...JOURNAL_SLUGS.map(...)` to ROUTES below.
+// eslint-disable-next-line no-unused-vars
 const JOURNAL_SLUGS = [
   'powder-coat-vs-patina-finishes',
   'lake-leelanau-spiral-staircase-case-study',
@@ -44,11 +47,11 @@ const ROUTES = [
   ...CATEGORY_SLUGS.map(s => `/services/${s}`),
   // '/about',  // disabled at launch — re-add when FEATURES.aboutPage is true
   '/contact',
-  '/contact-form',
-  '/journal',
+  // '/contact-form',  // intake form removed — dead lead pipeline
+  // '/journal',  // hidden — re-add when FEATURES.journal is true
   '/discover',
   '/glossary',
-  ...JOURNAL_SLUGS.map(s => `/journal/${s}`),
+  // ...JOURNAL_SLUGS.map(s => `/journal/${s}`),  // hidden — re-add when FEATURES.journal is true
 ];
 
 async function startServer(dir, port) {

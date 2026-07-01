@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Mail, Phone, FileText, Instagram, X, Flame } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Mail, Phone, Instagram, X, Flame } from 'lucide-react';
 import { usePhoneActions } from '../contact/PhoneActionContext';
 import { BUSINESS_INFO } from '../../data/site-images';
 
@@ -71,11 +70,6 @@ export function ContactPromptModal() {
   const handlePhone = () => {
     handleDismiss();
     openPhoneActions();
-  };
-
-  const handleIntake = () => {
-    handleDismiss();
-    // Link will handle navigation
   };
 
   // Don't render until mounted (prevents hydration mismatch)
@@ -162,7 +156,7 @@ export function ContactPromptModal() {
                 </p>
 
                 {/* CTA Buttons Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
                   {/* Email Button */}
                   <button
                     onClick={handleEmail}
@@ -195,22 +189,6 @@ export function ContactPromptModal() {
                     </div>
                   </button>
 
-                  {/* Full Intake Button */}
-                  <Link
-                    to="/contact-form"
-                    onClick={handleIntake}
-                    className="group p-4 bg-forge-black/50 border border-brushed-bronze/20 rounded-sm hover:border-brushed-bronze/50 hover:bg-forge-black/70 transition-all focus:outline-none focus:ring-2 focus:ring-brushed-bronze"
-                  >
-                    <div className="flex flex-col items-center text-center">
-                      <div className="w-10 h-10 rounded-full bg-brushed-bronze/20 flex items-center justify-center mb-3 group-hover:bg-brushed-bronze/30 transition-colors">
-                        <FileText size={18} className="text-brushed-bronze" />
-                      </div>
-                      <span className="font-mono text-xs uppercase tracking-widest text-chalk">
-                        Full Intake
-                      </span>
-                      <span className="text-[10px] text-iron-grey mt-1">Detailed project form</span>
-                    </div>
-                  </Link>
                 </div>
 
                 {/* Instagram link centered at bottom */}

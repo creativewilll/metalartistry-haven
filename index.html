@@ -12,9 +12,6 @@
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     
-    <!-- RSS Feed -->
-    <link rel="alternate" type="application/rss+xml" title="Matt Coffey Design Journal" href="/rss.xml" />
-    
     <!-- LLM Content Files -->
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
     <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM full content" />
@@ -32,26 +29,6 @@
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- Netlify Hidden Form Stubs for SPA Form Detection -->
-    <form name="contact-short" data-netlify="true" hidden>
-      <input type="text" name="name" />
-      <input type="tel" name="phone" />
-      <input type="email" name="email" />
-      <select name="projectType"></select>
-      <select name="budget"></select>
-      <textarea name="message"></textarea>
-      <input name="bot-field" />
-    </form>
-
-    <form name="contact-intake" data-netlify="true" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <select name="budget"></select>
-      <textarea name="projectDescription"></textarea>
-      <textarea name="extra"></textarea>
-      <input name="bot-field" />
-    </form>
-
     <form name="newsletter" data-netlify="true" hidden>
       <input type="email" name="email" />
       <input name="bot-field" />

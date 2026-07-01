@@ -11,7 +11,7 @@ const links = [
   { name: 'Services', path: '/services' },
   { name: 'Process', path: '/process' },
   { name: 'Discover', path: '/discover' },
-  { name: 'Journal', path: '/journal' },
+  ...(FEATURES.journal ? [{ name: 'Journal', path: '/journal' }] : []),
   ...(FEATURES.aboutPage ? [{ name: 'About', path: '/about' }] : []),
   { name: 'Contact', path: '/contact' },
 ];

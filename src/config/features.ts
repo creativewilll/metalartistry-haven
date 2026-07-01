@@ -9,12 +9,16 @@
  *
  *   comingSoonGate -> the pre-launch password wall (ComingSoonGate.tsx)
  *   aboutPage      -> the /about route + every nav/footer/home link to it
+ *   journal        -> the /journal route + posts + every nav/footer link to it
  *
- * NOTE: after re-enabling `aboutPage`, regenerate SEO artifacts so the
- * sitemap re-includes /about:  `node scripts/generate-seo-artifacts.mjs`
- * and add `'/about'` back to the prerender ROUTES list if you prerender.
+ * NOTE: after re-enabling a flag, regenerate SEO artifacts so the sitemap
+ * re-includes those routes:  `node scripts/generate-seo-artifacts.mjs`
+ * and add the routes back to the prerender ROUTES list if you prerender.
+ * For `journal`, also re-add `/journal` + the JOURNAL_SLUGS/JOURNAL_POSTS
+ * entries in scripts/prerender.mjs and scripts/generate-seo-artifacts.mjs.
  */
 export const FEATURES = {
   comingSoonGate: false,
   aboutPage: false,
+  journal: false,
 } as const;
